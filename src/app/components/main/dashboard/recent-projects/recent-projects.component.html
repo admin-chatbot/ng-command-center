@@ -1,0 +1,88 @@
+<div class="card">
+  <div class="card-header card-no-border pb-0">
+    <div class="header-top">
+      <h4>Recent Projects</h4>
+      <div class="dropdown icon-dropdown" (clickOutside)="clickOutside()">
+        <button class="btn dropdown-toggle" id="userdropdown2" type="button" (click)="isCalender =!isCalender">
+          <i class="icon-more-alt"></i>
+        </button>
+        <div class="dropdown-menu dropdown-menu-end" [ngClass]="isCalender ? 'd-block' :'d-none'">
+          <a class="dropdown-item" href="javascript:void(0)">Weekly</a>
+          <a class="dropdown-item" href="javascript:void(0)">Monthly</a>
+          <a class="dropdown-item" href="javascript:void(0)">Yearly</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body p-0 projects">
+    <div class="table-responsive theme-scrollbar">
+      <div class="recent-product_wrapper dataTables_wrapper no-footer">
+        <table class="table display overflow-hidden dataTable no-footer" id="recent-product" style="width:100%">
+          <thead>
+            <tr>
+              <th>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="">
+                  <label class="form-check-label"></label>
+                </div>
+              </th>
+              <th>Name</th>
+              <th class="px-0">Team</th>
+              <th>started </th>
+              <th>finished</th>
+              <th>Progress </th>
+              <th class="px-2">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of tableData; track item) {
+            <tr>
+              <td>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="">
+                  <label class="form-check-label"></label>
+                </div>
+              </td>
+              <td class="px-0"> <a [routerLink]="['/ecommerce/order-history']">{{item.name}} </a></td>
+              <td class="customers text-center social-group">
+                <ul>
+                  @for (images of item.image; track images) {
+                  <li class="d-inline-block">
+                    <img class="img-30 rounded-circle" [src]="images.image" alt="">
+                  </li>
+                  }
+                  @if (item.active) {
+                  <li class="d-inline-block">
+                    <p class="bg-light rounded-circle">5+</p>
+                  </li>
+                  }
+                </ul>
+              </td>
+              <td> {{item.started}}</td>
+              <td> {{item.finished}}</td>
+              <td class="radial-chart-wrap p-0">
+                <div class="widgetsChart" id="{{item.chartId}}">
+                  <app-comman-widgets-chart [item]="item.options"></app-comman-widgets-chart>
+                </div>
+              </td>
+              <td class="text-center">
+                <div class="dropdown icon-dropdown">
+                  <button class="btn dropdown-toggle" type="button" (click)="openMenu(item.id)">
+                    <i class="icon-more-alt"></i>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-end dropdown-bottom"
+                    [ngClass]="item.id === openId ? 'd-block' :'d-none'">
+                    <a class="dropdown-item" href="javascript:void(0)">Weekly </a>
+                    <a class="dropdown-item" href="javascript:void(0)">Monthly</a>
+                    <a class="dropdown-item" href="javascript:void(0)">Yearly</a>.
+                  </div>
+                </div>
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

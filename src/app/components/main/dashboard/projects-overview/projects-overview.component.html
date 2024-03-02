@@ -1,0 +1,38 @@
+<div class="card">
+  <div class="card-header card-no-border pb-0">
+    <div class="header-top">
+      <h4>Projects Overview</h4>
+      <div class="dropdown icon-dropdown" (clickOutside)="clickOutside()">
+        <button class="btn dropdown-toggle" type="button" (click)="isShow =!isShow">
+          <i class="icon-more-alt"></i>
+        </button>
+        <div class="dropdown-menu dropdown-menu-end" [class.show]="isShow">
+          <a class="dropdown-item" href="javascript:void(0)">Weekly</a>
+          <a class="dropdown-item" href="javascript:void(0)">Monthly</a>
+          <a class="dropdown-item" href="javascript:void(0)">Yearly</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body pb-0">
+    <div class="current-sale-container order-container">
+      <div class="overview-wrapper" id="orderoverview">
+        <apx-chart [series]="orderOverview.series" [chart]="orderOverview.chart" [stroke]="orderOverview.stroke"
+          [grid]="orderOverview.grid" [plotOptions]="orderOverview.plotOptions" [colors]="orderOverview.colors"
+          [fill]="orderOverview.fill" [annotations]="orderOverview.annotations" [labels]="orderOverview.labels"
+          [xaxis]="orderOverview.xaxis" [legend]="orderOverview.legend" [yaxis]="orderOverview.yaxis"
+          [tooltip]="orderOverview.tooltip" [responsive]="orderOverview.responsive">
+        </apx-chart>
+      </div>
+      <div class="back-bar-container">
+        <div id="order-bar">
+          <apx-chart [series]="ordeRbar.series" [chart]="ordeRbar.chart" [plotOptions]="ordeRbar.plotOptions"
+            [colors]="ordeRbar.colors" [grid]="ordeRbar.grid" [dataLabels]="ordeRbar.dataLabels"
+            [stroke]="ordeRbar.stroke" [xaxis]="ordeRbar.xaxis" [yaxis]="ordeRbar.yaxis" [fill]="ordeRbar.fill"
+            [tooltip]="ordeRbar.tooltip" [states]="ordeRbar.states" [responsive]="ordeRbar.responsive">
+          </apx-chart>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

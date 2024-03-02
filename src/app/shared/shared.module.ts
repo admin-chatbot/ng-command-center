@@ -3,11 +3,14 @@ import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import {
+  NgbAccordionModule,
   NgbActiveModal,
-  NgbModule
+  NgbModule,
+  NgbRatingModule
 } from "@ng-bootstrap/ng-bootstrap";
 import { TranslateModule } from "@ngx-translate/core";
-
+ 
+import { NgxDropzoneModule } from "ngx-dropzone";
 import { ToastrModule } from "ngx-toastr";
 import { BreadcrumbComponent } from "./components/breadcrumb/breadcrumb.component";
 import { CommanSvgIconComponent } from "./components/comman-svg-icon/comman-svg-icon.component";
@@ -61,6 +64,9 @@ import { ClickOutsideDirective } from "./directives/click-outside.directive";
     NgbModule,
     ReactiveFormsModule,
     FormsModule,
+    NgxDropzoneModule,
+    NgbRatingModule,
+    NgbAccordionModule
 
   ],
   exports: [
@@ -72,7 +78,10 @@ import { ClickOutsideDirective } from "./directives/click-outside.directive";
     FormsModule,
     ReactiveFormsModule,
     TranslateModule,
-    ClickOutsideDirective
+    ClickOutsideDirective,
+    NgxDropzoneModule,
+    NgbRatingModule,
+    NgbAccordionModule
   ],
 
   providers: [NgbActiveModal],

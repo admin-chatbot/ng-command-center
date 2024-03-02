@@ -1,0 +1,17 @@
+<div class="row">
+  @for (item of data; track item) {
+  <div class="col-xl-4 {{item.class}}">
+    <div class="card bg-primary">
+      <div class="card-body">
+        <div class="d-flex faq-widgets">
+          <div class="flex-grow-1">
+            <h4>{{item.title}}</h4>
+            <p>{{item.desc}}</p>
+          </div>
+          <app-feather-icons [icons]="item.ican"></app-feather-icons>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+</div>

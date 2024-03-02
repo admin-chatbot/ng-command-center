@@ -10,7 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 
 import { DecimalPipe } from '@angular/common';
-import { AppComponent } from './app.component';
+import { AppComponent } from './app.component'; 
+import { MainModule } from './components/main/main.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -27,7 +28,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    SharedModule,
+    SharedModule, 
+    MainModule,
     ToastrModule.forRoot({
       positionClass:'toast-top-right'
     }

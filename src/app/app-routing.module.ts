@@ -2,19 +2,31 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContentComponent } from './shared/components/layout/content/content.component';
 import { content } from './shared/routes/routes';
+import { fullRoutes } from './shared/routes/full-routes';
+import { FullComponent } from './shared/components/layout/full/full.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'pages/sample-page-1',
+    redirectTo: 'main/dashboard',
     pathMatch: 'full'
-  },
-  
+  }, 
   {
     path: '',
     component: ContentComponent,
-    children: content
+    children: content,
+   // canActivate: [AdminGuard], 
   },
+  {
+    path: '',
+    component: FullComponent,
+    children : fullRoutes,    
+  },
+  {
+    path: '**',
+    redirectTo : 'error-page/error-400',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({
