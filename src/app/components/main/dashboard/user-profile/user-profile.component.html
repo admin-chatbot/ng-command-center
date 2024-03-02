@@ -1,0 +1,68 @@
+@for (items of item; track items) {
+<div class="card">
+    <div class="card-header card-no-border pb-0">
+        <div class="header-top">
+            <h4>{{items.title}}</h4>
+            <div class="dropdown icon-dropdown" (clickOutside)="clickOutside()">
+                <button class="btn dropdown-toggle" type="button" (click)="isShow= !isShow">
+                    <i class="icon-more-alt"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-end" [class.show]="isShow">
+                    <a class="dropdown-item" href="javascript:void(0)">Weekly</a>
+                    <a class="dropdown-item" href="javascript:void(0)">Monthly</a>
+                    <a class="dropdown-item" href="javascript:void(0)">Yearly</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body designer-card">
+        <div>
+            <div class="d-flex align-items-center gap-2">
+                <div class="flex-shrink-0">
+                    <img [src]="items.image" alt="user">
+                </div>
+                <div class="flex-grow-1">
+                    <a [routerLink]="['/ecommerce/product-page']">
+                        <h5>{{items.userName}}</h5>
+                    </a>
+                    <p>{{items.email}}</p>
+                </div>
+            </div>
+            <div class="design-button">
+                <button class="btn bg-light-{{items.color1}} font-{{items.color1}} f-w-500 me-1">{{items.btn1}}</button>
+                <button class="btn bg-light-{{items.color2}} font-{{items.color2}} f-w-500">{{items.btn2}}</button>
+            </div>
+            <div class="ratting-button">
+                <div>
+                    <div class="d-flex align-items-center gap-2 mb-0">
+                        <div class="flex-shrink-0">
+                            <p class="f-w-500">{{items.issue}} </p>
+                        </div>
+                        <div class="flex-grow-1"><span class="f-w-500">Issues</span></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex align-items-center gap-2 mb-0">
+                        <div class="flex-shrink-0">
+                            <p class="f-w-500">{{items.resolved}} </p>
+                        </div>
+                        <div class="flex-grow-1"><span class="f-w-500">Resolved </span></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex align-items-center gap-2 mb-0">
+                        <div class="flex-shrink-0">
+                            <p class="f-w-500">{{items.comment}} </p>
+                        </div>
+                        <div class="flex-grow-1"><span class="f-w-500">Comment</span></div>
+                    </div>
+                </div>
+            </div>
+            <h5 class="f-w-500 pb-2">Task Completed: {{items.completed}}/10</h5>
+            <div class="progress progress-striped-{{items.progressClass}} b-r-2">
+                <div class="progress-bar" role="progressbar" [style.width]="items.progressPrecentage"></div>
+            </div>
+        </div>
+    </div>
+</div>
+}

@@ -53,21 +53,108 @@ export class NavService {
 
 
   MENUITEMS: Menu[] = [
+     
     {
-      headTitle1: "Pages",
+      headTitle1: "General",
+    },
+    {
+      level: 1, title: "Dashboards",icon: "home", path: "main/dashboard" ,type: "link"        
+    } ,
+    {
+      level: 1,
+      title: "Company",
+      icon: "project",
+      type: "sub",
+      active: false,
+      children: [
+        { path: "main/company/list", title: "Company List", type: "link" },
+        { path: "main/company/create", title: "Company New", type: "link" },
+      ],
     },
     {
       level: 1,
-      title: "Pages",
-      icon: "sample-page",
+      title: "Application",
+      icon: "project",
       type: "sub",
-      active: true,
+      active: false,
       children: [
-        { path: "/pages/sample-page-1", title: "Sample Page 1", type: "link", bookmark: true },
-        { path: "/pages/sample-page-2", title: "Sample Page 2", type: "link" },
+        { path: "main/project/list", title: "Project List", type: "link" },
+        { path: "main/project/create", title: "Create New", type: "link" },
       ],
     },
-    { level: 1, path: "/sample-page", title: "Sample Page", icon: "sample-page", type: "link" },
+    {
+      level: 1,
+      title: "Service",
+      icon: "project",
+      type: "sub",
+      active: false,
+      children: [
+        { path: "main/service/list", title: "Service List", type: "link" },
+        { path: "main/service/create", title: "Service New", type: "link" },
+      ],
+    }  ,
+    {
+      level: 1,
+      title: "Flow",
+      icon: "project",
+      type: "sub",
+      active: false,
+      children: [
+        { path: "main/flow/list", title: "Flow List", type: "link" },
+        { path: "main/flow/create", title: "Flow New", type: "link" },
+      ],
+    } ,
+    {
+      level: 1, title: "Database",icon: "ecommerce", path: "main/db" ,type: "link"  ,active:false      
+    },
+    {
+      level: 1, title: "Document",icon: "ecommerce", path: "main/document" ,type: "link"  ,active:false      
+    }, 
+    {
+      level: 1,
+      title: "User",
+      icon: "user",
+      type: "sub",
+      active: false,
+      children: [
+        { path: "main/user/list", title: "User List", type: "link"   },
+        { path: "main/user/create", title: "User New", type: "link"   },
+      ],
+    },
+    {
+      headTitle1: "CHATS",
+    },
+    {
+      level: 1, title: "Chat With API",icon: "ecommerce", path: "main/chat/api" ,type: "link"  ,active:false      
+    }, 
+    {
+      level: 1, title: "Chat With Document",icon: "ecommerce", path: "main/chat/document" ,type: "link"  ,active:false      
+    },     
+    {
+      level: 1, title: "Chat With DB",icon: "ecommerce", path: "/chat/SQL" ,type: "link"    ,active:false     
+    }  ,
+    {headTitle1: "SUPPORT"},
+    { level: 1,path: "main/faq",title: "FAQ",icon: "faq",type: "link", active: false},
+    
+    {
+      level: 1,
+      path: "main/knowledgebase",
+      title: "Knowledgebase",
+      icon: "knowledgebase",
+      type: "link",
+      active: false,
+    },
+    {
+      level: 1,
+      path: "main/support-ticket",
+      title: "Support Ticket",
+      icon: "support-tickets",
+      type: "link",
+      active: false,
+    },
+    {headTitle1: ""},
+    { level: 1,path: "main/billing",title: "Billing",icon: "support-tickets",type: "link", active: false},
+    
 
   ];
   items = new BehaviorSubject<Menu[]>(this.MENUITEMS);

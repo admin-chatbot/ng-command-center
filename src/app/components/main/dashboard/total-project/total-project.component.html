@@ -1,0 +1,38 @@
+<div class="card">
+  <div class="card-header card-no-border">
+    <div class="header-top">
+      <h4>Total Project</h4>
+      <div class="dropdown icon-dropdown" (clickOutside)="clickOutside()">
+        <button class="btn dropdown-toggle" id="userdropdown7" type="button" (click)="isShow = !isShow">
+          <i class="icon-more-alt"></i>
+        </button>
+        <div class="dropdown-menu dropdown-menu-end" [class.show]="isShow">
+          <a class="dropdown-item" href="javascript:void(0)">Weekly</a>
+          <a class="dropdown-item" href="javascript:void(0)">Monthly</a>
+          <a class="dropdown-item" href="javascript:void(0)">Yearly</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body total-project pt-2">
+    <h5 class="f-w-500">Currently Running<span class="px-2 f-w-500 font-primary">28 Projects</span></h5>
+    <div id="total-project" style="min-height: 235px;">
+      <apx-chart [series]="totalProject.series" [chart]="totalProject.chart" [responsive]="totalProject.responsive"
+        [colors]="totalProject.colors" [plotOptions]="totalProject.plotOptions" [xaxis]="totalProject.xaxis"
+        [legend]="totalProject.legend" [dataLabels]="totalProject.dataLabels" [fill]="totalProject.fill">
+      </apx-chart>
+
+    </div>
+    <ul>
+      <li class="d-flex align-items-center gap-2"> <span class="bg-primary"></span>
+        <p>Completed</p>
+      </li>
+      <li class="d-flex align-items-center gap-2"><span class="bg-secondary"></span>
+        <p>In Progress</p>
+      </li>
+      <li class="d-flex align-items-center gap-2"><span class="bg-warning"></span>
+        <p>Terminated</p>
+      </li>
+    </ul>
+  </div>
+</div>

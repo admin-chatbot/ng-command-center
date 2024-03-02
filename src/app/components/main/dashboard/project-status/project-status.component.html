@@ -1,0 +1,33 @@
+<div class="card">
+  <div class="card-header card-no-border pb-0">
+    <div class="header-top">
+      <h4>Project Status</h4>
+      <div class="dropdown icon-dropdown" (clickOutside)="clickOutside()">
+        <button class="btn dropdown-toggle" type="button" (click)="isShow =!isShow">
+          <i class="icon-more-alt"></i></button>
+        <div class="dropdown-menu dropdown-menu-end" [class.show]="isShow">
+          <a class="dropdown-item" href="javascript:void(0)">Weekly</a>
+          <a class="dropdown-item" href="javascript:void(0)">Monthly</a>
+          <a class="dropdown-item" href="javascript:void(0)">Yearly</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body project-status-col">
+    <div class="row">
+      @for (item of projectStatus; track item) {
+      <div class="col-6">
+        <div class="btn-light1-{{item.bgColor}} b-r-10">
+          <div class="upcoming-box" [class.mb-0]="item.id == 3 || item.id == 4">
+            <div class="upcoming-icon bg-{{item.bgColor}}">
+              <img [src]="item.image" alt="">
+            </div>
+            <h6>{{item.heading}}</h6>
+            <p>{{item.title}}</p>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>
