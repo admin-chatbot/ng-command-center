@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import * as data from '../../../../shared/data/data/project/project';
 import { project } from '../../../../shared/data/data/project/project';
+import { Application } from 'src/app/entity/application';
+import { ApplicationService } from '../application.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-project-list',
@@ -8,18 +11,50 @@ import { project } from '../../../../shared/data/data/project/project';
   styleUrls: ['./project-list.component.scss']
 })
 
-export class ProjectListComponent {
+export class ProjectListComponent implements OnInit ,AfterViewInit{
+
+  
   
   public active: number = 1;
-  public openTab: string = "All";
+  public openTab: string = "ACTIVE";
   public ProjectLists = data.ProjectList;
   public filterData: project[] = this.ProjectLists;
+
+  public applications: Application[];
+  public applicationFilterData: Application[];
   
+  constructor(private applicationService:ApplicationService,private toast:ToastrService){
+    this.fetchApplication(); 
+  }
+  ngAfterViewInit(): void {
+     //this.applicationFilterData = val !== 'ACTIVE'
+  }
+  
+  ngOnInit(): void {    
+     
+  }
+
+  
+
+  private fetchApplication(){
+    this.applicationService.fetchApplication()
+      .subscribe(res=>{      
+        if (res.errorCode != undefined && res.errorCode != 200) {
+          this.toast.error('Not able to onboard. please try again in sometime','ERROR');
+        }else{  
+          this.applications =  res.data; 
+          this.applicationFilterData  = this.applications.filter((data:Application) => {
+            return data.status ==  'ACTIVE'? true:false;
+         });
+        }
+      });
+  }
+
   public tabbed(val: string) {
     this.openTab = val;
-    this.filterData = val !== 'All' ? this.ProjectLists.filter((data: project) => {
-      return data.badge == this.openTab ? true : false;
-    }) : this.ProjectLists;
+    this.applicationFilterData = val !== 'All' ? this.applications.filter((data: Application) => {
+      return data.status == this.openTab ? true : false;
+    }) : this.applications;
   }
 
 }

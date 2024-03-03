@@ -71,7 +71,7 @@ export class NavService {
         { path: "main/company/list", title: "Company List", type: "link" },
         { path: "main/company/create", title: "Company New", type: "link" },
       ],
-      access:['SUPER_ADMIN','CLIENT_ADMIN','USER'] 
+      access:['SUPER_ADMIN'] 
     },
     {
       level: 1,

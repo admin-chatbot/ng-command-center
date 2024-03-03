@@ -39,7 +39,7 @@
                                 </div>
                                 <a class="link" [routerLink]="['/authentication/forget']">Forgot password?</a>
                                 <div class="text-end mt-3">
-                                    <button class="btn btn-primary btn-block w-100" type="submit"
+                                    <button class="btn btn-primary btn-block w-100" type="submit" [disabled]="submitted"
                                         (click)="submit()">Sign in</button>
                                 </div>
                             </div>
