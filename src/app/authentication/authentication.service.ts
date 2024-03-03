@@ -5,6 +5,7 @@ import { UrlService } from '../service/url.service';
 import { Observable, catchError } from 'rxjs';
 import { Login } from '../entity/login';
 import { Signup } from '../entity/signup';
+import { Authentication } from '../entity/authentication';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +21,8 @@ export class AuthenticationService {
   }
 
 
-  login(login:Login) : Observable<string | any> {
-    const url = this.url.login(); 
+  login(login:Login) : Observable<Authentication | any> {
+    const url = this.url.login();  
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json','accept':'application/json' }) };
     return this.http.post<any>(url,login,httpOptions)
     .pipe(
@@ -29,7 +30,7 @@ export class AuthenticationService {
     )
   }
 
-  signup(signup:Signup) : Observable<string | any> {
+  signup(signup:Signup) : Observable<Authentication | any> {
     const url = this.url.signup(); 
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json','accept':'application/json' }) };
     return this.http.post<any>(url,signup,httpOptions)
