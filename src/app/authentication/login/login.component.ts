@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    
   }
  
   get f() { return this.loginForm.controls; }
@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('name',r.data.name)
           localStorage.setItem('email',r.data.userName)
           localStorage.setItem('id',r.data.id)
+          localStorage.setItem('type',r.data.userType)
           localStorage.setItem('time', new Date().getTime().toString())
           this.router.navigate(['main/dashboard']);
         }

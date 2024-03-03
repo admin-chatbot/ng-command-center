@@ -18,16 +18,10 @@ export class AdminGuard  {
     route: ActivatedRouteSnapshot, 
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     // Guard for user is login or not
-    let user = JSON.parse(localStorage.getItem('user') || '{}');
-    if (!user || user === null) {
+    let isLoggedIn = localStorage.getItem('isLoggedIn') ;
+    if (!isLoggedIn || isLoggedIn === null) {
       this.router.navigate(['/auth/login']);
       return true;
-    }
-    else if (user) {
-      if (!Object.keys(user).length) {
-        this.router.navigate(['/auth/login']);
-        return true;
-      }
     }
     return true;
   }

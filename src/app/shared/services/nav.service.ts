@@ -15,6 +15,7 @@ export interface Menu {
   pinnedData?: boolean;
   items?: Menu[];
   children?: Menu[];
+  access?:string[];
 }
 
 @Injectable({
@@ -52,13 +53,13 @@ export class NavService {
 
 
 
-  MENUITEMS: Menu[] = [
+  MENUITEMS_SUPER_ADMIN: Menu[] = [
      
     {
       headTitle1: "General",
     },
     {
-      level: 1, title: "Dashboards",icon: "home", path: "main/dashboard" ,type: "link"        
+      level: 1, title: "Dashboards",icon: "home", path: "main/dashboard" ,type: "link" , access:['SUPER_ADMIN','CLIENT_ADMIN','USER']     
     } ,
     {
       level: 1,
@@ -70,6 +71,7 @@ export class NavService {
         { path: "main/company/list", title: "Company List", type: "link" },
         { path: "main/company/create", title: "Company New", type: "link" },
       ],
+      access:['SUPER_ADMIN','CLIENT_ADMIN','USER'] 
     },
     {
       level: 1,
@@ -81,6 +83,7 @@ export class NavService {
         { path: "main/project/list", title: "Project List", type: "link" },
         { path: "main/project/create", title: "Create New", type: "link" },
       ],
+      access:['SUPER_ADMIN','CLIENT_ADMIN'] 
     },
     {
       level: 1,
@@ -92,6 +95,7 @@ export class NavService {
         { path: "main/service/list", title: "Service List", type: "link" },
         { path: "main/service/create", title: "Service New", type: "link" },
       ],
+      access:['SUPER_ADMIN','CLIENT_ADMIN','USER'] 
     }  ,
     {
       level: 1,
@@ -120,6 +124,7 @@ export class NavService {
         { path: "main/user/list", title: "User List", type: "link"   },
         { path: "main/user/create", title: "User New", type: "link"   },
       ],
+      access:['SUPER_ADMIN','CLIENT_ADMIN'] 
     },
     {
       headTitle1: "CHATS",
@@ -157,7 +162,8 @@ export class NavService {
     
 
   ];
-  items = new BehaviorSubject<Menu[]>(this.MENUITEMS);
+
+  items = new BehaviorSubject<Menu[]>(this.MENUITEMS_SUPER_ADMIN);
 
   ngOnDestroy() {
     this.unsubscriber.complete();

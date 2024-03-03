@@ -30,10 +30,10 @@ export class AuthenticationService {
     )
   }
 
-  signup(signup:Signup) : Observable<Authentication | any> {
+  signup(auth:Authentication) : Observable<Authentication | any> {
     const url = this.url.signup(); 
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json','accept':'application/json' }) };
-    return this.http.post<any>(url,signup,httpOptions)
+    return this.http.post<any>(url,auth,httpOptions)
     .pipe(
       catchError(this.handleError('Signup'))
     )
