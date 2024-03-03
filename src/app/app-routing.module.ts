@@ -4,6 +4,7 @@ import { ContentComponent } from './shared/components/layout/content/content.com
 import { content } from './shared/routes/routes';
 import { fullRoutes } from './shared/routes/full-routes';
 import { FullComponent } from './shared/components/layout/full/full.component';
+import { AdminGuard } from './shared/guard/admin.guard';
 
 const routes: Routes = [
   {
@@ -15,7 +16,7 @@ const routes: Routes = [
     path: '',
     component: ContentComponent,
     children: content,
-   // canActivate: [AdminGuard], 
+    canActivate: [AdminGuard], 
   },
   {
     path: '',

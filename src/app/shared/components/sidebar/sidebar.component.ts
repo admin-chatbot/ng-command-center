@@ -16,15 +16,18 @@ export class SidebarComponent {
   public margin: number = 0;
   public width: number = window.innerWidth;
   public isShow: boolean = false;
-  public menuItemsList = this.navService.MENUITEMS;
+  public menuItemsList = this.navService.MENUITEMS_SUPER_ADMIN;
   public pinnedData: boolean = false;
   public pinnedDataList: string[] = [];
+  public userType: any;
 
   constructor(
     private router: Router,
     public navService: NavService,
     public layoutService: LayoutService
   ) {
+    this.userType = localStorage.getItem('type')
+
     this.navService.items.subscribe((menuItems) => {
       this.menuItemsList = menuItems;
       this.router.events.subscribe((event) => {
@@ -59,6 +62,19 @@ export class SidebarComponent {
 
   isPined(itemName: string | undefined): boolean {
     return itemName !== undefined && this.pinnedDataList?.includes(itemName);
+  }
+
+  isDisplayed(access:any[]){
+    if(access==undefined){ 
+      return true;
+    } 
+    let hide : boolean = false;
+    access.forEach(element => {
+      if(element === this.userType){
+        hide = true;
+      }
+    });
+    return hide;
   }
 
   pinned(title: string) {

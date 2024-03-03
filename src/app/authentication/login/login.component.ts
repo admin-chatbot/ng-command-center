@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthenticationService } from '../authentication.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'; 
+import { Login } from 'src/app/entity/login';
 
 @Component({
   selector: 'app-login',  
@@ -9,16 +12,51 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class LoginComponent implements OnInit {
  
   public show: boolean = true;
-  constructor(private router: Router){}
+  public validate = false;
+  public loginForm: FormGroup;
+  public submitted = false;
 
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
+  constructor(private router: Router,private authService: AuthenticationService,private formBuilder: FormBuilder){
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required,Validators.email]],
+      password: ['', [Validators.required]]
+    });
   }
 
+  ngOnInit(): void {
+    
+  }
  
+  get f() { return this.loginForm.controls; }
 
-  login() {
-    this.router.navigate(['/main/dashboard']);
+  submit() {
+    this.validate = !this.validate;
+    if(!this.loginForm.valid){
+        return
+    }
+
+    this.submitted = true;
+    const login : Login = {} as Login;
+    login.email = this.f['email'].value;
+    login.password = this.f['password'].value;
+
+    this.authService.login(login)
+      .subscribe(r=>{
+        if (r.errorCode != undefined && r.errorCode != 200) {  
+          alert("Invalid Username and Password.")             
+        } else {          
+          localStorage.setItem('isLoggedIn', "true")
+          localStorage.setItem('token', r.data.token)  
+          localStorage.setItem('name',r.data.name)
+          localStorage.setItem('email',r.data.userName)
+          localStorage.setItem('id',r.data.id)
+          localStorage.setItem('type',r.data.userType)
+          localStorage.setItem('time', new Date().getTime().toString())
+          this.router.navigate(['main/dashboard']);
+        }
+        this.submitted = false;
+      })
+    
   }
 
 }
