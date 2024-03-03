@@ -39,7 +39,7 @@
           <ng-container *ngTemplateOutlet="recursiveMenu; context: { $implicit: menuItemsList }"></ng-container>
           <ng-template #recursiveMenu let-menuItemsList> 
             <ng-container *ngFor="let item of menuItemsList">
-              <li [class.pined]="isPined(item.title)" [ngClass]="{'sidebar-list':item.level == 1 ,'sidebar-main-title': item.headTitle1}">
+              <li *ngIf="isDisplayed(item.access)" [class.pined]="isPined(item.title)" [ngClass]="{'sidebar-list':item.level == 1 ,'sidebar-main-title': item.headTitle1}">
                 <div *ngIf="item.headTitle1">
                   <h6>{{item.headTitle1 | translate}}</h6>
                 </div>
