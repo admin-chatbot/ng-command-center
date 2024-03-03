@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  adminEndpoint: "http://3.108.64.67/api/v1/admin/",
-  baseEndpoint: "http://3.108.64.67/api/v1/",
+  adminEndpoint: "http://localhost:9090/api/v1/admin/",
+  baseEndpoint: "http://localhost:9090/api/v1/",
   consoleLog:"debug"
 };
 

@@ -13,17 +13,17 @@
                         </a>
                     </div>
                     <div class="login-main">
-                        <form class="theme-form" ngNativeValidate>
+                        <form  [formGroup]='loginForm' class="row g-3 needs-validation custom-input" novalidate [ngClass]="{'was-validated': validate}" ngNativeValidate>
                             <h4>Sign in to account</h4>
                             <p>Enter your email & password to login</p>
                             <div class="form-group">
                                 <label class="col-form-label">Email Address</label>
-                                <input class="form-control" type="email" required="" placeholder="Test@gmail.com">
+                                <input class="form-control" type="email" formControlName="email" required="" placeholder="Test@gmail.com">
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label">Password</label>
                                 <div class="form-input position-relative">
-                                    <input class="form-control" type="password" name="login[password]" required=""
+                                    <input class="form-control" type="password" name="login[password]" formControlName="password" required=""
                                         [type]="show ? 'password' : 'text'" placeholder="*********">
                                     <div class="show-hide">
                                         <span (click)="show = !show" [class.show]="show"></span>
@@ -37,7 +37,7 @@
                                 </div>
                                 <a class="link" [routerLink]="['/authentication/forget']">Forgot password?</a>
                                 <div class="text-end mt-3">
-                                    <button class="btn btn-primary btn-block w-100" type="submit" (click)="login()">Sign in</button>
+                                    <button class="btn btn-primary btn-block w-100" type="submit" (click)="submit()">Sign in</button>
                                 </div>
                             </div>
                             <h6 class="text-muted mt-4 or">Or Sign in with</h6>
