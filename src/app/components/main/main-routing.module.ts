@@ -29,6 +29,15 @@ const routes: Routes = [
           breadcrumb: "Chat",
       },
       loadChildren: () => import('../../components/main/chat/chat.module').then(m => m.ChatModule),
+    }, 
+    
+    {
+      path: 'user',
+      data: {
+          title: "User",
+          breadcrumb: "user",
+      },
+      loadChildren: () => import('../../components/main/user/user.module').then(m => m.UserModule),
     },  
     {
       path: 'faq',
