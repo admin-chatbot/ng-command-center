@@ -7,6 +7,8 @@ import { CreateNewComponent } from './create-new/create-new.component';
 import { FileUploadComponent } from './create-new/file-upload/file-upload.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
+import { NgbDropdownModule, NgbModalModule, NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
+import { ProjectSearchComponent } from './project-list/project-search/project-search.component';
 
  
 
@@ -14,13 +16,15 @@ import { ToastrModule } from 'ngx-toastr';
   declarations: [
     ProjectListComponent,
     CreateNewComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    ProjectSearchComponent
   ],
   imports: [
     CommonModule,
     ProjectRoutingModule, 
     SharedModule, 
-    ToastrModule
+    ToastrModule,     
+    NgbModalModule
   ]
 })
 export class ProjectModule { }

@@ -46,7 +46,7 @@ import { FaqModule } from './faq/faq.module';
     NgApexchartsModule,
     ProjectModule,
     ChatModule,
-    FaqModule
+    FaqModule,
   ]
 })
 export class MainModule { }
