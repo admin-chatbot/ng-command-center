@@ -10,12 +10,17 @@ import { Router } from "@angular/router";
 export class ProfileComponent {
 
   public isShow: boolean = false;
+  public userType: any = "USER";
+  public userName: any = "Guest";
 
-  constructor(public router: Router) {}
+  constructor(public router: Router) {
+    this.userType = localStorage.getItem('type') ;
+    this.userName = localStorage.getItem('email') ;
+  }
 
   logOut() {
     localStorage.clear();
-    this.router.navigateByUrl("/auth/login");
+    this.router.navigateByUrl("/authentication/login");
   }
   
 }

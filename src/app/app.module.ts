@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule, provideToastr } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 
@@ -31,9 +31,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     SharedModule, 
     MainModule,
     ToastrModule.forRoot({
-      positionClass:'toast-top-right'
-    }
-    ),
+      timeOut: 10000, 
+      preventDuplicates: true,
+    }),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -42,7 +42,9 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
   ],
-  providers: [DecimalPipe],
+  providers: [
+    DecimalPipe, 
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
