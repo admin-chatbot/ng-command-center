@@ -11,6 +11,8 @@ export class FeatherIconsComponent {
 
   @Input() icons: string | any;
   @Input() class: string | any;
+  @Input() customStyle: string | any;
+  @Input() width: any = 20;
 
  
   ngAfterViewInit() {

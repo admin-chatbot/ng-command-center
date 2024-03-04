@@ -26,7 +26,7 @@ export class SidebarComponent {
     public navService: NavService,
     public layoutService: LayoutService
   ) {
-    this.userType = localStorage.getItem('type')
+    this.userType = localStorage.getItem('type');
 
     this.navService.items.subscribe((menuItems) => {
       this.menuItemsList = menuItems;
@@ -64,7 +64,7 @@ export class SidebarComponent {
     return itemName !== undefined && this.pinnedDataList?.includes(itemName);
   }
 
-  isDisplayed(access:any[]){
+  isDisplayed(access:any[]){ 
     if(access==undefined){ 
       return true;
     } 
