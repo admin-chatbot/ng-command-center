@@ -6,6 +6,7 @@ import { ProjectListComponent } from './project-list/project-list.component';
 import { CreateNewComponent } from './create-new/create-new.component';
 import { FileUploadComponent } from './create-new/file-upload/file-upload.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ToastrModule } from 'ngx-toastr';
 
  
 
@@ -19,6 +20,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CommonModule,
     ProjectRoutingModule, 
     SharedModule, 
+    ToastrModule
   ]
 })
 export class ProjectModule { }

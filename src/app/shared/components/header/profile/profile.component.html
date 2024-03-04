@@ -1,7 +1,7 @@
 <div class="d-flex profile-media align-items-center" (click)="isShow =!isShow">
   <img class="img-30" src="assets/images/dashboard/profile.png" alt="">
-  <div class="flex-grow-1"><span>Alen Miller</span>
-    <p class="mb-0 font-outfit">UI Designer<i class="fa fa-angle-down"></i></p>
+  <div class="flex-grow-1"><span>{{userName}}</span>
+    <p class="mb-0 font-outfit">{{userType}}<i class="fa fa-angle-down"></i></p>
   </div>
   <ul class="profile-dropdown onhover-show-div" [class.active]="isShow">
     <li>
@@ -25,7 +25,7 @@
     </li>
     <li>
       <a href="javascript:void(0)" [routerLink]="['/authentication/login']">
-        <app-feather-icons [icons]="'log-in'"></app-feather-icons><span>Log in</span>
+        <app-feather-icons [icons]="'log-in'"></app-feather-icons><span>Log out</span>
       </a>
     </li>
   </ul>

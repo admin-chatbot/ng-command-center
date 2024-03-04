@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router,private authService: AuthenticationService,private formBuilder: FormBuilder){
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required,Validators.email]],
-      password: ['', [Validators.required]]
+      email: ['jitendra.sa.9@gmail.com', [Validators.required,Validators.email]],
+      password: ['J1tendr@123', [Validators.required]]
     });
   }
 
@@ -30,12 +30,13 @@ export class LoginComponent implements OnInit {
   get f() { return this.loginForm.controls; }
 
   submit() {
+    
     this.validate = !this.validate;
     if(!this.loginForm.valid){
         return
     }
-
     this.submitted = true;
+    
     const login : Login = {} as Login;
     login.email = this.f['email'].value;
     login.password = this.f['password'].value;
@@ -51,7 +52,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('email',r.data.userName)
           localStorage.setItem('id',r.data.id)
           localStorage.setItem('type',r.data.userType)
-          localStorage.setItem('time', new Date().getTime().toString())
+          localStorage.setItem('time', (new Date().getTime()/1000 ).toString())
           this.router.navigate(['main/dashboard']);
         }
         this.submitted = false;
