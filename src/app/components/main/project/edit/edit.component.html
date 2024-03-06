@@ -1,0 +1,113 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form theme-form">
+                        <form [formGroup]='form' class="row g-3 needs-validation custom-input" [ngClass]="{'was-validated': validate}">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label>Application Name</label>
+                                        <input formControlName="name" class="form-control" type="text" placeholder="Application name" required=""/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label>Purpose</label>
+                                        <textarea formControlName="purpose" class="form-control" placeholder="Purpose" id="exampleFormControlTextarea4" rows="3" required=""></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label>Application Url</label>
+                                        <input formControlName="appUrl" class="form-control" type="text" placeholder="Application Url" required="" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label>Application Swagger Url</label>
+                                        <input formControlName="swagerUrl" class="form-control" type="text" placeholder="Application Swagger URL" required="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="mb-3">
+                                        <label>On Board Date</label>
+                                        <input class="form-control"   type="text" placeholder="Enter project Rate">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="mb-3">
+                                        <label>Project Status</label>
+                                        <select class="form-select">
+                                            <option>Hourly</option>
+                                            <option>Fix price</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="mb-3">
+                                        <label>Service Count</label>
+                                        <input class="form-control" type="text"   placeholder="Enter project Rate">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--div class="row">
+                  <div class="col-sm-4"> 
+                    <div class="mb-3">
+                      <label>Project Size</label>
+                      <select class="form-select">
+                        <option>Small</option>
+                        <option>Medium</option>
+                        <option>Big</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="mb-3">
+                      <label>Starting date</label>
+                      <input class="datepicker-here form-control" type="text" data-language="en">
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="mb-3">
+                      <label>Ending date</label>
+                      <input class="datepicker-here form-control" type="text" data-language="en">
+                    </div>
+                  </div>
+                </div -->
+
+                            <!--div class="row">
+                      <app-file-upload></app-file-upload>
+                  </div-->
+                            <div class="row">
+                                <div class="col">
+                                    <div class="text-end"><a class="btn btn-success me-3" (click)="submit()"
+                                            href="javascript:void(0)">Add</a><a class="btn btn-danger"
+                                            href="javascript:void(0)">Cancel</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

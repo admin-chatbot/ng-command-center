@@ -15,11 +15,12 @@ export class ProfileComponent {
 
   constructor(public router: Router) {
     this.userType = localStorage.getItem('type') ;
-    this.userName = localStorage.getItem('email') ;
+    this.userName = localStorage.getItem('name') ;
   }
 
   logOut() {
     localStorage.clear();
+    localStorage.setItem('isLoggedIn','false')
     this.router.navigateByUrl("/authentication/login");
   }
   

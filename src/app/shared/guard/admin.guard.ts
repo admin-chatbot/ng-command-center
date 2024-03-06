@@ -20,7 +20,7 @@ export class AdminGuard  {
 
       var loggedOut : boolean = false;
 
-      let isLoggedIn = localStorage.getItem('isLoggedIn') ;
+      let isLoggedIn =  localStorage.getItem('isLoggedIn') ;
       if ( !loggedOut && ( !isLoggedIn || isLoggedIn === null)) {
         loggedOut = true;        
       }
@@ -38,7 +38,8 @@ export class AdminGuard  {
 
     // Guard for user is login or not
     if(loggedOut){
-      localStorage.clear()
+      localStorage.clear();
+      localStorage.setItem('isLoggedIn','false');
       this.router.navigate(['/authentication/login']);
       return true;
     }

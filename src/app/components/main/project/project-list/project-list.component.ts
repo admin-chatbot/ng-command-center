@@ -6,6 +6,7 @@ import { ApplicationService } from '../application.service';
 import { ToastrService } from 'ngx-toastr';
 import { ProjectSearchComponent } from './project-search/project-search.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-project-list',
@@ -13,9 +14,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./project-list.component.scss']
 })
 
-export class ProjectListComponent implements OnInit ,AfterViewInit{
-
-  
+export class ProjectListComponent implements OnInit ,AfterViewInit{  
   
   public active: number = 1;
   public openTab: string = "ACTIVE";
@@ -25,7 +24,10 @@ export class ProjectListComponent implements OnInit ,AfterViewInit{
   public applications: Application[];
   public applicationFilterData: Application[];
   
-  constructor(private applicationService:ApplicationService,private toast:ToastrService,private modal: NgbModal){
+  constructor(private applicationService:ApplicationService,
+    private toast:ToastrService,
+    private modal: NgbModal,
+    private router: Router,){
     this.fetchApplication(); 
   }
   ngAfterViewInit(): void {
@@ -39,13 +41,20 @@ export class ProjectListComponent implements OnInit ,AfterViewInit{
   search(){
     this.modal.open(ProjectSearchComponent)
   }
+
+  edit(id:number) {
+   let app = this.applications.filter((data:Application) => {
+      return data.id == id? true:false;
+   });
+    this.router.navigate(['main/project/edit'],{ state: { application: app } });
+  }
   
 
   private fetchApplication(){
     this.applicationService.fetchApplication()
       .subscribe(res=>{      
         if (res.errorCode != undefined && res.errorCode != 200) {
-          this.toast.error('Not able to onboard. please try again in sometime','ERROR');
+          this.toast.error('Not able to fetch. please try again in sometime','ERROR');
         }else{  
           this.applications =  res.data; 
           this.applicationFilterData  = this.applications.filter((data:Application) => {
