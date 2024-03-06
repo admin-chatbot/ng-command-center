@@ -12,19 +12,17 @@ import { UrlService } from 'src/app/service/url.service';
   providedIn: 'root'
 })
 export class UserService {
-  
-    fetchApplicationNames(clientId: any) {
-        throw new Error('Method not implemented.');
-      }
   private handleError: HandleError;
-  private token:any;
+  private token: any;
 
-  constructor(private http: HttpClient,
-    private httpErrorHandler: HttpErrorHandlerService, 
-    private url : UrlService) {
-      this.token = localStorage.getItem('token'); 
-      this.handleError = httpErrorHandler.createHandleError('UserService ');
-    }
+  constructor(
+    private http: HttpClient,
+    private httpErrorHandler: HttpErrorHandlerService,
+    private url: UrlService
+  ) {
+    this.token = localStorage.getItem('token');
+    this.handleError = httpErrorHandler.createHandleError('UserService ');
+  }
 
   register(user:User):Observable<User|any>{
     const url = this.url.user();    
