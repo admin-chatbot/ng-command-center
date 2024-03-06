@@ -9,6 +9,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
 import { NgbDropdownModule, NgbModalModule, NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProjectSearchComponent } from './project-list/project-search/project-search.component';
+import { EditComponent } from './edit/edit.component';
 
  
 
@@ -17,7 +18,8 @@ import { ProjectSearchComponent } from './project-list/project-search/project-se
     ProjectListComponent,
     CreateNewComponent,
     FileUploadComponent,
-    ProjectSearchComponent
+    ProjectSearchComponent,
+    EditComponent
   ],
   imports: [
     CommonModule,

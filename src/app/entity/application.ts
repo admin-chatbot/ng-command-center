@@ -10,4 +10,6 @@ export class Application {
     registerDate!:string;
     id!:number; 
     serviceCount!:number;
+    createdUserId!:string;
+    updatedUserId!:string;
 }
