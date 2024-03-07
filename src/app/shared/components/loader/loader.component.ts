@@ -16,5 +16,13 @@ export class LoaderComponent {
     }, 3000);
   }
 
+   public showLoder() {
+      this.show = true;
+   }
+
+   public hide() {
+    this.show = false;
+   }
+
 
 }

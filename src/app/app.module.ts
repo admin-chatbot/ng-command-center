@@ -11,8 +11,7 @@ import { SharedModule } from './shared/shared.module';
 
 import { DecimalPipe } from '@angular/common';
 import { AppComponent } from './app.component'; 
-import { MainModule } from './components/main/main.module';
-
+import { MainModule } from './components/main/main.module';  
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
 }
@@ -29,7 +28,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule, 
-    MainModule,
+    MainModule, 
     ToastrModule.forRoot({
       timeOut: 10000, 
       preventDuplicates: true,
@@ -43,7 +42,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
   ],
   providers: [
-    DecimalPipe, 
+    DecimalPipe    
   ],
   bootstrap: [AppComponent]
 })

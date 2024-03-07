@@ -71,24 +71,29 @@
                                             <div class="col-8"> {{item.serviceCount}} </div>
 
                                             <div class="col-4"><span>Application URL </span></div>
-                                            <div class="col-8">{{item.sourceUrl}} </div>
+                                            <div class="col-8" placement="top" ngbTooltip="{{item.sourceUrl}}">
+                                                {{item.sourceUrl | trim : '30'}} </div>
 
                                             <div class="col-4"><span>Docs URL </span></div>
-                                            <div class="col-8">{{item.serviceDocUrl}} </div>
+                                            <div class="col-8" placement="top" ngbTooltip="{{item.serviceDocUrl}}">
+                                                {{item.serviceDocUrl | trim : '30' }} </div>
 
                                         </div>
+
+
                                         <div class="customers">
                                             <ul>
 
                                             </ul>
                                         </div>
                                         <div class="project-status mt-4 text-end">
-                                            <div class="mb-0 text-end" style="align-items: left;">                                                 
+                                            <div class="mb-0 text-end" style="align-items: left;">
                                                 <a href="javascript:void(0)" (click)="edit(item.id)">
                                                     <app-feather-icons [icons]="'edit'"></app-feather-icons>
                                                 </a>
                                                 &nbsp;
-                                                <a href="javascript:void(0)">
+                                                <a href="javascript:void(0)"
+                                                    (click)="centeredModal(centeredModalContent)">
                                                     <app-feather-icons [customStyle]="'color:red'"
                                                         [icons]="'trash'"></app-feather-icons>
                                                 </a>
@@ -107,3 +112,18 @@
         </div>
     </div>
 </div>
+
+<ng-template #centeredModalContent let-modal>
+    <div class="modal-content">
+        <div class="modal-body">
+            <div class="modal-toggle-wrapper">
+                <ul class="modal-img">
+                    <li> <img src="assets/images/gif/danger.gif" alt="error"></li>
+                </ul>
+                <h4 class="text-center pb-2">Ohh! Delete</h4>
+                <p class="text-center">Are you really want do delete Application.</p>
+                <button class="btn btn-secondary d-flex m-auto" type="button" (click)="close()">Confirm</button>
+            </div>
+        </div>
+    </div>
+</ng-template>

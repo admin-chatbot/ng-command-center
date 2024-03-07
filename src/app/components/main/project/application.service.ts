@@ -30,6 +30,24 @@ export class ApplicationService {
     );
   }
 
+  fetchApplicationById(id:number) : Observable< any>{
+    const url = this.url.application() +"byId/"+id+"/";    
+    const httpOptions = { headers: new HttpHeaders({ 'X-AUTH-LOG-HEADER':this.token, 'Content-Type': 'application/json','accept':'application/json' }) };    
+    return this.http.get<any>(url, httpOptions)
+    .pipe(
+      catchError(this.handleError('fetchApplicationById'))
+    );
+  }
+
+  edit(application:Application) : Observable<string | any> {
+    const url = this.url.application();       
+    const httpOptions = { headers: new HttpHeaders({ 'X-AUTH-LOG-HEADER':this.token, 'Content-Type': 'application/json','accept':'application/json' }) };
+    return this.http.put<any>(url,application,httpOptions)
+    .pipe(
+      catchError(this.handleError('OnBoard Application'))
+    )
+  }
+
   onBoard(application:Application) : Observable<string | any> {
     const url = this.url.application();       
     application.id = 0;     

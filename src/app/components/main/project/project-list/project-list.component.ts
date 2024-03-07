@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, TemplateRef } from '@angular/core';
 import * as data from '../../../../shared/data/data/project/project';
 import { project } from '../../../../shared/data/data/project/project';
 import { Application } from 'src/app/entity/application';
@@ -26,7 +26,7 @@ export class ProjectListComponent implements OnInit ,AfterViewInit{
   
   constructor(private applicationService:ApplicationService,
     private toast:ToastrService,
-    private modal: NgbModal,
+    private modalService: NgbModal,    
     private router: Router,){
     this.fetchApplication(); 
   }
@@ -39,14 +39,12 @@ export class ProjectListComponent implements OnInit ,AfterViewInit{
   }
 
   search(){
-    this.modal.open(ProjectSearchComponent)
+    this.modalService.open(ProjectSearchComponent)
   }
 
-  edit(id:number) {
-   let app = this.applications.filter((data:Application) => {
-      return data.id == id? true:false;
-   });
-    this.router.navigate(['main/project/edit'],{ state: { application: app } });
+  edit(id:number) {  
+   this.router.navigate(['main/project/edit'],{ state: { appId: id } });
+   
   }
   
 
@@ -70,5 +68,14 @@ export class ProjectListComponent implements OnInit ,AfterViewInit{
       return data.status == this.openTab ? true : false;
     }) : this.applications;
   }
+
+  centeredModal(centeredModalContent: TemplateRef<NgbModal>){
+    const modalRef = this.modalService.open(centeredModalContent, { centered: true });
+  }
+
+  close() {
+    this.modalService.dismissAll();
+  }
+    
 
 }
