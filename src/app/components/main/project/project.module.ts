@@ -33,6 +33,8 @@ import { TrimPipe } from 'src/app/pipe/trim.pipe';
         NgbModalModule, 
         NgbTooltipModule,
         TrimPipe, 
+        NgbModalModule
+
     ]
 })
 export class ProjectModule { }

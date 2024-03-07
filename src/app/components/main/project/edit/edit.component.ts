@@ -1,10 +1,11 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder,  Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ApplicationService } from '../application.service';
 import { Router } from '@angular/router';
 import { Application } from 'src/app/entity/application'; 
 import { Enums } from 'src/app/enums/enums';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-edit', 
@@ -128,4 +129,6 @@ export class EditComponent implements OnInit,AfterViewInit{
       this.edit(application);
 
     }
+
+    
 }
