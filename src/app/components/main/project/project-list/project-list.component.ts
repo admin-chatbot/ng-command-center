@@ -42,11 +42,9 @@ export class ProjectListComponent implements OnInit ,AfterViewInit{
     this.modal.open(ProjectSearchComponent)
   }
 
-  edit(id:number) {
-   let app = this.applications.filter((data:Application) => {
-      return data.id == id? true:false;
-   });
-    this.router.navigate(['main/project/edit'],{ state: { application: app } });
+  edit(id:number) {  
+   this.router.navigate(['main/project/edit'],{ state: { appId: id } });
+   
   }
   
 
