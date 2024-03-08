@@ -21,6 +21,7 @@ export class UserService {
     private url: UrlService
   ) {
     this.token = localStorage.getItem('token');
+   
     this.handleError = httpErrorHandler.createHandleError('UserService ');
   }
 
@@ -48,7 +49,7 @@ export class UserService {
 
 
 
-  fetchUser():Observable<User[]|any> {
+  fetchUser():Observable<User[]|any> {   
     const url = this.url.user();   
     const httpOptions = { headers: new HttpHeaders({ 'X-AUTH-LOG-HEADER':this.token, 'Content-Type': 'application/json','accept':'application/json' }) };
     return this.http.get<User[]>(url, httpOptions)

@@ -34,11 +34,11 @@ export class UserCardsComponent implements OnInit ,AfterViewInit {
 
 
   private getUsers() {
-    alert('Fetching users...');
+   
     this.userService.fetchUser()
       .subscribe(res => {      
         if (res.errorCode !== undefined && res.errorCode !== 200) {
-          alert('Error response from fetchUser:');
+      
           this.toast.error('Not able to onboard. Please try again in sometime', 'ERROR');
         } else {  
           this.users = res.data; 
