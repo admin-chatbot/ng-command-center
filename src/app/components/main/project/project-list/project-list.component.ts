@@ -4,6 +4,8 @@ import { project } from '../../../../shared/data/data/project/project';
 import { Application } from 'src/app/entity/application';
 import { ApplicationService } from '../application.service';
 import { ToastrService } from 'ngx-toastr';
+import { ProjectSearchComponent } from './project-search/project-search.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-project-list',
@@ -22,7 +24,7 @@ export class ProjectListComponent implements OnInit ,AfterViewInit{
   public applications: Application[];
   public applicationFilterData: Application[];
   
-  constructor(private applicationService:ApplicationService,private toast:ToastrService){
+  constructor(private applicationService:ApplicationService,private toast:ToastrService,private modal: NgbModal){
     this.fetchApplication(); 
   }
   ngAfterViewInit(): void {
@@ -33,6 +35,9 @@ export class ProjectListComponent implements OnInit ,AfterViewInit{
      
   }
 
+  search(){
+    this.modal.open(ProjectSearchComponent)
+  }
   
 
   private fetchApplication(){

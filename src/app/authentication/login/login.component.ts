@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'; 
 import { Login } from 'src/app/entity/login';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',  
@@ -16,10 +17,12 @@ export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   public submitted = false;
 
-  constructor(private router: Router,private authService: AuthenticationService,private formBuilder: FormBuilder){
+  constructor(private router: Router,private authService: AuthenticationService,
+    private formBuilder: FormBuilder,
+    private toast:ToastrService){
     this.loginForm = this.formBuilder.group({
-      email: ['sujit.b@gmail.com', [Validators.required,Validators.email]],
-      password: ['sujit@123', [Validators.required]]
+      email: ['jitendra.client.admin@gmail.com', [Validators.required,Validators.email]],
+      password: ['J1tendr@123', [Validators.required]]
     });
   }
 
@@ -44,7 +47,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(login)
       .subscribe(r=>{
         if (r.errorCode != undefined && r.errorCode != 200) {  
-          alert("Invalid Username and Password.")             
+          this.toast.error("Invalid Username and Password.","Login failed")            
         } else {          
           localStorage.setItem('isLoggedIn', "true")
           localStorage.setItem('token', r.data.token)  

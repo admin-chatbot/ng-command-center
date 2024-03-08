@@ -20,6 +20,7 @@ import { ProjectModule } from './project/project.module';
 import { ChatModule } from './chat/chat.module';
 import { FaqComponent } from './faq/faq.component';
 import { FaqModule } from './faq/faq.module';
+import { UserCardsComponent } from './user/user-cards/user-cards.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { FaqModule } from './faq/faq.module';
     RunningEventsComponent,
     OnlineCourseTimelineComponent,
     CalendarDashboardComponent
+    
   ],
   imports: [
     CommonModule,
@@ -46,7 +48,7 @@ import { FaqModule } from './faq/faq.module';
     NgApexchartsModule,
     ProjectModule,
     ChatModule,
-    FaqModule
+    FaqModule,
   ]
 })
 export class MainModule { }
