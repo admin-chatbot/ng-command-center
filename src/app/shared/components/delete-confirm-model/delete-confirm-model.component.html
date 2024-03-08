@@ -1,0 +1,17 @@
+<div class="modal-content">
+    <div class="modal-body">
+        <div class="modal-toggle-wrapper">
+            <ul class="modal-img">
+                <li> <img src="assets/images/gif/danger.gif" alt="error"></li>
+            </ul>
+            <h4 class="text-center pb-2" style="color: red;">Ohh! Delete</h4>
+            <p class="text-center" style="font-size: 18px;">{{contents}}</p>
+            <div class="text-center">
+                <button class="btn btn-outline-primary btn-square" type="button"
+                    (click)="close('cancel')">Cancel</button>
+                &nbsp;&nbsp;
+                <button class="btn btn-outline-danger btn-square" type="button" (click)="close('ok')">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

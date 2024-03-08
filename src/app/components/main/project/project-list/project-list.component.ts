@@ -7,6 +7,8 @@ import { ToastrService } from 'ngx-toastr';
 import { ProjectSearchComponent } from './project-search/project-search.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
+import { ApplicationSearch } from 'src/app/entity/applicationSearch';
+import { DeleteConfirmModelComponent } from 'src/app/shared/components/delete-confirm-model/delete-confirm-model.component';
 
 @Component({
   selector: 'app-project-list',
@@ -14,7 +16,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./project-list.component.scss']
 })
 
-export class ProjectListComponent implements OnInit ,AfterViewInit{  
+export class ProjectListComponent implements OnInit ,AfterViewInit{
+
   
   public active: number = 1;
   public openTab: string = "ACTIVE";
@@ -23,6 +26,7 @@ export class ProjectListComponent implements OnInit ,AfterViewInit{
 
   public applications: Application[];
   public applicationFilterData: Application[];
+  public closeResult: string;
   
   constructor(private applicationService:ApplicationService,
     private toast:ToastrService,
@@ -39,12 +43,19 @@ export class ProjectListComponent implements OnInit ,AfterViewInit{
   }
 
   search(){
-    this.modalService.open(ProjectSearchComponent)
+    const modalRef = this.modalService.open(ProjectSearchComponent);
+    let search = { } as ApplicationSearch;
+    search.name = "Jitendra";
+    modalRef.componentInstance.search = search;
+    modalRef.result.then((result) => {
+      //console.log("Hello "+result);
+    }, (reason) => {
+      console.log("Hi ."+JSON.stringify( reason));
+    });
   }
 
   edit(id:number) {  
-   this.router.navigate(['main/project/edit'],{ state: { appId: id } });
-   
+   this.router.navigate(['main/project/edit'],{ state: { appId: id } });   
   }
   
 
@@ -67,15 +78,22 @@ export class ProjectListComponent implements OnInit ,AfterViewInit{
     this.applicationFilterData = val !== 'All' ? this.applications.filter((data: Application) => {
       return data.status == this.openTab ? true : false;
     }) : this.applications;
-  }
+  } 
 
-  centeredModal(centeredModalContent: TemplateRef<NgbModal>){
-    const modalRef = this.modalService.open(centeredModalContent, { centered: true });
-  }
+  
 
-  close() {
-    this.modalService.dismissAll();
-  }
+  centeredModal(content: any) {
+    const deleteModalRef = this.modalService.open(DeleteConfirmModelComponent,{backdrop:false});
+    deleteModalRef.componentInstance.contents = "Do you really want to DELETE '"+content+"' Application.";
+    deleteModalRef.result.then((result) => {
+      console.log(result)
+    }, (reason) => {
+        console.log(reason)
+       if(reason=='ok') {
+        this.toast.success("Deleted!","Confirmation")
+       }
+    });
+  }  
     
 
 }

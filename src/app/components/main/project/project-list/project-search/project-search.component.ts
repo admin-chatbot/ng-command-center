@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ApplicationSearch } from 'src/app/entity/applicationSearch';
+import { Enums } from 'src/app/enums/enums';
 
 @Component({
   selector: 'app-project-search', 
@@ -7,12 +9,18 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrl: './project-search.component.scss'
 })
 export class ProjectSearchComponent {
-  constructor(private modal: NgbModal) { }
+  
 
   public validate: boolean = false;
+  public enums = new Enums; 
+  @Input() public search: any ;
+  @Output() passEntry: EventEmitter<any> = new EventEmitter();
 
-  public submit() {
-    this.validate = !this.validate;
+  constructor(private modal: NgbActiveModal) {      
+  }
 
+  close() {     
+    this.passEntry.emit(this.search);
+    this.modal.close(this.search);
   }
 }

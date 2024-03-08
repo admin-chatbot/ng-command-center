@@ -93,7 +93,7 @@
                                                 </a>
                                                 &nbsp;
                                                 <a href="javascript:void(0)"
-                                                    (click)="centeredModal(centeredModalContent)">
+                                                    (click)="centeredModal(item.name)">
                                                     <app-feather-icons [customStyle]="'color:red'"
                                                         [icons]="'trash'"></app-feather-icons>
                                                 </a>
@@ -113,17 +113,3 @@
     </div>
 </div>
 
-<ng-template #centeredModalContent let-modal>
-    <div class="modal-content">
-        <div class="modal-body">
-            <div class="modal-toggle-wrapper">
-                <ul class="modal-img">
-                    <li> <img src="assets/images/gif/danger.gif" alt="error"></li>
-                </ul>
-                <h4 class="text-center pb-2">Ohh! Delete</h4>
-                <p class="text-center">Are you really want do delete Application.</p>
-                <button class="btn btn-secondary d-flex m-auto" type="button" (click)="close()">Confirm</button>
-            </div>
-        </div>
-    </div>
-</ng-template>
