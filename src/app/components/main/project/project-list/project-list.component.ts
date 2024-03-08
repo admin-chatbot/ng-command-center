@@ -35,22 +35,22 @@ export class ProjectListComponent implements OnInit ,AfterViewInit{
     this.fetchApplication(); 
   }
   ngAfterViewInit(): void {
-     //this.applicationFilterData = val !== 'ACTIVE'
+     
   }
   
-  ngOnInit(): void {    
+  ngOnInit(): void {   
      
   }
 
   search(){
     const modalRef = this.modalService.open(ProjectSearchComponent);
-    let search = { } as ApplicationSearch;
-    search.name = "Jitendra";
+    let search = { } as ApplicationSearch; 
     modalRef.componentInstance.search = search;
     modalRef.result.then((result) => {
-      //console.log("Hello "+result);
+      console.log("Hello "+JSON.stringify( result));
+      this.router.navigate(['main/project/search'],{ state: { data: result } }); 
     }, (reason) => {
-      console.log("Hi ."+JSON.stringify( reason));
+      
     });
   }
 
@@ -73,6 +73,17 @@ export class ProjectListComponent implements OnInit ,AfterViewInit{
       });
   }
 
+  deleteApplication(id:number){
+    this.applicationService.deleteApplication(id).subscribe((response)=>{
+      if (response.errorCode != undefined && response.errorCode != 200) {
+        this.toast.error('Not able delete. please try again in sometime','ERROR');
+      }else { 
+        this.toast.success('Application deleted successfully.' ,'Confirmation!')
+        this.fetchApplication();
+       }
+    })
+  }
+
   public tabbed(val: string) {
     this.openTab = val;
     this.applicationFilterData = val !== 'All' ? this.applications.filter((data: Application) => {
@@ -82,15 +93,14 @@ export class ProjectListComponent implements OnInit ,AfterViewInit{
 
   
 
-  centeredModal(content: any) {
+  centeredModal(content: any,id:number) {
     const deleteModalRef = this.modalService.open(DeleteConfirmModelComponent,{backdrop:false});
     deleteModalRef.componentInstance.contents = "Do you really want to DELETE '"+content+"' Application.";
     deleteModalRef.result.then((result) => {
       console.log(result)
-    }, (reason) => {
-        console.log(reason)
+    }, (reason) => { 
        if(reason=='ok') {
-        this.toast.success("Deleted!","Confirmation")
+        this.deleteApplication(id);
        }
     });
   }  

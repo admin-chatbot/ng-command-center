@@ -11,6 +11,7 @@ import { ApplicationService } from '../application.service';
   styleUrls: ['./create-new.component.scss']
 })
 export class CreateNewComponent  implements OnInit {
+
   
   public validate = false;
   public form : FormGroup
@@ -18,7 +19,8 @@ export class CreateNewComponent  implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private toast:ToastrService,
-    private applicationService:ApplicationService){
+    private applicationService:ApplicationService,
+    private router: Router){
 
 
       this.form = this.formBuilder.group({
@@ -65,6 +67,10 @@ export class CreateNewComponent  implements OnInit {
           this.submitted = false;        
         });
     
+  }
+
+  cancel() {
+    this.router.navigate(['main/project/list']);
   }
 
 }
