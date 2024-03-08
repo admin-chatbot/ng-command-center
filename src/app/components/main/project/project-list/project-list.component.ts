@@ -73,6 +73,17 @@ export class ProjectListComponent implements OnInit ,AfterViewInit{
       });
   }
 
+  deleteApplication(id:number){
+    this.applicationService.deleteApplication(id).subscribe((response)=>{
+      if (response.errorCode != undefined && response.errorCode != 200) {
+        this.toast.error('Not able delete. please try again in sometime','ERROR');
+      }else { 
+        this.toast.success('Application deleted successfully.' ,'Confirmation!')
+        this.fetchApplication();
+       }
+    })
+  }
+
   public tabbed(val: string) {
     this.openTab = val;
     this.applicationFilterData = val !== 'All' ? this.applications.filter((data: Application) => {
@@ -82,15 +93,14 @@ export class ProjectListComponent implements OnInit ,AfterViewInit{
 
   
 
-  centeredModal(content: any) {
+  centeredModal(content: any,id:number) {
     const deleteModalRef = this.modalService.open(DeleteConfirmModelComponent,{backdrop:false});
     deleteModalRef.componentInstance.contents = "Do you really want to DELETE '"+content+"' Application.";
     deleteModalRef.result.then((result) => {
       console.log(result)
-    }, (reason) => {
-        console.log(reason)
+    }, (reason) => { 
        if(reason=='ok') {
-        this.toast.success("Deleted!","Confirmation")
+        this.deleteApplication(id);
        }
     });
   }  

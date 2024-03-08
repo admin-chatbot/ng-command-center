@@ -41,6 +41,15 @@ export class ApplicationService {
     );
   }
 
+  deleteApplication(id:number) : Observable< ApiResponce | any>{
+    const url = this.url.application() +"deleteById/"+id;    
+    const httpOptions = { headers: new HttpHeaders({ 'X-AUTH-LOG-HEADER':this.token, 'Content-Type': 'application/json','accept':'application/json' }) };    
+    return this.http.put<ApiResponce>(url, null ,httpOptions)
+    .pipe(
+      catchError(this.handleError('fetchApplicationById'))
+    );
+  }
+
   edit(application:Application) : Observable<ApiResponce | any> {
     const url = this.url.application();       
     const httpOptions = { headers: new HttpHeaders({ 'X-AUTH-LOG-HEADER':this.token, 'Content-Type': 'application/json','accept':'application/json' }) };
