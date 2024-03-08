@@ -71,12 +71,16 @@
                                             <div class="col-8"> {{item.serviceCount}} </div>
 
                                             <div class="col-4"><span>Application URL </span></div>
-                                            <div class="col-8">{{item.sourceUrl}} </div>
+                                            <div class="col-8" placement="top" ngbTooltip="{{item.sourceUrl}}">
+                                                {{item.sourceUrl | trim : '30'}} </div>
 
                                             <div class="col-4"><span>Docs URL </span></div>
-                                            <div class="col-8">{{item.serviceDocUrl}} </div>
+                                            <div class="col-8" placement="top" ngbTooltip="{{item.serviceDocUrl}}">
+                                                {{item.serviceDocUrl | trim : '30' }} </div>
 
                                         </div>
+
+
                                         <div class="customers">
                                             <ul>
 
@@ -84,15 +88,12 @@
                                         </div>
                                         <div class="project-status mt-4 text-end">
                                             <div class="mb-0 text-end" style="align-items: left;">
-                                                <a href="javascript:void(0)">
-                                                    <app-feather-icons [icons]="'info'"></app-feather-icons>
-                                                </a>
-                                                &nbsp;
-                                                <a href="javascript:void(0)">
+                                                <a href="javascript:void(0)" (click)="edit(item.id)">
                                                     <app-feather-icons [icons]="'edit'"></app-feather-icons>
                                                 </a>
                                                 &nbsp;
-                                                <a href="javascript:void(0)">
+                                                <a href="javascript:void(0)"
+                                                    (click)="centeredModal(item.name)">
                                                     <app-feather-icons [customStyle]="'color:red'"
                                                         [icons]="'trash'"></app-feather-icons>
                                                 </a>
@@ -111,3 +112,4 @@
         </div>
     </div>
 </div>
+

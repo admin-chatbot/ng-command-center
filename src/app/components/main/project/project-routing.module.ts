@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { CreateNewComponent } from './create-new/create-new.component';
+import { EditComponent } from './edit/edit.component';
 
 const routes: Routes = [
 
@@ -22,6 +23,14 @@ const routes: Routes = [
         data: {
           title: 'Create New Project',
           breadcrumb: 'Create',
+        }
+      },
+      {
+        path: 'edit',
+        component: EditComponent,
+        data: {
+          title: 'Edit Project',
+          breadcrumb: 'edit',
         }
       },
     ],

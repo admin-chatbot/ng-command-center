@@ -7,24 +7,34 @@ import { CreateNewComponent } from './create-new/create-new.component';
 import { FileUploadComponent } from './create-new/file-upload/file-upload.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
-import { NgbDropdownModule, NgbModalModule, NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
+import {  NgbDropdownModule, NgbModalModule, NgbPopoverModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProjectSearchComponent } from './project-list/project-search/project-search.component';
+import { EditComponent } from './edit/edit.component';
+import { TrimPipe } from 'src/app/pipe/trim.pipe'; 
 
  
 
 @NgModule({
-  declarations: [
-    ProjectListComponent,
-    CreateNewComponent,
-    FileUploadComponent,
-    ProjectSearchComponent
-  ],
-  imports: [
-    CommonModule,
-    ProjectRoutingModule, 
-    SharedModule, 
-    ToastrModule,     
-    NgbModalModule
-  ]
+    declarations: [
+        ProjectListComponent,
+        CreateNewComponent,
+        FileUploadComponent,
+        ProjectSearchComponent,
+        EditComponent
+    ],
+    providers: [
+        TrimPipe
+    ],
+    imports: [
+        CommonModule,
+        ProjectRoutingModule,
+        SharedModule,
+        ToastrModule,
+        NgbModalModule, 
+        NgbTooltipModule,
+        TrimPipe, 
+        NgbModalModule
+
+    ]
 })
 export class ProjectModule { }
