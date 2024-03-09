@@ -11,6 +11,7 @@ import {  NgbDropdownModule, NgbModalModule, NgbPopoverModule, NgbTooltipModule 
 import { ProjectSearchComponent } from './project-list/project-search/project-search.component';
 import { EditComponent } from './edit/edit.component';
 import { TrimPipe } from 'src/app/pipe/trim.pipe'; 
+import { SearchComponent } from './search/search.component';
 
  
 
@@ -20,7 +21,8 @@ import { TrimPipe } from 'src/app/pipe/trim.pipe';
         CreateNewComponent,
         FileUploadComponent,
         ProjectSearchComponent,
-        EditComponent
+        EditComponent,
+        SearchComponent
     ],
     providers: [
         TrimPipe
