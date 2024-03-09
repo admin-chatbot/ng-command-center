@@ -1,0 +1,89 @@
+<div class="card height-equal">
+    <div class="card-header">
+        <h4></h4>
+        <div class="card-body">
+            <form class="row g-3 needs-validation custom-input" novalidate [ngClass]="{'was-validated': validate}"
+                (ngSubmit)="next(myForm)">
+
+                <div class="col-12">
+                    <label class="form-label" for="validationName">Name</label>
+                    <input class="form-control" id="validationName" type="text" placeholder="Please enter Name"
+                        required="">
+                    <div class="invalid-feedback">Please enter your valid Name</div>
+                    <div class="valid-feedback">
+                        Looks's Good!</div>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label" for="validationDescription">Description</label>
+                    <input class="form-control" id="validationDescription" type="text"
+                        placeholder="Please enter Description" required="">
+                    <div class="invalid-feedback">Please enter your valid summery</div>
+                    <div class="valid-feedback">
+                        Looks's Good!</div>
+                </div>
+
+                <div class="col-12">
+
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label" for="validationType">Type</label>
+                    <select class="form-select" id="validationType" required="">
+                        <option selected="" disabled="" value="">Choose...</option>
+                        <option>U.K </option>
+                        <option>India </option>
+                        <option>Thailand</option>
+                        <option>Newyork</option>
+                    </select>
+                    <div class="invalid-feedback">Please select a valid method.</div>
+                    <div class="valid-feedback">
+                        Looks's Good! </div>
+                </div>
+
+                
+
+                <div class="col-12">
+                    <label class="form-label" for="validationParameterType">Parameter Type</label>
+                    <select class="form-select" id="validationParameterType" required="">
+                        <option>U.K </option>
+                        <option>India </option>
+                        <option>Thailand</option>
+                        <option>Newyork</option>
+                    </select>
+                    <div class="invalid-feedback">Please select a valid Parameter Type.</div>
+                    <div class="valid-feedback">
+                        Looks's Good! </div>
+                </div> 
+                
+                <div class="col-12">
+                    <label class="form-label" for="validationRequestSchema">Schema</label>
+                    <textarea class="form-control" id="validationRequestSchema" placeholder="Enter your Request Schema"
+                        required=""></textarea>
+                    <div class="invalid-feedback">Please enter a valid Schema.</div>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label" for="validationQuestion">Question</label>
+                    <textarea class="form-control" id="validationQuestion"
+                        placeholder="Enter your questions" required=""></textarea>
+                    <div class="invalid-feedback">Please enter a valid questions.</div>
+                </div>
+
+
+                <div class="product-buttons">
+                    <button class="btn me-2">
+                        <div class="d-flex align-items-center gap-sm-2 gap-1">
+                            <app-comman-svg-icon [icon]="'stop'"></app-comman-svg-icon>
+                            Submit
+                        </div>
+                    </button>
+                    <button class="btn">
+                        <div class="d-flex align-items-center gap-sm-2 gap-1"> Finish
+                            <app-comman-svg-icon [icon]="'front-arrow'"></app-comman-svg-icon>
+                        </div>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>

@@ -1,0 +1,130 @@
+<div class="card height-equal">
+    <div class="card-header">
+        <h4></h4>
+        <div class="card-body">
+            <form class="row g-3 needs-validation custom-input" novalidate [ngClass]="{'was-validated': validate}"
+                (ngSubmit)="next(myForm)">
+
+                <div class="col-12">
+                    <label class="form-label" for="validationCustomApplication">Application</label>
+                    <select class="form-select" id="validationCustomApplication" required="">
+                        <option selected="" disabled="" value="">Choose...</option>
+                        <option>U.K </option>
+                        <option>India </option>
+                        <option>Thailand</option>
+                        <option>Newyork</option>
+                    </select>
+                    <div class="invalid-feedback">Please select a valid application.</div>
+                    <div class="valid-feedback">
+                        Looks's Good! </div>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label" for="validationCustomName">Service Name</label>
+                    <input class="form-control" id="validationCustomName" type="text" placeholder="Mark" required="">
+                    <div class="invalid-feedback">Please enter your valid Name</div>
+                    <div class="valid-feedback">
+                        Looks's Good!</div>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label" for="validationCustomSummery">Service Summery</label>
+                    <input class="form-control" id="validationCustomSummery" type="text" placeholder="Mark" required="">
+                    <div class="invalid-feedback">Please enter your valid summery</div>
+                    <div class="valid-feedback">
+                        Looks's Good!</div>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label" for="validationCustomEndpoint">Service Endpoint</label>
+                    <input class="form-control" id="validationCustomEndpoint" type="text" placeholder="Mark"
+                        required="">
+                    <div class="invalid-feedback">Please enter your valid Endpoint</div>
+                    <div class="valid-feedback">
+                        Looks's Good!</div>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label" for="validationCustomMethod">Method</label>
+                    <select class="form-select" id="validationCustomMethod" required="">
+                        <option selected="" disabled="" value="">Choose...</option>
+                        <option>U.K </option>
+                        <option>India </option>
+                        <option>Thailand</option>
+                        <option>Newyork</option>
+                    </select>
+                    <div class="invalid-feedback">Please select a valid method.</div>
+                    <div class="valid-feedback">
+                        Looks's Good! </div>
+                </div>
+
+                <div class="col-6">
+                    <label class="form-label" for="validationCustomMethod">Request Type</label>
+                    <select class="form-select" id="validationCustomMethod" required="" multiple>
+                        <option>U.K </option>
+                        <option>India </option>
+                        <option>Thailand</option>
+                        <option>Newyork</option>
+                    </select>
+                    <div class="invalid-feedback">Please select a valid method.</div>
+                    <div class="valid-feedback">
+                        Looks's Good! </div>
+                </div>
+
+                <div class="col-6">
+                    <label class="form-label" for="validationCustomMethod">Response Type</label>
+                    <select class="form-select" id="validationCustomMethod" required="" multiple>
+                        <option>U.K </option>
+                        <option>India </option>
+                        <option>Thailand</option>
+                        <option>Newyork</option>
+                    </select>
+                    <div class="invalid-feedback">Please select a valid method.</div>
+                    <div class="valid-feedback">
+                        Looks's Good! </div>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label" for="validationbRT">Bot Response Template </label>
+                    <input class="form-control" id="validationbRT" type="text" placeholder="Mark" required="">
+                    <div class="invalid-feedback">Please enter your valid Response Template</div>
+                    <div class="valid-feedback">
+                        Looks's Good!</div>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label" for="validationRequestSchema">Request Schema</label>
+                    <textarea class="form-control" id="validationRequestSchema" placeholder="Enter your Request Schema"
+                        required=""></textarea>
+                    <div class="invalid-feedback">Please enter a valid Request Schema.</div>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label" for="validationResponseSchema">Response Schema</label>
+                    <textarea class="form-control" id="validationResponseSchema"
+                        placeholder="Enter your Response Schema" required=""></textarea>
+                    <div class="invalid-feedback">Please enter a valid Response Schema.</div>
+                </div>
+
+
+                <div class="product-buttons">
+                    
+                    <button class="btn me-2">
+                        <div class="d-flex align-items-center gap-sm-2 gap-1"> 
+                            Cancel  
+                        </div>
+                    </button>
+                    <button class="btn me-2">
+                        <div class="d-flex align-items-center gap-sm-2 gap-1"> 
+                            Submit And Finish  
+                        </div>
+                    </button>
+                    <button class="btn">
+                        <div class="d-flex align-items-center gap-sm-2 gap-1">Submit And Next
+                            <app-comman-svg-icon [icon]="'front-arrow'"></app-comman-svg-icon>
+                        </div>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
