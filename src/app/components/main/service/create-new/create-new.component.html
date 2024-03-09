@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Service On Board</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-xl-5 g-3">
+                        <div class="col-xxl-3 col-xl-4 box-col-4e sidebar-left-wrapper">
+                            <app-add-service-tab [data]="addProductTabData"
+                                [activeSteps]="activeSteps"></app-add-service-tab>
+                        </div>
+                        <div class="col-xxl-9 col-xl-8 box-col-8 position-relative">
+                            <div class="tab-content" id="add-product-pills-tabContent">
+                                <div class="tab-pane" id="detail-product"
+                                    [ngClass]="activeSteps == 1 ? 'd-block' : 'd-none'">
+                                    <div class="sidebar-body">
+                                        <app-add-service-details
+                                            (activeSteps)="receiveChildData($event)"></app-add-service-details>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="gallery-product"
+                                    [ngClass]="activeSteps == 2 ? 'd-block' : 'd-none'">
+                                    <div class="sidebar-body">
+                                        <app-add-service-intent
+                                            (activeSteps)="receiveChildData($event)"></app-add-service-intent>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="category-product"
+                                    [ngClass]="activeSteps == 3 ? 'd-block' : 'd-none'">
+                                    <div class="sidebar-body">
+                                        <app-add-service-parameter
+                                            (activeSteps)="receiveChildData($event)"></app-add-service-parameter>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
