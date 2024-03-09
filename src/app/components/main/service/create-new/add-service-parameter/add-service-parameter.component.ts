@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Enums } from 'src/app/enums/enums';
 
 @Component({
   selector: 'app-add-service-parameter', 
@@ -10,6 +11,7 @@ export class AddServiceParameterComponent {
   public htmlContent = '';
   public activeStep: number = 1;
   public validate: boolean = false;
+  public enums = new Enums;
 
   @Output() activeSteps = new EventEmitter<number>();
 

@@ -4,8 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ApplicationService } from '../application.service';
 import { Router } from '@angular/router';
 import { Application } from 'src/app/entity/application'; 
-import { Enums } from 'src/app/enums/enums';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Enums } from 'src/app/enums/enums'; 
 
 @Component({
   selector: 'app-edit', 

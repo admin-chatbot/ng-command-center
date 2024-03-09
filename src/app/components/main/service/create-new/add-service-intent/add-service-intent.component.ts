@@ -12,6 +12,16 @@ export class AddServiceIntentComponent {
   public activeStep: number = 2;
   public validate: boolean = false;
 
+  public submitButton1 = "Add";
+  public submitButton2 = "Add And Next";
+  public buttonDissable = false;
+
+  myForm = new FormGroup({ 
+    intend: new FormControl("",Validators.required),
+    question: new FormControl("",Validators.required),
+  })
+
+
   @Output() activeSteps = new EventEmitter<number>();
 
  
@@ -20,17 +30,16 @@ export class AddServiceIntentComponent {
   ngOnInit(): void { 
   }
 
-  myForm = new FormGroup({
-    product_Title: new FormControl("",Validators.required),
-
-  })
-
+ 
   next(myForm:FormGroup) {
     this.validate = true;
-    if (this.myForm.valid) {}
+    if (this.myForm.valid) {
 
-      const number = this.activeStep + 1;
-      this.activeSteps.emit(number);
+     
+    }
+    const number = this.activeStep + 1;
+    this.activeSteps.emit(number);
+    
     
   }
 

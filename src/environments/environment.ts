@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false, 
-  adminEndpoint: "http://lb-service-client-service-uat-784897227.ap-south-1.elb.amazonaws.com/api/v1/admin/",
-  baseEndpoint: "http://lb-service-client-service-uat-784897227.ap-south-1.elb.amazonaws.com/api/v1/", 
+  adminEndpoint: "http://localhost/api/v1/admin/",
+  baseEndpoint: "http://localhost/api/v1/", 
   consoleLog:"debug"
 };
 
