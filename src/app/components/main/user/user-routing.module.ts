@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserCardsComponent } from './user-cards/user-cards.component';
 import { UsersEditsComponent } from './users-edits/users-edits.component';
+import { CreateNewComponent } from './create-new/create-new.component';
 
 
 const routes: Routes = [
@@ -19,7 +20,7 @@ const routes: Routes = [
       },
       {
         path: 'create',
-        component: UsersEditsComponent,
+        component: CreateNewComponent,
         data: {
           title: 'Create User',
           breadcrumb: 'Create',

@@ -4,6 +4,9 @@ import * as data from '../../../../shared/data/data/user/user'
 import { User } from 'src/app/entity/user';
 import { UserService } from '../user.service';
 import { ToastrService } from 'ngx-toastr';  // Import ToastrService if not already imported
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { UserSearchComponent } from './user-search/user-search.component';
+import { UserSearch } from 'src/app/entity/userSearch';
 
 @Component({
   selector: 'app-user-cards',
@@ -19,9 +22,9 @@ export class UserCardsComponent implements OnInit ,AfterViewInit {
   public userCards = data.userCards;
   public userFilterData: User[];
   public users: User[];
+  
 
-
-  constructor(private userService: UserService, private toast: ToastrService) {}
+  constructor(private userService: UserService,  private modalService: NgbModal, private toast: ToastrService) {}
 
   ngAfterViewInit(): void {
    
@@ -31,7 +34,17 @@ export class UserCardsComponent implements OnInit ,AfterViewInit {
     this.getUsers();
   }
 
-
+  search(){
+    const modalRef = this.modalService.open(UserSearchComponent);
+    let search = { } as UserSearch;
+    search.name = "Jitendra";
+    modalRef.componentInstance.search = search;
+    modalRef.result.then((result) => {
+      //console.log("Hello "+result);
+    }, (reason) => {
+      console.log("Hi ."+JSON.stringify( reason));
+    });
+  }
 
   private getUsers() {
    

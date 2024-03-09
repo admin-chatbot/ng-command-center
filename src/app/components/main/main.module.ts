@@ -21,6 +21,7 @@ import { ChatModule } from './chat/chat.module';
 import { FaqComponent } from './faq/faq.component';
 import { FaqModule } from './faq/faq.module';
 import { UserCardsComponent } from './user/user-cards/user-cards.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { UserCardsComponent } from './user/user-cards/user-cards.component';
     ProjectModule,
     ChatModule,
     FaqModule,
+    ReactiveFormsModule
   ]
 })
 export class MainModule { }

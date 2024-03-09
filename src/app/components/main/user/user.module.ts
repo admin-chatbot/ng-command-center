@@ -14,6 +14,12 @@ import { MyProfilComponent } from './users-edits/my-profil/my-profil.component';
 import { EditProfileComponent } from './users-edits/edit-profile/edit-profile.component';
 import { AddUpdateProjectsComponent } from './users-edits/add-update-projects/add-update-projects.component';
 import { UserCardsComponent } from './user-cards/user-cards.component';
+import { ToastrModule } from 'ngx-toastr';
+import { NgbModalModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { TrimPipe } from 'src/app/pipe/trim.pipe';
+import { UserSearchComponent } from './user-cards/user-search/user-search.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CreateNewComponent } from './create-new/create-new.component';
 
 
 @NgModule({
@@ -22,16 +28,27 @@ import { UserCardsComponent } from './user-cards/user-cards.component';
     UserProfileThirdComponent,
     UserProfileFourthComponent    ,
     UserProfileFifthComponent,
+    CreateNewComponent,
     UserProfileFirstComponent,
+    UserSearchComponent,
     UsersEditsComponent,
     MyProfilComponent,
     EditProfileComponent,
     AddUpdateProjectsComponent,
-    UserCardsComponent,],
+    UserCardsComponent],
+    providers: [
+      TrimPipe
+  ],
   imports: [
     CommonModule,
     UserRoutingModule,
     SharedModule,
+    ToastrModule,
+    NgbModalModule, 
+    NgbTooltipModule,
+    TrimPipe, 
+    NgbModalModule,
+    ReactiveFormsModule
 
   ]
 })

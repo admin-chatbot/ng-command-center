@@ -12,6 +12,7 @@ import { UrlService } from 'src/app/service/url.service';
   providedIn: 'root'
 })
 export class UserService {
+ 
   private handleError: HandleError;
   private token: any;
 
@@ -27,6 +28,16 @@ export class UserService {
 
   register(user:User):Observable<User|any>{
     const url = this.url.user();    
+    const httpOptions = { headers: new HttpHeaders({ 'X-AUTH-LOG-HEADER':this.token, 'Content-Type': 'application/json','accept':'application/json' }) };
+    return this.http.post<any>(url,user,httpOptions)
+    .pipe(
+      catchError(this.handleError('Register User'))
+    )
+  }
+
+  onBoard(user:User) : Observable<string | any> {
+    const url = this.url.user();       
+    user.id = 0;     
     const httpOptions = { headers: new HttpHeaders({ 'X-AUTH-LOG-HEADER':this.token, 'Content-Type': 'application/json','accept':'application/json' }) };
     return this.http.post<any>(url,user,httpOptions)
     .pipe(
