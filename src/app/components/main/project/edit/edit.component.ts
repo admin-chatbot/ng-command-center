@@ -15,6 +15,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class EditComponent implements OnInit,AfterViewInit{
 
 
+
   public validate = false;
   public submitted = false;
   application: Application | any;
@@ -98,6 +99,10 @@ export class EditComponent implements OnInit,AfterViewInit{
     ngOnInit(): void {
       
       
+    }
+
+    cancel() {
+      this.router.navigate(['main/project/list']);
     }
 
     getStatus($event: any) {
