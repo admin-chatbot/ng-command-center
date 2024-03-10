@@ -1,0 +1,104 @@
+<div class="card height-equal">
+    <div class="card-header">
+        <h4></h4>
+        <div class="card-body">
+            <form class="row g-3 needs-validation custom-input" [formGroup]="myForm" novalidate
+                [ngClass]="{'was-validated': validate}" (ngSubmit)="next(myForm,$event)">
+
+                <div class="col-12">
+                    <label class="form-label" for="validationName">Name</label>
+                    <input class="form-control" id="validationName" type="text" placeholder="Please enter Name"
+                        required="" formControlName="name">
+                    <div class="invalid-feedback">Please enter your valid Name</div>
+                    <div class="valid-feedback">
+                        Looks's Good!</div>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label" for="validationDescription">Description</label>
+                    <input class="form-control" id="validationDescription" type="text"
+                        placeholder="Please enter Description" required="" formControlName="description">
+                    <div class="invalid-feedback">Please enter your valid summery</div>
+                    <div class="valid-feedback">
+                        Looks's Good!</div>
+                </div>
+                <div class="col-12"></div>
+                <div class="col-12">
+                    <div class="d-flex">
+                        <label class="col-form-label m-r-10">Required</label>
+                        <div class="flex-grow-1 text-start icon-state">
+                            <label class="switch">
+                                <input type="checkbox" [checked]="item" formControlName="required">
+                                <span class="switch-state"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label" for="validationType">Type</label>
+                    <select class="form-select" id="validationType" required="" formControlName="type">
+                        <option selected="" disabled="" value="">Choose...</option>
+                        <option *ngFor="let responseType of enums.parameterType" [value]="responseType">{{responseType}}
+                        </option>
+                    </select>
+                    <div class="invalid-feedback">Please select a valid method.</div>
+                    <div class="valid-feedback">
+                        Looks's Good! </div>
+                </div>
+
+
+
+                <div class="col-12">
+                    <label class="form-label" for="validationParameterType">Parameter Data Type</label>
+                    <select class="form-select" id="validationParameterType" required=""
+                        formControlName="paramDataType">
+                        <option selected="" disabled="" value="">Choose...</option>
+                        <option *ngFor="let responseType of enums.paramDataType" [value]="responseType">{{responseType}}
+                        </option>
+                    </select>
+                    <div class="invalid-feedback">Please select a valid Parameter Type.</div>
+                    <div class="valid-feedback">
+                        Looks's Good! </div>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label" for="validationRequestSchema">Schema</label>
+                    <textarea class="form-control" id="validationRequestSchema" placeholder="Enter your Request Schema"
+                        style="height: 100px;" required="" formControlName="jsonFormat"></textarea>
+                    <div class="invalid-feedback">Please enter a valid Schema.</div>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label" for="validationQuestion">Question</label>
+                    <textarea class="form-control" id="validationQuestion" placeholder="Enter your questions"
+                        required="" formControlName="questionToGetInput"></textarea>
+                    <div class="invalid-feedback">Please enter a valid questions.</div>
+                </div>
+
+                <div class="col-12">&nbsp;</div>
+                <div class="col-12">&nbsp;</div>
+
+                <div class="col-12">
+                    <div class="product-buttons">
+                        <!--button class="btn me-2">
+                            <div class="d-flex align-items-center gap-sm-2 gap-1" (click)="previous()">
+                                <app-comman-svg-icon [icon]="'back-arrow'"></app-comman-svg-icon>
+                                Previous
+                            </div>
+                        </button-->
+                        <button class="btn me-2"  type="submit" name="Add" >
+                            <div class="d-flex align-items-center gap-sm-2 gap-1">
+                                {{submitButton1}}
+                            </div>
+                        </button>
+                        <button class="btn" type="submit" name="Finish">
+                            <div class="d-flex align-items-center gap-sm-2 gap-1">  {{submitButton2}}
+                                <app-comman-svg-icon [icon]="'front-arrow'"></app-comman-svg-icon>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>

@@ -1,0 +1,104 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h1 class="modal-title fs-5" id="smModalLabel">Service : {{title}}</h1>
+        <button class="btn-close py-0" type="button" (click)="close()"></button>
+    </div>
+    <div class="modal-body dark-modal">
+        <div class="large-modal-header">
+
+        </div>
+        <div class="modal-details">
+            <div class="web-content">
+                <div class="row">
+                    <div class="col">
+
+                        <div class="mb-3 row">
+                            <label class="col-sm-3">Application</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" [value]="service.applicationId" type="text"
+                                    placeholder="Type your title in Placeholder" disabled />
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label class="col-sm-3">Summary</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" [value]="service.summary" type="text"
+                                    placeholder="Type your title in Placeholder" disabled />
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label class="col-sm-3">Endpoint</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" [value]="service.endpoint" type="text"
+                                    placeholder="Type your title in Placeholder" disabled />
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label class="col-sm-3">Intends</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" [value]="service.keyword" type="text"
+                                    placeholder="Type your title in Placeholder" disabled />
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label class="col-sm-3">Method</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" [value]="service.method" type="text"
+                                    placeholder="Type your title in Placeholder" disabled />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-sm-3">Request Type</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" id="floatingTextarea1" placeholder="Leave a comment here"
+                                    style="height: 100px;text-align: left;" disabled>{{service.requestType }}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label class="col-sm-3">Response Type</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" id="floatingTextarea2" placeholder="Leave a comment here"
+                                    style="height: 100px;text-align: left;"
+                                    disabled>{{service.responseType }}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label class="col-sm-3">Bot Response</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" id="floatingTextarea2" placeholder="Leave a comment here"
+                                    style="height: 100px;text-align: left;"
+                                    disabled>{{service.botResponseTemplate}}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label class="col-sm-3">Request Schema</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" id="floatingTextarea4" placeholder="Leave a comment here"
+                                    style="height: 100px;text-align: left;"
+                                    disabled>{{service.requestSchema | prettyJson}}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label class="col-sm-3">Response Schema</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" id="floatingTextarea5" placeholder="Leave a comment here"
+                                    style="height: 100px;" disabled>{{service.responseSchema | prettyJson  }}</textarea>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary me-2" type="button" (click)="close()">Close</button>
+        </div>
+    </div>

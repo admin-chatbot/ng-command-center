@@ -22,6 +22,7 @@ export class Service {
     botResponseTemplate!: string;
     status!: string;
     responseSchema!: string;
+    requestSchema:string;
     serviceParameters!:ServiceParameter [] 
     parameterCount!: number;
 }

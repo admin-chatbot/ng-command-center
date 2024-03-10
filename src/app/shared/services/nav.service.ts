@@ -88,7 +88,7 @@ export class NavService {
     {
       level: 1,
       title: "Service",
-      icon: "project",
+      icon: "others",
       type: "sub",
       active: false,
       children: [
@@ -100,7 +100,7 @@ export class NavService {
     {
       level: 1,
       title: "Flow",
-      icon: "project",
+      icon: "icons",
       type: "sub",
       active: false,
       children: [
@@ -112,7 +112,7 @@ export class NavService {
       level: 1, title: "Database",icon: "ecommerce", path: "main/db" ,type: "link"  ,active:false      
     },
     {
-      level: 1, title: "Document",icon: "ecommerce", path: "main/document" ,type: "link"  ,active:false      
+      level: 1, title: "Document",icon: "file", path: "main/document" ,type: "link"  ,active:false      
     }, 
     {
       level: 1,
@@ -130,13 +130,13 @@ export class NavService {
       headTitle1: "CHATS",
     },
     {
-      level: 1, title: "Chat With API",icon: "ecommerce", path: "main/chat/api" ,type: "link"  ,active:false      
+      level: 1, title: "Chat With API",icon: "chat", path: "main/chat/api" ,type: "link"  ,active:false      
     }, 
     {
-      level: 1, title: "Chat With Document",icon: "ecommerce", path: "main/chat/document" ,type: "link"  ,active:false      
+      level: 1, title: "Chat With Document",icon: "chat", path: "main/chat/document" ,type: "link"  ,active:false      
     },     
     {
-      level: 1, title: "Chat With DB",icon: "ecommerce", path: "/chat/SQL" ,type: "link"    ,active:false     
+      level: 1, title: "Chat With DB",icon: "chat", path: "/chat/SQL" ,type: "link"    ,active:false     
     }  ,
     {headTitle1: "SUPPORT"},
     { level: 1,path: "main/faq",title: "FAQ",icon: "faq",type: "link", active: false},
@@ -158,7 +158,7 @@ export class NavService {
       active: false,
     },
     {headTitle1: ""},
-    { level: 1,path: "main/billing",title: "Billing",icon: "support-tickets",type: "link", active: false},
+    { level: 1,path: "main/billing",title: "Billing",icon: "billing",type: "link", active: false},
     
 
   ];
