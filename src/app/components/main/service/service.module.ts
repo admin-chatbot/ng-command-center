@@ -14,9 +14,7 @@ import { AddServiceTabComponent } from './create-new/add-service-tab/add-service
 import { AddServiceDetailsComponent } from './create-new/add-service-details/add-service-details.component';
 import { AddServiceIntentComponent } from './create-new/add-service-intent/add-service-intent.component';
 import { AddServiceParameterComponent } from './create-new/add-service-parameter/add-service-parameter.component';
-import { DetailComponent } from './detail/detail.component';
-import { BrandComponent } from './detail/brand/brand.component';
-import { DescriptionTabComponent } from './detail/description-tab/description-tab.component';
+import { DetailComponent } from './detail/detail.component'; 
 import { ProductDetailsComponent } from './detail/product-details/product-details.component';
 import { IntentComponent } from './detail/intent/intent.component';
 import { ParameterComponent } from './detail/parameter/parameter.component';
@@ -32,9 +30,7 @@ import { ServiceDetailComponent } from './detail/service-detail/service-detail.c
     AddServiceDetailsComponent,
     AddServiceIntentComponent,
     AddServiceParameterComponent,
-    DetailComponent,
-    BrandComponent,
-    DescriptionTabComponent,
+    DetailComponent,     
     ProductDetailsComponent,
     IntentComponent,
     ParameterComponent,

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import * as data from '../../../../../shared/data/data/table/bootstrap-table';
 
 @Component({
   selector: 'app-parameter', 
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './parameter.component.scss'
 })
 export class ParameterComponent {
+  public openTab: string = "febric";
+  public responsiveTablesBackground = data.responsiveTablesBackground;
+
+  public tabbed(val: string) {
+    this.openTab = val;
+  }
 
 }

@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrl: './intent.component.scss'
 })
 export class IntentComponent {
+  public isShow: boolean = false;
+  public recentCustomers: any;
 
+  clickOutside(): void {
+    this.isShow = false;
+  }
 }
