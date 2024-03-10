@@ -9,6 +9,6 @@ import { AddService } from '../addService';
 export class AddServiceTabComponent {
 
   @Input()  data : AddService[];
-  @Input() activeSteps!: number;
+  @Input() activeSteps!: number; 
 
 }

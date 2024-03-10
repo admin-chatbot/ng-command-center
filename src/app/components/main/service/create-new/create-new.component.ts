@@ -11,15 +11,16 @@ export class CreateNewComponent {
 
   public validate = false;
   public addProductTabData = addProductTabData;
-  public activeSteps!: number;
+  public activeSteps!: number; 
   
 
   ngOnInit() {
+    localStorage.removeItem('sId');
     const data = addProductTabData.filter((data) => {
       return data.steps === 1;
     });
 
-    this.activeSteps = data[0].steps;
+    this.activeSteps = data[0].steps; 
   }
 
   receiveChildData(step: number) {

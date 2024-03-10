@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Application } from 'src/app/entity/application';
 import { Enums } from 'src/app/enums/enums';
 import { Service } from 'src/app/entity/service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-service-details', 
@@ -12,6 +13,7 @@ import { Service } from 'src/app/entity/service';
   styleUrl: './add-service-details.component.scss'
 })
 export class AddServiceDetailsComponent implements OnInit,AfterViewInit{
+ 
   
 
   public htmlContent = '';
@@ -25,7 +27,7 @@ export class AddServiceDetailsComponent implements OnInit,AfterViewInit{
   public submitButton2 = "Submit And Next";
   public buttonDissable = false;
 
-  @Output() activeSteps = new EventEmitter<number>(); 
+  @Output() activeSteps = new EventEmitter<number>();  
   public html = '';
 
   public myForm = new FormGroup({
@@ -42,7 +44,7 @@ export class AddServiceDetailsComponent implements OnInit,AfterViewInit{
     responseTypes: new FormControl(""), 
   });
 
-  constructor(private serviceService:ServiceService,private toast:ToastrService){
+  constructor(private serviceService:ServiceService,private toast:ToastrService,private router:Router){
     this.fetchApplicationList();
 
     this.f['responseTypes'].valueChanges.subscribe(v=>{
@@ -72,6 +74,10 @@ export class AddServiceDetailsComponent implements OnInit,AfterViewInit{
       })
   }
 
+  addIntend(myForm:FormGroup) {
+     alert(this.myForm.value);
+  }
+
    
 
   ngOnInit(): void { 
@@ -80,51 +86,59 @@ export class AddServiceDetailsComponent implements OnInit,AfterViewInit{
   ngAfterViewInit(): void { 
   }
 
-  next(myForm:FormGroup) { 
-    this.validate = true;
+  next(myForm:FormGroup,event:any) { 
+    if( event.submitter.name == "Cancel" ){ 
+      //this.router.navigate(['main/service/list']);
+    } else {
+      this.validate = true;     
+      if (this.myForm.valid) {
+        const service: Service = {} as Service;  
+        service.id = 0;   
+        service.clientId = 0;
+        service.applicationId  = Number.parseInt( this.f['applicationName'].value!=null?this.f['applicationName'].value:"0" );
+        service.endpoint =  this.f['endpoint'].value!=null?this.f['endpoint'].value:""; 
+        service.method =  this.f['method'].value!=null?this.f['method'].value:"";   
+        service.name = this.f['name'].value!=null?this.f['name'].value:"";  
+        service.keyword =  this.f['keyword'].value!=null?this.f['keyword'].value:"";
+        service.summary = this.f['summary'].value!=null?this.f['summary'].value:"";
+        service.botResponseTemplate = this.f['botResponseTemplate'].value!=null?this.f['botResponseTemplate'].value:"";
+        service.status = "NEW";
+        service.responseSchema = this.f['responseSchema'].value!=null?this.f['responseSchema'].value:"";
+        service.requestSchema = this.f['requestSchema'].value!=null?this.f['requestSchema'].value:"";
+        service.responseType = this.responseType;
+        service.requestType = this.requestType;   
 
-    const number = this.activeStep + 1;
-    this.activeSteps.emit(number);
-     
-    //this.myForm.valid
-    if (this.myForm.valid) {
-      /*const service: Service = {} as Service;  
-      service.id = 0;   
-      service.clientId = 0;
-      service.applicationId  = Number.parseInt( this.f['applicationName'].value!=null?this.f['applicationName'].value:"0" );
-      service.endpoint =  this.f['endpoint'].value!=null?this.f['endpoint'].value:""; 
-      service.method =  this.f['method'].value!=null?this.f['method'].value:"";   
-      service.name = this.f['name'].value!=null?this.f['name'].value:"";  
-      service.keyword =  this.f['keyword'].value!=null?this.f['keyword'].value:"";
-      service.summary = this.f['summary'].value!=null?this.f['summary'].value:"";
-      service.botResponseTemplate = this.f['botResponseTemplate'].value!=null?this.f['botResponseTemplate'].value:"";
-      service.status = "NEW";
-      service.responseSchema = this.f['responseSchema'].value!=null?this.f['responseSchema'].value:"";
-      service.requestSchema = this.f['requestSchema'].value!=null?this.f['requestSchema'].value:"";
-      service.responseType = this.responseType;
-      service.requestType = this.requestType;   
-     
-      this.serviceService.onBoard(service).subscribe((response)=>{
         this.submitButton2 = "Loading...";
         this.submitButton1 = "Loading...";
         this.buttonDissable = true;
-        if (response.errorCode != undefined && response.errorCode != 200) {
-          this.toast.error( 'Not able to onboard. Please try again later.' ,'ERROR');
-        } else {
-          this.toast.success(response.message,'success');
-          const number = this.activeStep + 1;
-          this.activeSteps.emit(number);
-        }
-        this.submitButton2 = "Submit And Next";
-        this.submitButton1 = "Submit And Finish";
-        this.buttonDissable = false;
-      });  */   
-    } else {
-      this.toast.error( 'Please provide all required values.' ,'ERROR');
-    }
-    
-  }
 
+        this.serviceService.onBoard(service).subscribe((response)=>{
+          
+          if (response.errorCode != undefined && response.errorCode != 200) {
+            this.toast.error( 'Not able to onboard. Please try again later.' ,'ERROR');
+          } else {
+            this.toast.success(response.message,'success')
+
+            if( event.submitter.name == "Finish" ){ 
+              this.router.navigate(['main/service/list']);
+            }else {
+              const service = response.data; 
+              localStorage.setItem('sId',service.id);    
+              const number = this.activeStep + 1;
+              this.activeSteps.emit(number);
+            }  
+          }
+          this.submitButton2 = "Submit And Next";
+          this.submitButton1 = "Submit And Finish";
+          this.buttonDissable = false;
+        });         
+        
+      } else {
+        this.toast.error( 'Please provide all required values.' ,'ERROR');
+      }
+
+    }     
+  }
    
 
   get productTitle() {

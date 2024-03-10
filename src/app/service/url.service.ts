@@ -29,6 +29,10 @@ export class UrlService {
     return environment.baseEndpoint + "service/";
   }
 
+  public serviceIntend():string {
+    return environment.baseEndpoint + "intend/";
+  }
+
   public serviceParametrer():string {
     return environment.baseEndpoint + "service/parameter/";
   }

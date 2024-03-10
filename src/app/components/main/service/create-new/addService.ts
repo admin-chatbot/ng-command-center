@@ -5,30 +5,34 @@ export interface AddService {
     subTitle: string;
     active: boolean;
     steps : number
+    data:number;
   }
 
   export const addProductTabData: AddService[] = [
     {
       id: "service-product-tab",
       svg: "product-detail",
-      title: "Add Product Details",
+      title: "Service Details",
       subTitle: "Add Product name & details",
       active: true,
-      steps : 1
+      steps : 1,
+      data: 0,
     },
     {
       id: "gallery-product-tab",
       svg: "product-detail",
-      title: "Add Intends",
+      title: "Intends",
       subTitle: "Add Service Intends",
       active: false,
-      steps : 2
+      steps : 2,
+      data: 0,
     },
     {
       id: "pricings-tab",
       svg: "product-detail",
-      title: "Add Parameter",
+      title: "Parameter",
       subTitle: "Add Service parameter ",
       active: false,
-      steps : 3
+      steps : 3,
+      data: 0,
     }]
