@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ViewComponent } from './view/view.component';
 import { CreateNewComponent } from './create-new/create-new.component';
+import { DetailComponent } from './detail/detail.component';
 
 const routes: Routes = [{
   path: '',
@@ -19,6 +20,14 @@ const routes: Routes = [{
       data: {
         title: 'Create Service',
         breadcrumb: 'create',
+      }
+    },  
+    {
+      path: 'detail',
+      component: DetailComponent,
+      data: {
+        title: 'Service Detail',
+        breadcrumb: 'detail',
       }
     },     
   ],
