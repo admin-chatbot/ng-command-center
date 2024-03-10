@@ -38,7 +38,8 @@ import { AddServiceParameterComponent } from './create-new/add-service-parameter
     NgbTooltipModule,
     TrimPipe, 
     NgbModalModule,
-    PrettyJsonPipe
+    PrettyJsonPipe,
+     
   ]
 })
 export class ServiceModule { }

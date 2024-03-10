@@ -2,51 +2,50 @@
     <div class="card-header">
         <h4></h4>
         <div class="card-body">
-            <form class="row g-3 needs-validation custom-input" novalidate [ngClass]="{'was-validated': validate}"
-                (ngSubmit)="next(myForm)">
-
-                
-
-                <div class="col-12">
-                    <label class="form-label" for="validationCustomName">Service Name</label>
-                    <input class="form-control" id="validationCustomName" type="text" placeholder="Mark" required="">
-                    <div class="invalid-feedback">Please enter your valid Name</div>
-                    <div class="valid-feedback">
-                        Looks's Good!</div>
-                </div>
+            <form class="row g-3 needs-validation custom-input" [formGroup]="myForm" novalidate
+                [ngClass]="{'was-validated': validate}" (ngSubmit)="next(myForm,$event)">
 
                 <div class="col-12">
                     <label class="form-label" for="validationCustomSummery">Intend</label>
-                    <input class="form-control" id="validationCustomSummery" type="text" placeholder="Mark" required="">
-                    <div class="invalid-feedback">Please enter your valid summery</div>
+                    <input class="form-control" id="validationCustomSummery" type="text"
+                        placeholder="Please enter valid Intend" required="" formControlName="intend" />
+                    <div class="invalid-feedback">Please enter valid Intend</div>
                     <div class="valid-feedback">
                         Looks's Good!</div>
-                </div>               
-                 
+                </div>
+
                 <div class="col-12">
                     <label class="form-label" for="validationResponseSchema">Question</label>
-                    <textarea class="form-control" id="validationResponseSchema"
-                        placeholder="Enter your Response Schema" required=""></textarea>
+                    <textarea class="form-control" id="validationResponseSchema" style="height: 150px"
+                        placeholder="Please enter questions." required="" formControlName="question"></textarea>
                     <div class="invalid-feedback">Please enter a valid Question.</div>
                 </div>
 
+                <div class="col-12">
+                    &nbsp;
+                </div>
+                <div class="col-12">
+                    &nbsp;
+                </div>
 
-                <div class="product-buttons">
-                    <button class="btn me-2">
-                        <div class="d-flex align-items-center gap-sm-2 gap-1"> 
-                            Finish
-                        </div>
-                    </button>
-                    <button class="btn me-2">
-                        <div class="d-flex align-items-center gap-sm-2 gap-1"> 
-                            Submit
-                        </div>
-                    </button>
-                    <button class="btn">
-                        <div class="d-flex align-items-center gap-sm-2 gap-1">Submit And Next
-                            <app-comman-svg-icon [icon]="'front-arrow'"></app-comman-svg-icon>
-                        </div>
-                    </button>
+                <div class="col-12">
+                    <div class="product-buttons">
+                        <button class="btn me-2" [disabled]="buttonDissable" type="submit" name="Finish">
+                            <div class="d-flex align-items-center gap-sm-2 gap-1">
+                                Finish
+                            </div>
+                        </button>
+                        <button class="btn me-2" type="submit" name="Add" [disabled]="buttonDissable">
+                            <div class="d-flex align-items-center gap-sm-2 gap-1">
+                                {{submitButton1}}
+                            </div>
+                        </button>
+                        <button class="btn" type="submit" name="Next" [disabled]="buttonDissable">
+                            <div class="d-flex align-items-center gap-sm-2 gap-1">{{submitButton2}}
+                                <app-comman-svg-icon [icon]="'front-arrow'"></app-comman-svg-icon>
+                            </div>
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>
