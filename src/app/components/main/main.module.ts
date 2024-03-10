@@ -20,6 +20,8 @@ import { ProjectModule } from './project/project.module';
 import { ChatModule } from './chat/chat.module';
 import { FaqComponent } from './faq/faq.component';
 import { FaqModule } from './faq/faq.module';
+import { DocumentUploadComponent } from './document-upload/document-upload.component';
+import { FileUploadComponent } from './document-upload/file-upload/file-upload.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { FaqModule } from './faq/faq.module';
     TodaysTasksComponent,
     RunningEventsComponent,
     OnlineCourseTimelineComponent,
-    CalendarDashboardComponent
+    CalendarDashboardComponent,
+    DocumentUploadComponent,
+    FileUploadComponent
   ],
   imports: [
     CommonModule,

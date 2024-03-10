@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { DocumentUploadComponent } from './document-upload/document-upload.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,14 @@ const routes: Routes = [
         data: {
           title: "Dashboard",
           breadcrumb: "dashboard",
+        }
+      }, 
+      {
+        path : 'document-upload',
+        component : DocumentUploadComponent,
+        data: {
+          title: "Upload Document",
+          breadcrumb: "upload",
         }
       }, 
       {

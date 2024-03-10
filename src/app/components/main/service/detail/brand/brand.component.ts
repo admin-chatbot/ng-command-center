@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import * as data from "../../../../../shared/data/dashboard/ecommerce";
+ 
   
 @Component({
   selector: 'app-brand',
@@ -10,7 +10,7 @@ import * as data from "../../../../../shared/data/dashboard/ecommerce";
 
 export class BrandComponent {
   public isShow: boolean = false;
-  public recentCustomers = data.recentCustomers;
+  public recentCustomers: any;
 
   clickOutside(): void {
     this.isShow = false;
