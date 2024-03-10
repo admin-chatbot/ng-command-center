@@ -8,7 +8,8 @@ export class User {
     registrationDate!:string;
     applications!:number[];
     services!:number[];
-    clientId!:string;
+    clientId!:number;
     status!:string;
     applicationId!: number;
+    applicationName: number[];
 }

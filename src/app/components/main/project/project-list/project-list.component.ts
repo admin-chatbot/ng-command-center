@@ -21,8 +21,7 @@ export class ProjectListComponent implements OnInit ,AfterViewInit{
   
   public active: number = 1;
   public openTab: string = "ACTIVE";
-  public ProjectLists = data.ProjectList;
-  public filterData: project[] = this.ProjectLists;
+  
 
   public applications: Application[];
   public applicationFilterData: Application[];
