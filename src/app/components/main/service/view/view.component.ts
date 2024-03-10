@@ -44,15 +44,17 @@ export class ViewComponent implements OnInit ,AfterViewInit {
   }
 
   detail(id: number) { 
-   const selectedService = this.services.filter((data: Service) => {
+    const selectedService = this.services.filter((data: Service) => {
       return data.id == id ? true : false;
     });
-
+    this.router.navigate(['main/service/detail']);
+    /*
     const modal = this.modalService.open(DetailModelComponent, {
         size: "lg",
     });
     modal.componentInstance.title = selectedService[0].name
     modal.componentInstance.service = selectedService[0];
+    */
   }
 
   tabbed(val: string) {
