@@ -12,6 +12,14 @@ import { UrlService } from 'src/app/service/url.service';
   providedIn: 'root'
 })
 export class UserService {
+  fetchUserById(id: number) {
+    const url = this.url.user()+"byId/"+id+"/";  ;   
+    const httpOptions = { headers: new HttpHeaders({ 'X-AUTH-LOG-HEADER':this.token, 'Content-Type': 'application/json','accept':'application/json' }) };
+    return this.http.get<User[]>(url, httpOptions)
+    .pipe(
+      catchError(this.handleError('fetchUserById'))
+    );
+  }
  
   private handleError: HandleError;
   private token: any;
@@ -98,16 +106,10 @@ search(userSearchRequest:UserSearch) :Observable<ApiResponce | any> {
     catchError(this.handleError('Search'))
   );
 }
-fetchApplicationNames1(clientId: string): Observable<string[] | any> {
-  const url = this.url.application() + clientId + '/'; // Adjust the API endpoint accordingly
+fetchApplicationNames1(): Observable<string[] | any> {
+  const url = this.url.application(); // Adjust the API endpoint accordingly
 
-  const httpOptions = {
-    headers: new HttpHeaders({
-      'X-AUTH-LOG-HEADER': this.token,
-      'Content-Type': 'application/json',
-      'accept': 'application/json'
-    })
-  };
+  const httpOptions = { headers: new HttpHeaders({'X-AUTH-LOG-HEADER': this.token, 'Content-Type': 'application/json',  'accept': 'application/json'})  };
 
   // Return the observable from the HTTP request
   return this.http.get<string[]>(url, httpOptions)

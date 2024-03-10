@@ -1,0 +1,132 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form theme-form">
+                        <form [formGroup]='form' class="row g-3 needs-validation custom-input"
+                        [ngClass]="{'was-validated': validate}">
+                        <div class="row">
+                          <div class="col">
+                            <div class="mb-3">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <div class="mb-3">
+                              <label>Emp Id</label>
+                              <input formControlName="empId" class="form-control" type="text" placeholder="Enter Emp Id"
+                                required="">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                              <div class="mb-3">
+                                <label>Name</label>
+                                <input formControlName="name" class="form-control" type="text" placeholder="Enter name"
+                                  required="">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <div class="mb-3">
+                                <label>Email</label>
+                                <input formControlName="email" class="form-control" type="text" placeholder="Enter Email"
+                                  required="">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <div class="mb-3">
+                                <label>Mobile</label>
+                                <input formControlName="mobileNumber" class="form-control" type="text" placeholder="Enter mobile number"
+                                  required="">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <div class="mb-3">
+                                <label for="method">Application Name</label>
+                                <select class="form-control" id="applicationName" formControlName="applicationName">
+                                  <option *ngFor="let application of applications" [ngValue]="application.id">{{ application.name }}</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+        
+                          <div class="row">
+                            <div class="col">
+                              <div class="mb-3">
+                                <label for="status">Access Type</label>
+                                <select class="form-control" id="accessType" formControlName="accessType">
+                                  <option value="" selected>Please Select</option>
+                                  <option *ngFor="let accessType of enums.accesTypes" [value]="accessType">{{ accessType }}</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+        
+                          <div class="row">
+                            <div class="col">
+                              <div class="mb-3">
+                                <label for="status">Status</label>
+                                <select class="form-control" id="status" formControlName="status">
+                                  <option value="" selected>Please Select</option>
+                                  <option *ngFor="let statusOption of enums.status" [value]="statusOption">{{ statusOption }}</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                         
+                            <!--div class="row">
+                  <div class="col-sm-4"> 
+                    <div class="mb-3">
+                      <label>Project Size</label>
+                      <select class="form-select">
+                        <option>Small</option>
+                        <option>Medium</option>
+                        <option>Big</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="mb-3">
+                      <label>Starting date</label>
+                      <input class="datepicker-here form-control" type="text" data-language="en">
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="mb-3">
+                      <label>Ending date</label>
+                      <input class="datepicker-here form-control" type="text" data-language="en">
+                    </div>
+                  </div>
+                </div -->
+
+                            <!--div class="row">
+                      <app-file-upload></app-file-upload>
+                  </div-->
+                            <div class="row">
+                                <div class="col">
+                                    <div class="text-end">
+                                        <button class="btn btn-success me-3" (click)="submit()" [disabled]="submitted"
+                                            href="javascript:void(0)">Update</button>
+
+                                        <a class="btn btn-danger" href="javascript:void(0)">Cancel</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../user.service';
 import { User } from 'src/app/entity/user';
+import { Application } from 'src/app/entity/application';
+import { Enums } from 'src/app/enums/enums';
 
 
 @Component({
@@ -14,31 +16,37 @@ export class CreateNewComponent implements OnInit {
   public validate = false;
   public form : FormGroup
   public submitted = false;
-applications: any;
+  applications: Application[] = [];
+  clientId!:any;
+  public enums = new Enums;
 
   constructor(private formBuilder: FormBuilder,
     private toast:ToastrService,
     private userService:UserService){
-
+      //this.clientId = localStorage.getItem('id');
+    
+      //alert(this.clientId)
 
       this.form = this.formBuilder.group({
         id: ['0', [Validators.required]],
         name: ['', [Validators.required]],
-        email: ['', [Validators.required]], 
-        mobileNumber:['',Validators.required],
-        accessType:['USER',Validators.required], 
-        status:['ACTIVE',Validators.required], 
-        applicationName:['',Validators.required],
-        empId:['',Validators.required]
+        email: ['', [Validators.required]],
+        mobileNumber: ['', Validators.required],
+        accessType: ['USER', Validators.required],
+        status: ['NEW', Validators.required], 
+        applicationName: ['', Validators.required],
+        empId: ['', Validators.required]
       });
 
     }
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.fetchApplicationNames(); 
   }
 
   get f() { return this.form.controls; }
+
+
 
   submit() {    
     this.validate = !this.validate;
@@ -52,13 +60,14 @@ applications: any;
     
     user.id = this.f['id'].value;
     user.name = this.f['name'].value;
-    user.applications=this.f['applicationName'].value;
+    user.applications=user.applications = [this.f['applicationName'].value];
     user.accessType = this.f['accessType'].value;
-    //user.clientId = this.clientId;
+    user.clientId = 0;
     user.email = this.f['email'].value;
     user.empId = this.f['empId'].value;
     user.mobileNumber = this.f['mobileNumber'].value;
     user.status = this.f['status'].value;
+    
     
 
     this.userService.onBoard(user)
@@ -74,6 +83,23 @@ applications: any;
     
   }
 
+
+  fetchApplicationNames() {
+    this.userService.fetchApplicationNames1()
+      .subscribe(
+        (response) => {
+          this.applications = response.data;
+          // Set the default value for applicationName
+          if (this.applications.length > 0) {
+            this.form.patchValue({ applicationName: this.applications[0].id });
+           
+          }
+        },
+        (error) => {
+          console.error('Error fetching application names:', error);
+        }
+      );
+  }
 }
 
 

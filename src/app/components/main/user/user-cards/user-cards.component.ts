@@ -7,7 +7,7 @@ import { ToastrService } from 'ngx-toastr';  // Import ToastrService if not alre
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserSearchComponent } from './user-search/user-search.component';
 import { UserSearch } from 'src/app/entity/userSearch';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-cards',
   templateUrl: './user-cards.component.html',
@@ -15,6 +15,9 @@ import { UserSearch } from 'src/app/entity/userSearch';
 })
 
 export class UserCardsComponent implements OnInit ,AfterViewInit {
+centeredModal(arg0: string) {
+throw new Error('Method not implemented.');
+}
 
 
   public openTab: string = "ACTIVE";
@@ -22,6 +25,7 @@ export class UserCardsComponent implements OnInit ,AfterViewInit {
   public userCards = data.userCards;
   public userFilterData: User[];
   public users: User[];
+  router: any;
   
 
   constructor(private userService: UserService,  private modalService: NgbModal, private toast: ToastrService) {}
@@ -45,6 +49,13 @@ export class UserCardsComponent implements OnInit ,AfterViewInit {
       console.log("Hi ."+JSON.stringify( reason));
     });
   }
+
+  edit(id:number) {  
+    const user = this.users.filter((data: User) => {
+      return data.id == id;
+    });
+    this.router.navigate(['main/user/edit'],{ state: { user: user[0] } }); 
+   }
 
   private getUsers() {
    

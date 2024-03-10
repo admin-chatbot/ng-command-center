@@ -51,23 +51,38 @@
                   <div class="row">
                     <div class="col">
                       <div class="mb-3">
-                        <label>Application Name</label>
-                        <select class="form-control" id="applicationName" formControlName="applicationName" multiple >
-                            <option *ngFor="let application of applications" [value]="application.id">{{
-                                application.name }}</option>
+                        <label for="method">Application Name</label>
+                        <select class="form-control" id="applicationName" formControlName="applicationName">
+                          <option *ngFor="let application of applications" [ngValue]="application.id">{{ application.name }}</option>
                         </select>
                       </div>
                     </div>
                   </div>
+
                   <div class="row">
                     <div class="col">
                       <div class="mb-3">
-                        <label>Emp Id</label>
-                        <input formControlName="empId" class="form-control" type="text" placeholder="Enter Emp Id"
-                          required="">
+                        <label for="status">Access Type</label>
+                        <select class="form-control" id="accessType" formControlName="accessType">
+                          <option value="" selected>Please Select</option>
+                          <option *ngFor="let accessType of enums.accesTypes" [value]="accessType">{{ accessType }}</option>
+                        </select>
                       </div>
                     </div>
                   </div>
+
+                  <div class="row">
+                    <div class="col">
+                      <div class="mb-3">
+                        <label for="status">Status</label>
+                        <select class="form-control" id="status" formControlName="status">
+                          <option value="" selected>Please Select</option>
+                          <option *ngFor="let statusOption of enums.status" [value]="statusOption">{{ statusOption }}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                 
   
              
   
