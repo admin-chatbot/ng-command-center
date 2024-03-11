@@ -5,21 +5,21 @@
     <div class="card-body">
         <div class=" " style="height: 460px;overflow-y: scroll;">
             <ul class="pro-services">
-                <li>
+                <li *ngFor="let intent of intents">
                     <div class="card">
                         <div class="card-header">
-                            <h5>Intent: Free Shipping</h5>
+                            <h5>Intent: {{intent.intend}}</h5>
                         </div>
                         <div class="card-body">
                             <div class="flex-grow-1">
                                 <p style="padding-left: 15px;;">
-                                    1. Free Shipping World Wide<br />
-                                    2. Free Shipping World Wide<br />
-                                    3. Free Shipping World Wide<br />
+                                    @for (question of intent.questions; track $index) {
+                                   {{$index+1}}. {{question}}<br />
+                                    }
                                 </p>
                                 <div class="mb-0 text-end" style="align-items: left;padding-right: 15px;">
-                                    <a href="javascript:void(0)">
-                                        <app-feather-icons [icons]="'edit'"></app-feather-icons>
+                                    <a href="javascript:void(0)" (click)="openEditModel(intent)">
+                                        <app-feather-icons [icons]="'edit'"  ></app-feather-icons>
                                     </a>
                                     &nbsp;
                                     <a href="javascript:void(0)">
@@ -30,142 +30,6 @@
                             </div>
                         </div>
                     </div>
-
-                </li>
-                <li>
-                    <div class="card">
-                        <div class="card-header">
-                            <h5>Basic Card</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="flex-grow-1">
-                                <p style="padding-left: 15px;;">
-                                    1. Free Shipping World Wide<br />
-                                    2. Free Shipping World Wide<br />
-                                    3. Free Shipping World Wide<br />
-                                </p>
-                                <div class="mb-0 text-end" style="align-items: left;padding-right: 15px;">
-                                    <a href="javascript:void(0)">
-                                        <app-feather-icons [icons]="'edit'"></app-feather-icons>
-                                    </a>
-                                    &nbsp;
-                                    <a href="javascript:void(0)">
-                                        <app-feather-icons [customStyle]="'color:red'"
-                                            [icons]="'trash-2'"></app-feather-icons>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </li>
-                <li>
-                    <div class="card">
-                        <div class="card-header">
-                            <h5>Intent: Free Shipping</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="flex-grow-1">
-                                <p style="padding-left: 15px;;">
-                                    1. Free Shipping World Wide<br />
-                                    2. Free Shipping World Wide<br />
-                                    3. Free Shipping World Wide<br />
-                                </p>
-                                <div class="mb-0 text-end" style="align-items: left;padding-right: 15px;">
-                                    <a href="javascript:void(0)">
-                                        <app-feather-icons [icons]="'edit'"></app-feather-icons>
-                                    </a>
-                                    &nbsp;
-                                    <a href="javascript:void(0)">
-                                        <app-feather-icons [customStyle]="'color:red'"
-                                            [icons]="'trash-2'"></app-feather-icons>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </li>
-                <li>
-                    <div class="card">
-                        <div class="card-header">
-                            <h5>Basic Card</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="flex-grow-1">
-                                <p style="padding-left: 15px;;">
-                                    1. Free Shipping World Wide<br />
-                                    2. Free Shipping World Wide<br />
-                                    3. Free Shipping World Wide<br />
-                                </p>
-                                <div class="mb-0 text-end" style="align-items: left;padding-right: 15px;">
-                                    <a href="javascript:void(0)">
-                                        <app-feather-icons [icons]="'edit'"></app-feather-icons>
-                                    </a>
-                                    &nbsp;
-                                    <a href="javascript:void(0)">
-                                        <app-feather-icons [customStyle]="'color:red'"
-                                            [icons]="'trash-2'"></app-feather-icons>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </li>
-                <li>
-                    <div class="card">
-                        <div class="card-header">
-                            <h5>Intent: Free Shipping</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="flex-grow-1">
-                                <p style="padding-left: 15px;;">
-                                    1. Free Shipping World Wide<br />
-                                    2. Free Shipping World Wide<br />
-                                    3. Free Shipping World Wide<br />
-                                </p>
-                                <div class="mb-0 text-end" style="align-items: left;padding-right: 15px;">
-                                    <a href="javascript:void(0)">
-                                        <app-feather-icons [icons]="'edit'"></app-feather-icons>
-                                    </a>
-                                    &nbsp;
-                                    <a href="javascript:void(0)">
-                                        <app-feather-icons [customStyle]="'color:red'"
-                                            [icons]="'trash-2'"></app-feather-icons>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </li>
-                <li>
-                    <div class="card">
-                        <div class="card-header">
-                            <h5>Basic Card</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="flex-grow-1">
-                                <p style="padding-left: 15px;;">
-                                    1. Free Shipping World Wide<br />
-                                    2. Free Shipping World Wide<br />
-                                    3. Free Shipping World Wide<br />
-                                </p>
-                                <div class="mb-0 text-end" style="align-items: left;padding-right: 15px;">
-                                    <a href="javascript:void(0)">
-                                        <app-feather-icons [icons]="'edit'"></app-feather-icons>
-                                    </a>
-                                    &nbsp;
-                                    <a href="javascript:void(0)">
-                                        <app-feather-icons [customStyle]="'color:red'"
-                                            [icons]="'trash-2'"></app-feather-icons>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </li>
 
             </ul>

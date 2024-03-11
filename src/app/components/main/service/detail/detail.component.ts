@@ -17,7 +17,7 @@ export class DetailComponent {
   public isShow: Boolean = false;
   public serviceDetail:Service;
   public serviceId:number;
-  public intent:ServiceIntend[];
+  public intents:ServiceIntend[];
   public parameter:ServiceParameter[];
 
 
@@ -30,9 +30,14 @@ export class DetailComponent {
       if(this.serviceDetail==undefined || this.serviceDetail ==null) {
         this.router.navigate(['main/service/list']);
       } 
+
+      this.serviceId = this.serviceDetail.id; 
+      this.fetchIntend();
+      this.fetchParameter();
     }else{
       this.router.navigate(['main/service/list']);
     }
+    
   }
 
 
@@ -42,7 +47,7 @@ export class DetailComponent {
         if (response.errorCode != undefined && response.errorCode != 200) {
           this.toast.error('Not able to fetch. please try again in sometime','ERROR');
         }else{
-            this.intent = response.data;
+            this.intents = response.data;
          }
       });
   }

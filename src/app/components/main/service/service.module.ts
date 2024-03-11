@@ -18,6 +18,9 @@ import { DetailComponent } from './detail/detail.component';
 import { IntentComponent } from './detail/intent/intent.component';
 import { ParameterComponent } from './detail/parameter/parameter.component';
 import { ServiceDetailComponent } from './detail/service-detail/service-detail.component';
+import { NgSelectModule } from "@ng-select/ng-select";
+import { EditIntentModelComponent } from './detail/edit-intent-model/edit-intent-model.component';
+import { ParameterIntentModelComponent } from './detail/parameter-intent-model/parameter-intent-model.component';
 
 
 @NgModule({
@@ -32,7 +35,9 @@ import { ServiceDetailComponent } from './detail/service-detail/service-detail.c
     DetailComponent,      
     IntentComponent,
     ParameterComponent,
-    ServiceDetailComponent
+    ServiceDetailComponent,
+    EditIntentModelComponent,
+    ParameterIntentModelComponent
   ],
   providers : [
     PrettyJsonPipe
@@ -47,6 +52,7 @@ import { ServiceDetailComponent } from './detail/service-detail/service-detail.c
     TrimPipe, 
     NgbModalModule,
     PrettyJsonPipe,
+    NgSelectModule
      
   ]
 })

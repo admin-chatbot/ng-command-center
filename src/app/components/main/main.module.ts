@@ -42,7 +42,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     OnlineCourseTimelineComponent,
     CalendarDashboardComponent,
     DocumentUploadComponent,
-    FileUploadComponent
+    FileUploadComponent,
     CalendarDashboardComponent   
 
   ],

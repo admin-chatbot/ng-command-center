@@ -8,33 +8,36 @@
                 <table class="table light-card">
                     <thead>
                         <tr>
-                            <th scope="col">Id</th>
-                            <th scope="col">Task</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Phone</th>
-                            <th scope="col">Assign</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Price </th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Progress</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Discription</th>
+                            <th scope="col">Required</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Data Type</th>
+                            <th scope="col">Sehema </th>
+                            <th scope="col">Question</th>
                             <th scope="col"> </th>
                         </tr>
                     </thead>
                     <tbody>
-                        @for (item of responsiveTablesBackground; track item) {
+                        @for (item of parameters; track item) {
                         <tr>
-                            <th scope="row">{{item.id}}</th>
-                            <td>{{item.task}}</td>
-                            <td>{{item.email}}</td>
-                            <td>+91 {{item.phone}}</td>
-                            <td>{{item.assign}}</td>
-                            <td>{{item.date}}</td>
-                            <td>${{item.price}}</td>
-                            <td [ngClass]="item.id == 3 ? 'font-success' : 'font-danger'">{{item.status}}</td>
-                            <td>{{item.progress}}</td>
-                            <td> 
+                            <td>{{item.name}}</td>
+                            <td>{{item.description}}</td>
+                            <td>
+                                <div class="form-check checkbox checkbox-success" style="margin-top: 0px !important;">
+                                    <input class="form-check-input" id="{{item.id}}" type="checkbox"
+                                        [checked]="item.required" disabled>
+                                    <label class="form-check-label mb-0" for="{{item.id}}">{{item.required}}
+                                    </label>
+                                </div>
+                            </td>
+                            <td>{{item.type}}</td>
+                            <td>{{item.paramType}}</td>
+                            <td>${{item.jsonFormat}}</td>
+                            <td>{{item.questionAsked}}</td>
+                            <td>
                                 <div class="mb-0 text-end" style="align-items: left;">
-                                    <a href="javascript:void(0)"  >
+                                    <a href="javascript:void(0)" (click)="openEditModel(item)">
                                         <app-feather-icons [icons]="'edit'"></app-feather-icons>
                                     </a>
                                     &nbsp;
@@ -43,7 +46,6 @@
                                             [icons]="'trash-2'"></app-feather-icons>
                                     </a>
                                 </div>
-
                             </td>
                         </tr>
                         }

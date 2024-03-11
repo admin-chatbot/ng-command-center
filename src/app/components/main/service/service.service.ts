@@ -51,7 +51,7 @@ export class ServiceService {
 
 
   fetchIntendsByService(id:number) : Observable<ApiResponce | any> {
-    const url = this.url.serviceIntend();
+    const url = this.url.serviceIntend()+"byServiceId/"+id;
     return this.http.get<ApiResponce>(url, this.httpOptions)
     .pipe(
       catchError(this.handleError('fetchIntendsByService'))
@@ -65,6 +65,15 @@ export class ServiceService {
       catchError(this.handleError('serviceParameterList'))
     );
   }
+
+  getGetNames(ids:number[]) : Observable<ApiResponce | any>{ 
+    const url = this.url.application()+"getName?ids="; 
+    return this.http.get<ApiResponce>(url, this.httpOptions)
+    .pipe(
+      catchError(this.handleError('serviceParameterList'))
+    );
+  }
+
 
 
 
