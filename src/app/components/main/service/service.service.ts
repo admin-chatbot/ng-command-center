@@ -50,6 +50,22 @@ export class ServiceService {
   }
 
 
+  fetchIntendsByService(id:number) : Observable<ApiResponce | any> {
+    const url = this.url.serviceIntend();
+    return this.http.get<ApiResponce>(url, this.httpOptions)
+    .pipe(
+      catchError(this.handleError('fetchIntendsByService'))
+    );  
+  }
+
+  fetchServiceParameter(serviceId:number) : Observable<ApiResponce | any>{ 
+    const url = this.url.serviceParametrer()+serviceId+'/'; 
+    return this.http.get<ApiResponce>(url, this.httpOptions)
+    .pipe(
+      catchError(this.handleError('serviceParameterList'))
+    );
+  }
+
 
 
 
