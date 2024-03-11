@@ -22,6 +22,9 @@ import { FaqComponent } from './faq/faq.component';
 import { FaqModule } from './faq/faq.module';
 import { DocumentUploadComponent } from './document-upload/document-upload.component';
 import { FileUploadComponent } from './document-upload/file-upload/file-upload.component';
+import { UserCardsComponent } from './user/user-cards/user-cards.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -40,6 +43,8 @@ import { FileUploadComponent } from './document-upload/file-upload/file-upload.c
     CalendarDashboardComponent,
     DocumentUploadComponent,
     FileUploadComponent
+    CalendarDashboardComponent   
+
   ],
   imports: [
     CommonModule,
@@ -51,6 +56,7 @@ import { FileUploadComponent } from './document-upload/file-upload/file-upload.c
     ProjectModule,
     ChatModule,
     FaqModule,
+    ReactiveFormsModule
   ]
 })
 export class MainModule { }

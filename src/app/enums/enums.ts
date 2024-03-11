@@ -1,5 +1,6 @@
 export class Enums {
-   public status = ['NEW', 'REVIEW', 'ACTIVE', 'INACTIVE','HOLD'];
+   public status = ['NEW', 'REVIEW', 'ACTIVE', 'INACTIVE','HOLD'];   
+  public accesTypes: string[] = ['ADMIN', 'USER']; 
    public requestType = ['application/json','application/xml','application/text']
    public responseType = ['application/json','application/xml','application/text']
    public method = ['GET','POST','PUT','DELETE']
