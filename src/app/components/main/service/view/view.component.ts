@@ -47,7 +47,7 @@ export class ViewComponent implements OnInit ,AfterViewInit {
     const selectedService = this.services.filter((data: Service) => {
       return data.id == id ? true : false;
     });
-    this.router.navigate(['main/service/detail']);
+    this.router.navigate(['main/service/detail'] ,{ state: { data: selectedService[0] } });
     /*
     const modal = this.modalService.open(DetailModelComponent, {
         size: "lg",

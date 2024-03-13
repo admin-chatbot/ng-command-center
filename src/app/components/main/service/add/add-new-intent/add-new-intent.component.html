@@ -1,0 +1,39 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h1 class="modal-title fs-5" id="smModalLabel">Add New Parameter</h1>
+        <button class="btn-close py-0" type="button" (click)="close()"></button>
+    </div>
+    <div class="modal-body dark-modal">
+        <div class="large-modal-header">
+        </div>
+        <form class="row g-3 needs-validation custom-input" [formGroup]="myForm" novalidate
+            [ngClass]="{'was-validated': validate}" (ngSubmit)="next(myForm,$event)">
+            <div class="modal-details">
+                <div class="card height-equal">
+                    <div class="card-body">
+                        <div class="col-12">
+                            <label class="form-label" for="validationCustomSummery">Intend</label>
+                            <input class="form-control" id="validationCustomSummery" type="text"
+                                placeholder="Please enter valid Intend" required="" formControlName="intend" />
+                            <div class="invalid-feedback">Please enter valid Intend</div>
+                            <div class="valid-feedback">Looks's Good!</div>
+                        </div>
+
+                        <div class="col-12">&nbsp;</div>
+                        <div class="col-12">
+                            <label class="form-label" for="validationResponseSchema">Question</label>
+                            <textarea class="form-control" id="validationResponseSchema" style="height: 150px"
+                                placeholder="Please enter questions." required="" formControlName="question"></textarea>
+                            <div class="invalid-feedback">Please enter a valid Question.</div>
+                            <div class="valid-feedback">Looks's Good!</div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary me-2" type="submit" >Add</button>
+                    <button class="btn btn-secondary me-2" type="button" (click)="close()">Close</button>
+                </div>
+            </div>
+        </form>
+    </div>

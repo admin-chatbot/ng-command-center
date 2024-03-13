@@ -15,10 +15,14 @@ import { AddServiceDetailsComponent } from './create-new/add-service-details/add
 import { AddServiceIntentComponent } from './create-new/add-service-intent/add-service-intent.component';
 import { AddServiceParameterComponent } from './create-new/add-service-parameter/add-service-parameter.component';
 import { DetailComponent } from './detail/detail.component'; 
-import { ProductDetailsComponent } from './detail/product-details/product-details.component';
 import { IntentComponent } from './detail/intent/intent.component';
 import { ParameterComponent } from './detail/parameter/parameter.component';
 import { ServiceDetailComponent } from './detail/service-detail/service-detail.component';
+import { NgSelectModule } from "@ng-select/ng-select";
+import { EditIntentModelComponent } from './detail/edit-intent-model/edit-intent-model.component';
+import { ParameterIntentModelComponent } from './detail/parameter-intent-model/parameter-intent-model.component';
+import { AddNewParameterComponent } from './add/add-new-parameter/add-new-parameter.component';
+import { AddNewIntentComponent } from './add/add-new-intent/add-new-intent.component';
 
 
 @NgModule({
@@ -30,11 +34,14 @@ import { ServiceDetailComponent } from './detail/service-detail/service-detail.c
     AddServiceDetailsComponent,
     AddServiceIntentComponent,
     AddServiceParameterComponent,
-    DetailComponent,     
-    ProductDetailsComponent,
+    DetailComponent,      
     IntentComponent,
     ParameterComponent,
-    ServiceDetailComponent
+    ServiceDetailComponent,
+    EditIntentModelComponent,
+    ParameterIntentModelComponent,
+    AddNewParameterComponent,
+    AddNewIntentComponent
   ],
   providers : [
     PrettyJsonPipe
@@ -49,6 +56,7 @@ import { ServiceDetailComponent } from './detail/service-detail/service-detail.c
     TrimPipe, 
     NgbModalModule,
     PrettyJsonPipe,
+    NgSelectModule
      
   ]
 })
