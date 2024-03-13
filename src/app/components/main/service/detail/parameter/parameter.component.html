@@ -1,6 +1,15 @@
 <div class="card">
     <div class="card-header">
-        <h4>Parameter</h4>
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Parameter</h4>
+            </div>
+            <div class="col-md-6 text-end">
+                <div class="form-group mb-0 me-0"></div>
+                <a href="javascript:void(0)" (click)="addNewParameter()">
+                    <app-feather-icons [icons]="'plus-square'"></app-feather-icons> </a>
+            </div>
+        </div>
     </div>
     <div class="card-block row">
         <div class="col-sm-12 col-lg-12 col-xl-12">
@@ -41,7 +50,7 @@
                                         <app-feather-icons [icons]="'edit'"></app-feather-icons>
                                     </a>
                                     &nbsp;
-                                    <a href="javascript:void(0)" >
+                                    <a href="javascript:void(0)">
                                         <app-feather-icons [customStyle]="'color:red'"
                                             [icons]="'trash-2'"></app-feather-icons>
                                     </a>

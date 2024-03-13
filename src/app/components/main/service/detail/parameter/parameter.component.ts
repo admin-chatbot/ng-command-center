@@ -4,6 +4,7 @@ import { ServiceParameter } from 'src/app/entity/serviceParameters';
 import { ServiceService } from '../../service.service';
 import { EditIntentModelComponent } from '../edit-intent-model/edit-intent-model.component';
 import { ParameterIntentModelComponent } from '../parameter-intent-model/parameter-intent-model.component';
+import { AddNewParameterComponent } from '../../add/add-new-parameter/add-new-parameter.component';
 
 @Component({
   selector: 'app-parameter', 
@@ -11,6 +12,7 @@ import { ParameterIntentModelComponent } from '../parameter-intent-model/paramet
   styleUrl: './parameter.component.scss'
 })
 export class ParameterComponent {
+
 
   public openTab: string = "febric"; 
   @Input() parameters: ServiceParameter[];
@@ -28,6 +30,12 @@ export class ParameterComponent {
       size: "lg",
     });
     modal.componentInstance.parameter = _t19;
+  }
+
+  addNewParameter() {
+    const modal = this.modalService.open(AddNewParameterComponent, {
+      size: "lg",
+    }); 
   }
 
 }
