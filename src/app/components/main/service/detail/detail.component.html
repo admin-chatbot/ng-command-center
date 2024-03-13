@@ -6,11 +6,11 @@
                 <app-service-detail [service]="serviceDetail"></app-service-detail>
             </div>
             <div class="col-xl-6 col-md-6 ">
-                <app-intent [intents]="intents"></app-intent>
+                <app-intent [intents]="intents" [serviceId]="serviceId"></app-intent>
             </div>
         </div>
     </div>
     <div class="card">
-        <app-parameter [parameters]="parameter"></app-parameter>
+        <app-parameter [parameters]="parameter"  [serviceId]="serviceId"></app-parameter>
     </div>
 </div>

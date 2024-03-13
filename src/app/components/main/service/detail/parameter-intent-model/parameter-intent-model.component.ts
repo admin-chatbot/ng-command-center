@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, input } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, Output, input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Enums } from 'src/app/enums/enums';
 import { ServiceParameterService } from '../../service-parameter.service';
@@ -13,7 +13,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './parameter-intent-model.component.html',
   styleUrl: './parameter-intent-model.component.scss'
 })
-export class ParameterIntentModelComponent {
+export class ParameterIntentModelComponent implements AfterViewInit {
 
   public htmlContent = '';
   public activeStep: number = 1;
@@ -24,10 +24,10 @@ export class ParameterIntentModelComponent {
   public buttonDissable = false;
   public html = '';
   public active: boolean;
-  public item = true;
-  public serviceId: any = 0;
+  public item = true; 
 
   @Input() parameter: ServiceParameter;
+  @Input() serviceId: number;
 
 
   myForm = new FormGroup({ 
@@ -48,6 +48,19 @@ export class ParameterIntentModelComponent {
     private toast:ToastrService,
     private router:Router,
     private modal : NgbModal){      
+  }
+
+  ngAfterViewInit(): void {
+     this.myForm.patchValue({  
+      name: this.parameter.name,
+      description: this.parameter.description,
+      required: this.parameter.required,
+      type:  this.parameter.type,
+      paramDataType: this.parameter.paramType,
+      jsonFormat: this.parameter.jsonFormat,
+      questionToGetInput: this.parameter.questionToGetInput.toString(),
+      in: this.parameter.type,
+     });
   }
  
   close(){
@@ -74,13 +87,13 @@ export class ParameterIntentModelComponent {
 
 
 
-  next(myForm:FormGroup,event:any) {  
+ public edit(myForm:FormGroup,event:any) {  
 
   
     if( event.submitter.name == "Add" ){  
 
 
-        this.serviceId = localStorage.getItem('sId')
+       
         if( this.serviceId == null || this.serviceId == 0) {
           Swal.fire({
             title : 'Warning!',
@@ -88,8 +101,7 @@ export class ParameterIntentModelComponent {
             icon : 'warning',
             confirmButtonColor : 'var(--theme-deafult)',
           }).then((result)=>{
-            localStorage.removeItem('sId');
-            this.router.navigate(['main/service/create']);
+            this.modal.dismissAll();
           });
         }else {
           this.validate = true;
@@ -98,6 +110,7 @@ export class ParameterIntentModelComponent {
             this.preRestCallMethod();
     
             var parameter: ServiceParameter = {} as ServiceParameter;
+            parameter.id = this.parameter.id;
             parameter.serviceId = this.serviceId;
             parameter.description = this.myForm.get('description')?.value || ''; 
             parameter.jsonFormat = this.myForm.get('jsonFormat')?.value || ''; 
@@ -110,7 +123,8 @@ export class ParameterIntentModelComponent {
             var question = this.myForm.get('questionToGetInput')?.value || ''; 
             parameter.questionToGetInput =   question.split(',');
   
-            this.addParameter(parameter);
+            this.editParameter(parameter);
+            this.postRestCallMethod();
           } else {
             this.toast.error('Please provide all required values.','ERROR!') ; 
           }          
@@ -123,15 +137,24 @@ export class ParameterIntentModelComponent {
           
   }
 
-  public addParameter(parameter:ServiceParameter) {
-    this.parameterService.onBoard(parameter)
+   
+
+  public editParameter(parameter:ServiceParameter) {
+    this.parameterService.editServiceParameter(parameter)
       .subscribe((response)=>{
         if (response.errorCode != undefined && response.errorCode != 200) { 
           this.toast.error('Not able to onboard. please try again in sometime','ERROR!') ;         
         } else {
-          this.toast.success(response.message,'Hurrayyy!') ;  
-          this.myForm.reset();
-          this.validate = false;
+          Swal.fire({
+            title : 'Success!',
+            text :response.message,
+            icon : 'success',
+            confirmButtonColor : 'var(--theme-deafult)',
+          }).then((res)=>{
+            this.myForm.reset();
+            this.validate = false;
+          });   
+           
         }
       });
   }

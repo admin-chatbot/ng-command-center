@@ -18,6 +18,7 @@ export class IntentComponent {
   public isShow: boolean = false;
   public recentCustomers: any;
   @Input() intents:ServiceIntend[];
+  @Input() serviceId:number;
 
   constructor(private modalService: NgbModal,private serviceService:ServiceService,private service:ServiceService,private toast:ToastrService){
    
@@ -33,6 +34,7 @@ export class IntentComponent {
       size: "lg",
     });
     modal.componentInstance.intent = i;
+    modal.componentInstance.serviceId = this.serviceId;
   }
 
 
@@ -40,7 +42,7 @@ export class IntentComponent {
     const addNewIntent = this.modalService.open(AddNewIntentComponent, {
       size: "lg",
     });
-    addNewIntent.componentInstance.serviceId = this.intents[0].serviceId;
+    addNewIntent.componentInstance.serviceId = this.serviceId;
   }
 
   refresh() {

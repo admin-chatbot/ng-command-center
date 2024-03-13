@@ -17,7 +17,7 @@ export class AddNewParameterComponent {
   
 
   public htmlContent = '';
-  public activeStep: number = 1;
+  
   public validate: boolean = false;
   public enums = new Enums;
   public submitButton1 = "Add";
@@ -26,9 +26,8 @@ export class AddNewParameterComponent {
   public html = '';
   public active: boolean;
   public item = true;
-  public serviceId: any = 0;
-
-  @Input() parameter: ServiceParameter;
+  @Input() public serviceId: any = 0;
+ 
 
 
   myForm = new FormGroup({ 
@@ -76,21 +75,17 @@ export class AddNewParameterComponent {
 
 
   next(myForm:FormGroup,event:any) {  
-
   
     if( event.submitter.name == "Add" ){  
-
-
-        this.serviceId = localStorage.getItem('sId')
+        
         if( this.serviceId == null || this.serviceId == 0) {
           Swal.fire({
             title : 'Warning!',
-            text : 'Service is not found. Unable to add intent. Please onboard service first. ',
+            text : 'Service is not found. Unable to add parameter. Please onboard service first. ',
             icon : 'warning',
             confirmButtonColor : 'var(--theme-deafult)',
           }).then((result)=>{
-            localStorage.removeItem('sId');
-            this.router.navigate(['main/service/create']);
+            return this.myForm.get('product_Title');
           });
         }else {
           this.validate = true;
@@ -117,10 +112,7 @@ export class AddNewParameterComponent {
           }          
         }       
        
-    } else if( event.submitter.name == "Finish"){
-        localStorage.removeItem('sId');
-        this.router.navigate(['main/service/list']);
-    }  
+    } 
           
   }
 
@@ -130,7 +122,12 @@ export class AddNewParameterComponent {
         if (response.errorCode != undefined && response.errorCode != 200) { 
           this.toast.error('Not able to onboard. please try again in sometime','ERROR!') ;         
         } else {
-          this.toast.success(response.message,'Hurrayyy!') ;  
+          Swal.fire({
+            title : 'Success!',
+            text :response.message,
+            icon : 'success',
+            confirmButtonColor : 'var(--theme-deafult)',
+          });  
           this.myForm.reset();
           this.validate = false;
         }
