@@ -14,8 +14,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class AddNewIntentComponent {
 
-  public htmlContent = '';
-  public activeStep: number = 2;
+  public htmlContent = ''; 
   public validate: boolean = false;
   public html = '';
   public submitButton1 = "Add"; 
@@ -53,7 +52,7 @@ export class AddNewIntentComponent {
           serviceIntend.intend = this.myForm.get('intend')?.value || '';    
           serviceIntend.questions = this.myForm.get('question')!=null?this.myForm.get('question')?.value?.trim().split('\n') || []:[];    
           this.addIntend(serviceIntend);
-          this.validate = false;
+          this.validate = false
           this.buttonDissable = false; 
           this.submitButton1 = "Add"; 
         }   
@@ -66,7 +65,12 @@ export class AddNewIntentComponent {
         if (response.errorCode != undefined && response.errorCode != 200) { 
           this.toast.error('Not able to onboard. please try again in sometime','ERROR!') ;         
         } else {
-          this.toast.success(response.message,'success');
+          Swal.fire({
+            title : 'Success!',
+            text : response.message ,
+            icon : 'success',
+            confirmButtonColor : 'var(--theme-deafult)',
+          });
           this.myForm.reset();
         }
       });

@@ -7,7 +7,7 @@
         <div class="large-modal-header">
         </div>
         <form class="row g-3 needs-validation custom-input" [formGroup]="myForm" novalidate
-            [ngClass]="{'was-validated': validate}" (ngSubmit)="next(myForm,$event)">
+            [ngClass]="{'was-validated': validate}" (ngSubmit)="edit(myForm,$event)">
             <div class="modal-details">
                 <div class="card height-equal">
                     <div class="card-body">
@@ -21,6 +21,7 @@
                             <div class="valid-feedback">
                                 Looks's Good!</div>
                         </div>
+                        <div class="col-12">&nbsp;</div>
 
                         <div class="col-12">
                             <label class="form-label" for="validationDescription">Description</label>
@@ -30,7 +31,7 @@
                             <div class="valid-feedback">
                                 Looks's Good!</div>
                         </div>
-                        <div class="col-12"></div>
+                        <div class="col-12">&nbsp;</div>
                         <div class="col-12">
                             <div class="d-flex">
                                 <label class="col-form-label m-r-10">Required</label>
@@ -42,7 +43,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="col-12">&nbsp;</div>
                         <div class="col-12">
                             <label class="form-label" for="validationType">Type</label>
                             <select class="form-select" id="validationType" required="" formControlName="type">
@@ -56,8 +57,7 @@
                                 Looks's Good! </div>
                         </div>
 
-
-
+                        <div class="col-12">&nbsp;</div>
                         <div class="col-12">
                             <label class="form-label" for="validationParameterType">Parameter Data Type</label>
                             <select class="form-select" id="validationParameterType" required=""
@@ -71,7 +71,7 @@
                             <div class="valid-feedback">
                                 Looks's Good! </div>
                         </div>
-
+                        <div class="col-12">&nbsp;</div>
                         <div class="col-12">
                             <label class="form-label" for="validationRequestSchema">Schema</label>
                             <textarea class="form-control" id="validationRequestSchema"
@@ -79,7 +79,7 @@
                                 formControlName="jsonFormat"></textarea>
                             <div class="invalid-feedback">Please enter a valid Schema.</div>
                         </div>
-
+                        <div class="col-12">&nbsp;</div>
                         <div class="col-12">
                             <label class="form-label" for="validationQuestion">Question</label>
                             <textarea class="form-control" id="validationQuestion" placeholder="Enter your questions"
@@ -91,6 +91,8 @@
 
                 </div>
                 <div class="modal-footer">
+                    <button class="btn btn-secondary me-2" type="submit" [disabled]="buttonDissable"
+                        name="Add">{{submitButton1}}</button>
                     <button class="btn btn-secondary me-2" type="button" (click)="close()">Close</button>
                 </div>
             </div>

@@ -12,7 +12,6 @@
                 <div class="card height-equal">
                     <div class="card-body">
 
-
                         <div class="col-12">
                             <label class="form-label" for="validationName">Name</label>
                             <input class="form-control" id="validationName" type="text" placeholder="Please enter Name"
@@ -21,7 +20,7 @@
                             <div class="valid-feedback">
                                 Looks's Good!</div>
                         </div>
-
+                        <div class="col-12">&nbsp;</div>
                         <div class="col-12">
                             <label class="form-label" for="validationDescription">Description</label>
                             <input class="form-control" id="validationDescription" type="text"
@@ -42,7 +41,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="col-12">&nbsp;</div>
                         <div class="col-12">
                             <label class="form-label" for="validationType">Type</label>
                             <select class="form-select" id="validationType" required="" formControlName="type">
@@ -56,7 +55,7 @@
                                 Looks's Good! </div>
                         </div>
 
-
+                        <div class="col-12">&nbsp;</div>
 
                         <div class="col-12">
                             <label class="form-label" for="validationParameterType">Parameter Data Type</label>
@@ -71,7 +70,7 @@
                             <div class="valid-feedback">
                                 Looks's Good! </div>
                         </div>
-
+                        <div class="col-12">&nbsp;</div>
                         <div class="col-12">
                             <label class="form-label" for="validationRequestSchema">Schema</label>
                             <textarea class="form-control" id="validationRequestSchema"
@@ -79,6 +78,7 @@
                                 formControlName="jsonFormat"></textarea>
                             <div class="invalid-feedback">Please enter a valid Schema.</div>
                         </div>
+                        <div class="col-12">&nbsp;</div>
 
                         <div class="col-12">
                             <label class="form-label" for="validationQuestion">Question</label>
@@ -91,6 +91,8 @@
 
                 </div>
                 <div class="modal-footer">
+                    <button class="btn btn-secondary me-2" type="submit" [disabled]="buttonDissable"
+                        name="Add">{{submitButton1}}</button>
                     <button class="btn btn-secondary me-2" type="button" (click)="close()">Close</button>
                 </div>
             </div>
