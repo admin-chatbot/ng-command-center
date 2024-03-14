@@ -1,0 +1,100 @@
+<div class="card">
+    <div class="card-body" style="height: 550px;overflow-y: scroll;">
+        <div class="product-page-details">
+            <h3 class="f-w-600">{{service.name}}</h3>
+        </div>
+        <div class="product-price">
+            {{service.endpoint}}
+        </div>
+
+        <hr>
+        <p>{{service.summary}}</p>
+        <hr>
+        <div class="row">
+            <div class="col-md-4">
+                <h5 class="f-w-600 product-title">Method :</h5>
+            </div>
+            <div class="col-md-8">
+                <div class="product-icon text-end">
+                    {{service.method}}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <h5 class="f-w-600 product-title">Response Type : </h5>
+            </div>
+            <div class="col-md-8">
+                <div class="product-icon text-end">
+                    {{service.requestType}}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <h5 class="f-w-600 product-title">Response Type : </h5>
+            </div>
+            <div class="col-md-8">
+                <div class="product-icon text-end">
+                    {{service.responseType}}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <h5 class="f-w-600 product-title">Bot Response : </h5>
+            </div>
+            <div class="col-md-8">
+                <div class="product-icon text-end">
+                    {{service.botResponseTemplate}}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <h5 class="f-w-600 product-title">Status : </h5>
+            </div>
+            <div class="col-md-8">
+                <div class="product-icon text-end">
+                    {{service.status}}
+                </div>
+            </div>
+        </div>
+
+
+        <hr>
+        <div class="row">
+            <div class="col-md-4">
+                <h5 class="f-w-600 product-title">Request :</h5>
+            </div>
+            <div class="col-md-8">
+                <div class="product-icon text-end">
+                    {{service.requestSchema!=null?service.requestSchema:"{}" | prettyJson}}
+                    <form class="d-inline-block f-right"></form>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-4">
+                <h5 class="f-w-600 product-title">Response : </h5>
+            </div>
+            <div class="col-md-8">
+                <div class="product-icon text-end">
+                    {{service.responseSchema | prettyJson}}
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <div class="mb-0 text-end" style="align-items: left;">
+            <a href="javascript:void(0)" (click)="edit()">
+                <app-feather-icons [icons]="'edit'" ></app-feather-icons>
+            </a>
+            &nbsp;
+            <a href="javascript:void(0)">
+                <app-feather-icons [customStyle]="'color:red'" [icons]="'trash-2'"></app-feather-icons>
+            </a>
+        </div>
+    </div>
+</div>

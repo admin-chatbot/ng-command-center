@@ -1,0 +1,69 @@
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Parameter</h4>
+            </div>
+            <div class="col-md-6 text-end">
+                <div class="form-group mb-0 me-0"></div>
+                <a href="javascript:void(0)" (click)="addNewParameter()">
+                    <app-feather-icons [icons]="'plus-square'"></app-feather-icons> </a>
+                    &nbsp;
+                <a href="javascript:void(0)" (click)="refresh()">
+                    <app-feather-icons [icons]="'refresh-cw'"></app-feather-icons> </a>
+            </div>
+        </div>
+    </div>
+    <div class="card-block row">
+        <div class="col-sm-12 col-lg-12 col-xl-12">
+            <div class="table-responsive theme-scrollbar">
+                <table class="table light-card">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Discription</th>
+                            <th scope="col">Required</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Data Type</th>
+                            <th scope="col">Sehema </th>
+                            <th scope="col">Question</th>
+                            <th scope="col"> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (item of parameters; track item) {
+                        <tr>
+                            <td>{{item.name}}</td>
+                            <td>{{item.description}}</td>
+                            <td>
+                                <div class="form-check checkbox checkbox-success" style="margin-top: 0px !important;">
+                                    <input class="form-check-input" id="{{item.id}}" type="checkbox"
+                                        [checked]="item.required" disabled>
+                                    <label class="form-check-label mb-0" for="{{item.id}}">{{item.required}}
+                                    </label>
+                                </div>
+                            </td>
+                            <td>{{item.type}}</td>
+                            <td>{{item.paramType}}</td>
+                            <td>${{item.jsonFormat}}</td>
+                            <td>{{item.questionAsked}}</td>
+                            <td>
+                                <div class="mb-0 text-end" style="align-items: left;">
+                                    <a href="javascript:void(0)" (click)="openEditModel(item)">
+                                        <app-feather-icons [icons]="'edit'"></app-feather-icons>
+                                    </a>
+                                    &nbsp;
+                                    <a href="javascript:void(0)">
+                                        <app-feather-icons [customStyle]="'color:red'"
+                                            [icons]="'trash-2'"></app-feather-icons>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

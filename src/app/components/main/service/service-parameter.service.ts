@@ -37,4 +37,12 @@ export class ServiceParameterService {
     );
   }
 
+  editServiceParameter(serviceParameter:ServiceParameter) : Observable<string | any> {
+    const url = this.url.serviceParametrer();
+    return this.http.put<any>(url,serviceParameter,this.httpOptions)
+    .pipe(
+      catchError(this.handleError('Edit Service Parameter'))
+    )
+  }
+
 }

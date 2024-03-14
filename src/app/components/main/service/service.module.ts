@@ -14,10 +14,15 @@ import { AddServiceTabComponent } from './create-new/add-service-tab/add-service
 import { AddServiceDetailsComponent } from './create-new/add-service-details/add-service-details.component';
 import { AddServiceIntentComponent } from './create-new/add-service-intent/add-service-intent.component';
 import { AddServiceParameterComponent } from './create-new/add-service-parameter/add-service-parameter.component';
-import { DetailComponent } from './detail/detail.component';
-import { BrandComponent } from './detail/brand/brand.component';
-import { DescriptionTabComponent } from './detail/description-tab/description-tab.component';
-import { ProductDetailsComponent } from './detail/product-details/product-details.component';
+import { DetailComponent } from './detail/detail.component'; 
+import { IntentComponent } from './detail/intent/intent.component';
+import { ParameterComponent } from './detail/parameter/parameter.component';
+import { ServiceDetailComponent } from './detail/service-detail/service-detail.component';
+import { NgSelectModule } from "@ng-select/ng-select";
+import { EditIntentModelComponent } from './detail/edit-intent-model/edit-intent-model.component';
+import { ParameterIntentModelComponent } from './detail/parameter-intent-model/parameter-intent-model.component';
+import { AddNewParameterComponent } from './add/add-new-parameter/add-new-parameter.component';
+import { AddNewIntentComponent } from './add/add-new-intent/add-new-intent.component';
 
 
 @NgModule({
@@ -29,10 +34,14 @@ import { ProductDetailsComponent } from './detail/product-details/product-detail
     AddServiceDetailsComponent,
     AddServiceIntentComponent,
     AddServiceParameterComponent,
-    DetailComponent,
-    BrandComponent,
-    DescriptionTabComponent,
-    ProductDetailsComponent
+    DetailComponent,      
+    IntentComponent,
+    ParameterComponent,
+    ServiceDetailComponent,
+    EditIntentModelComponent,
+    ParameterIntentModelComponent,
+    AddNewParameterComponent,
+    AddNewIntentComponent
   ],
   providers : [
     PrettyJsonPipe
@@ -47,6 +56,7 @@ import { ProductDetailsComponent } from './detail/product-details/product-detail
     TrimPipe, 
     NgbModalModule,
     PrettyJsonPipe,
+    NgSelectModule
      
   ]
 })

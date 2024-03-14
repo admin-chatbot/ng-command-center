@@ -15,8 +15,9 @@
                         <div class="mb-3 row">
                             <label class="col-sm-3">Application</label>
                             <div class="col-sm-9">
-                                <input class="form-control" [value]="service.applicationId" type="text"
-                                    placeholder="Type your title in Placeholder" disabled />
+                                <ng-select [items]="select2Input" bindLabel="name" placeholder="Select Application"
+                                    [(ngModel)]="applicationName"></ng-select>
+
                             </div>
                         </div>
 
@@ -24,7 +25,7 @@
                             <label class="col-sm-3">Summary</label>
                             <div class="col-sm-9">
                                 <input class="form-control" [value]="service.summary" type="text"
-                                    placeholder="Type your title in Placeholder" disabled />
+                                    placeholder="Type your title in Placeholder" />
                             </div>
                         </div>
 
@@ -32,15 +33,7 @@
                             <label class="col-sm-3">Endpoint</label>
                             <div class="col-sm-9">
                                 <input class="form-control" [value]="service.endpoint" type="text"
-                                    placeholder="Type your title in Placeholder" disabled />
-                            </div>
-                        </div>
-
-                        <div class="mb-3 row">
-                            <label class="col-sm-3">Intends</label>
-                            <div class="col-sm-9">
-                                <input class="form-control" [value]="service.keyword" type="text"
-                                    placeholder="Type your title in Placeholder" disabled />
+                                    placeholder="Type your title in Placeholder" />
                             </div>
                         </div>
 
@@ -48,14 +41,14 @@
                             <label class="col-sm-3">Method</label>
                             <div class="col-sm-9">
                                 <input class="form-control" [value]="service.method" type="text"
-                                    placeholder="Type your title in Placeholder" disabled />
+                                    placeholder="Type your title in Placeholder" />
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label class="col-sm-3">Request Type</label>
                             <div class="col-sm-9">
                                 <textarea class="form-control" id="floatingTextarea1" placeholder="Leave a comment here"
-                                    style="height: 100px;text-align: left;" disabled>{{service.requestType }}</textarea>
+                                    style="text-align: left;">{{service.requestType }}</textarea>
                             </div>
                         </div>
 
@@ -63,8 +56,7 @@
                             <label class="col-sm-3">Response Type</label>
                             <div class="col-sm-9">
                                 <textarea class="form-control" id="floatingTextarea2" placeholder="Leave a comment here"
-                                    style="height: 100px;text-align: left;"
-                                    disabled>{{service.responseType }}</textarea>
+                                    style="text-align: left;">{{service.responseType }}</textarea>
                             </div>
                         </div>
 
@@ -72,8 +64,7 @@
                             <label class="col-sm-3">Bot Response</label>
                             <div class="col-sm-9">
                                 <textarea class="form-control" id="floatingTextarea2" placeholder="Leave a comment here"
-                                    style="height: 100px;text-align: left;"
-                                    disabled>{{service.botResponseTemplate}}</textarea>
+                                    style="text-align: left;">{{service.botResponseTemplate}}</textarea>
                             </div>
                         </div>
 
@@ -81,8 +72,7 @@
                             <label class="col-sm-3">Request Schema</label>
                             <div class="col-sm-9">
                                 <textarea class="form-control" id="floatingTextarea4" placeholder="Leave a comment here"
-                                    style="height: 100px;text-align: left;"
-                                    disabled>{{service.requestSchema | prettyJson}}</textarea>
+                                    style="height: 100px;text-align: left;">{{service.requestSchema | prettyJson}}</textarea>
                             </div>
                         </div>
 
@@ -90,7 +80,7 @@
                             <label class="col-sm-3">Response Schema</label>
                             <div class="col-sm-9">
                                 <textarea class="form-control" id="floatingTextarea5" placeholder="Leave a comment here"
-                                    style="height: 100px;" disabled>{{service.responseSchema | prettyJson  }}</textarea>
+                                    style="height: 100px;">{{service.responseSchema | prettyJson  }}</textarea>
                             </div>
                         </div>
 
