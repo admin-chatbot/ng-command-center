@@ -21,8 +21,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private toast:ToastrService){
     this.loginForm = this.formBuilder.group({
-      email: ['jitendra.client.admin@gmail.com', [Validators.required,Validators.email]],
-      password: ['J1tendr@123', [Validators.required]]
+      email: ['ajit.singh@gmail.com', [Validators.required,Validators.email]],
+      password: ['ajit@123', [Validators.required]]
     });
   }
 
