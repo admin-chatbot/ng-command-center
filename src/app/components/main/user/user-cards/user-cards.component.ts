@@ -25,10 +25,10 @@ throw new Error('Method not implemented.');
   public userCards = data.userCards;
   public userFilterData: User[];
   public users: User[];
-  router: any;
+  
   
 
-  constructor(private userService: UserService,  private modalService: NgbModal, private toast: ToastrService) {}
+  constructor(private userService: UserService,  private modalService: NgbModal, private toast: ToastrService,private router: Router,) {}
 
   ngAfterViewInit(): void {
    
@@ -40,22 +40,26 @@ throw new Error('Method not implemented.');
 
   search(){
     const modalRef = this.modalService.open(UserSearchComponent);
-    let search = { } as UserSearch;
-    search.name = "Jitendra";
+    let search = { } as UserSearch;       
     modalRef.componentInstance.search = search;
     modalRef.result.then((result) => {
-      //console.log("Hello "+result);
+      this.router.navigate(['main/user/search'],{ state: { data: result } }); 
     }, (reason) => {
-      console.log("Hi ."+JSON.stringify( reason));
+       
     });
   }
 
-  edit(id:number) {  
-    const user = this.users.filter((data: User) => {
-      return data.id == id;
-    });
-    this.router.navigate(['main/user/edit'],{ state: { user: user[0] } }); 
-   }
+  edit(id: number) { 
+    alert(id) ;
+    const user = this.users.find((data: User) => data.id === id);
+   
+    if (user) {
+      this.router.navigate(['main/user/edit'],{ state: { data: user } }); 
+
+        }
+  }
+
+  
 
   private getUsers() {
    

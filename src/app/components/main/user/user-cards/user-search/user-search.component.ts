@@ -5,7 +5,7 @@ import { Enums } from 'src/app/enums/enums';
 @Component({
   selector: 'app-user-search',
   templateUrl: './user-search.component.html',
-  styleUrl: './user-search.component.scss'
+  styleUrls: ['./user-search.component.scss']
 })
 export class UserSearchComponent {
 
@@ -17,7 +17,8 @@ export class UserSearchComponent {
   constructor(private modal: NgbActiveModal) {      
   }
 
-  close() {     
+  close() {
+    alert(this.search)  ;    
     this.passEntry.emit(this.search);
     this.modal.close(this.search);
   }

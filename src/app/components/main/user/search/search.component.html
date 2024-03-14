@@ -1,0 +1,70 @@
+<div class="container-fluid">
+    <div class="row project-cards">
+        <div class="col-md-12 project-list">
+            <div class="card">
+                <div class="row">
+                    <h4 class="mb-2">Search result for </h4>
+                    <div class="col-md-6">
+                        <ul class="nav nav-tabs border-tab" id="top-tab" role="tablist">
+                            <li class="nav-item" *ngFor="let search of searchMap | keyvalue">
+                                <a class="nav-link">
+                                    <app-feather-icons [icons]="'x-square'" [customStyle]="'cursor: pointer'"
+                                        (click)="clear(search.key)"></app-feather-icons> {{ search.key | uppercase }} :
+                                    {{search.value | lowercase}}
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" (click)="clearAll()">
+                                    <app-feather-icons [icons]="'x-square'"
+                                        [customStyle]="'cursor: pointer'"></app-feather-icons> Clear All
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <div class="tab-content" id="top-tabContent">
+                        <div class="tab-pane fade show active" id="top-home" role="tabpanel"
+                            aria-labelledby="top-home-tab">
+                            <div class="row">
+                                @for (item of userFilterData; track item) {
+                                <div class="col-xxl-4 col-lg-4 col-md-6">
+                                    <div class="project-box"
+                                        [ngClass]="item.status === 'NEW' ? ' b-light1-primary' : 'b-light1-success'">
+                                        <span class="badge"
+                                            [ngClass]="item.status === 'ACTIVE' ? ' badge-primary' : 'badge-success'">{{item.status}}</span>
+                                        <h5 class="f-w-500">{{item.name}}</h5>
+                                        <div class="d-flex">
+                                            <div class="flex-grow-1">
+                                                <p> </p>
+                                            </div>
+                                        </div>
+                                        <p>{{item.name}}</p>
+                                        <div class="row details">
+                                            <div class="col-4"><span>Email </span></div>
+                                            <div class="col-8"> {{item.email}} </div>
+
+                                            <div class="col-4"><span>mobile Number</span></div>
+                                            <div class="col-8"> {{item.mobileNumber}} </div>
+
+                                            <div class="col-4"><span>access Type</span></div>
+                                            <div class="col-8"> {{item.accessType}} </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

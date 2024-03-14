@@ -3,6 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserCardsComponent } from './user-cards/user-cards.component';
 import { UsersEditsComponent } from './users-edits/users-edits.component';
 import { CreateNewComponent } from './create-new/create-new.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { UserSearchComponent } from './user-cards/user-search/user-search.component';
+import { SearchComponent } from './search/search.component';
 
 
 const routes: Routes = [
@@ -15,7 +18,7 @@ const routes: Routes = [
         component: UserCardsComponent,
         data: {
           title: 'User List',
-          breadcrumb: 'List',
+          breadcrumb: 'list',
         }
       },
       {
@@ -23,7 +26,24 @@ const routes: Routes = [
         component: CreateNewComponent,
         data: {
           title: 'Create User',
-          breadcrumb: 'Create',
+          breadcrumb: 'create',
+        }
+      },
+
+      {
+        path: 'search',
+        component: SearchComponent,
+        data: {
+          title: 'User search',
+          breadcrumb: 'search',
+        }
+      },
+      {
+        path: 'edit',  // Add ':id' here to make it a dynamic parameter
+        component: EditUserComponent,
+        data: {
+          title: 'Edit User',
+          breadcrumb: 'edit',
         }
       },
     ],

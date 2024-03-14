@@ -14,10 +14,15 @@
             <label class="form-label" for="validationCustom02">Name</label>
             <input class="form-control" id="validationCustom02" [(ngModel)]="search.name" type="text" placeholder="Please enter name" required="">
           </div>
-          <div class="col-md-12">
-            <label class="form-label" for="validationCustom02">Access Type</label>
-            <input class="form-control" id="validationCustom02" [(ngModel)]="search.accessType" type="text" placeholder="Please enter user acess type" required="">
+        
+          <div class="col-12">
+            <label class="form-label" for="validationDefault04">Access Type</label>
+            <select class="form-select" id="validationDefault04" required="" [(ngModel)]="search.accessType">
+              <option selected="" disabled="" value="">Choose...</option>
+              <option *ngFor="let accessType of enums.accesTypes" >{{accessType}}</option> 
+            </select>
           </div>
+
           <div class="col-md-12">
             <label class="form-label" for="validationCustom02">Email</label>
             <input class="form-control" id="validationCustom02" [(ngModel)]="search.email" type="text" placeholder="Please enter email id" required="">

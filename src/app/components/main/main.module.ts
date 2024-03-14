@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, JsonPipe } from '@angular/common';
 import { MainRoutingModule } from './main-routing.module';  
-import { SharedModule } from 'src/app/shared/shared.module'; 
+
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { ClientsActivityComponent } from './dashboard/clients-activity/clients-activity.component';
 import { ProjectStatusComponent } from './dashboard/project-status/project-status.component';
@@ -21,7 +21,9 @@ import { ChatModule } from './chat/chat.module';
 import { FaqComponent } from './faq/faq.component';
 import { FaqModule } from './faq/faq.module';
 import { UserCardsComponent } from './user/user-cards/user-cards.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { FeatherIconsComponent } from 'src/app/shared/components/feather-icons/feather-icons.component';
 
 
 @NgModule({
@@ -45,12 +47,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     MainRoutingModule, 
     NgbDatepickerModule,
     JsonPipe,
-    SharedModule,
+    FormsModule,
     NgApexchartsModule,
     ProjectModule,
     ChatModule,
     FaqModule,
     ReactiveFormsModule
+   
   ]
 })
 export class MainModule { }

@@ -60,7 +60,7 @@ export class CreateNewComponent implements OnInit {
     
     user.id = this.f['id'].value;
     user.name = this.f['name'].value;
-    user.applications=user.applications = [this.f['applicationName'].value];
+    user.applications= [this.f['applicationName'].value];
     user.accessType = this.f['accessType'].value;
     user.clientId = 0;
     user.email = this.f['email'].value;

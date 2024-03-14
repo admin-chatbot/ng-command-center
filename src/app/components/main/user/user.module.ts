@@ -18,8 +18,11 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgbModalModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { TrimPipe } from 'src/app/pipe/trim.pipe';
 import { UserSearchComponent } from './user-cards/user-search/user-search.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateNewComponent } from './create-new/create-new.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { FeatherIconsComponent } from 'src/app/shared/components/feather-icons/feather-icons.component';
+import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
@@ -35,7 +38,11 @@ import { CreateNewComponent } from './create-new/create-new.component';
     MyProfilComponent,
     EditProfileComponent,
     AddUpdateProjectsComponent,
-    UserCardsComponent],
+    UserCardsComponent,
+    EditUserComponent,
+    SearchComponent,
+    
+  ],
     providers: [
       TrimPipe
   ],
@@ -48,8 +55,8 @@ import { CreateNewComponent } from './create-new/create-new.component';
     NgbTooltipModule,
     TrimPipe, 
     NgbModalModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class UserModule { }

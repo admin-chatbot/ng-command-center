@@ -44,10 +44,8 @@ export class EditUserComponent implements OnInit,AfterViewInit {
       const navigation = this.router.getCurrentNavigation(); 
       if(navigation!=null) {   
         const state = navigation.extras.state ;
-        const user =  navigation?.extras.state?.['user']         
-        if(user==undefined || user ==null) {
-          this.router.navigate(['main/user/list']);
-        }         
+        const user =  navigation?.extras.state?.['data']         
+           
         this.form.patchValue({
           id: user.id,
           name: user.name,
@@ -58,9 +56,7 @@ export class EditUserComponent implements OnInit,AfterViewInit {
           applicationName: user.applicationName,
           empId: user.empId
         })  
-      } else {
-        this.router.navigate(['main/user/list']);
-      }
+      } 
 
   
        
@@ -87,11 +83,12 @@ export class EditUserComponent implements OnInit,AfterViewInit {
     }
   
     ngOnInit(): void {
-      
-      
+           
     }
 
-   
+    cancel() {
+      this.router.navigate(['main/user/list']);
+    }
   
     get f() { return this.form.controls; }
 
@@ -116,9 +113,9 @@ export class EditUserComponent implements OnInit,AfterViewInit {
       updatedUser.mobileNumber= this.notNullCheck(this.f['mobileNumber']);
       updatedUser.accessType= this.notNullCheck(this.f['accessType']);
       updatedUser.status= this.notNullCheck(this.f['status']);
-      //updatedUser.applications=updatedUser.applications = this.notNullCheck[this.f['applicationName'].value];
+      
      
-      [this.f['applicationName'].value];
+      updatedUser.applications= this.notNullCheck(this.f['applicationName'])
       updatedUser.empId= this.notNullCheck(this.f['empId']);
       updatedUser.id= this.notNullCheck(this.f['id']);
            
