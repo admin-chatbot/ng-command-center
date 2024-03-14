@@ -1,0 +1,99 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h1 class="modal-title fs-5" id="smModalLabel">Add New Parameter</h1>
+        <button class="btn-close py-0" type="button" (click)="close()"></button>
+    </div>
+    <div class="modal-body dark-modal">
+        <div class="large-modal-header">
+        </div>
+        <form class="row g-3 needs-validation custom-input" [formGroup]="myForm" novalidate
+            [ngClass]="{'was-validated': validate}" (ngSubmit)="next(myForm,$event)">
+            <div class="modal-details">
+                <div class="card height-equal">
+                    <div class="card-body">
+
+                        <div class="col-12">
+                            <label class="form-label" for="validationName">Name</label>
+                            <input class="form-control" id="validationName" type="text" placeholder="Please enter Name"
+                                required="" formControlName="name">
+                            <div class="invalid-feedback">Please enter your valid Name</div>
+                            <div class="valid-feedback">
+                                Looks's Good!</div>
+                        </div>
+                        <div class="col-12">&nbsp;</div>
+                        <div class="col-12">
+                            <label class="form-label" for="validationDescription">Description</label>
+                            <input class="form-control" id="validationDescription" type="text"
+                                placeholder="Please enter Description" required="" formControlName="description">
+                            <div class="invalid-feedback">Please enter your valid summery</div>
+                            <div class="valid-feedback">
+                                Looks's Good!</div>
+                        </div>
+                        <div class="col-12">&nbsp;</div>
+                        <div class="col-12">
+                            <div class="d-flex">
+                                <label class="col-form-label m-r-10">Required</label>
+                                <div class="flex-grow-1 text-start icon-state">
+                                    <label class="switch">
+                                        <input type="checkbox" [checked]="item" formControlName="required">
+                                        <span class="switch-state"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">&nbsp;</div>
+                        <div class="col-12">
+                            <label class="form-label" for="validationType">Type</label>
+                            <select class="form-select" id="validationType" required="" formControlName="type">
+                                <option selected="" disabled="" value="">Choose...</option>
+                                <option *ngFor="let responseType of enums.parameterType" [value]="responseType">
+                                    {{responseType}}
+                                </option>
+                            </select>
+                            <div class="invalid-feedback">Please select a valid method.</div>
+                            <div class="valid-feedback">
+                                Looks's Good! </div>
+                        </div>
+
+                        <div class="col-12">&nbsp;</div>
+
+                        <div class="col-12">
+                            <label class="form-label" for="validationParameterType">Parameter Data Type</label>
+                            <select class="form-select" id="validationParameterType" required=""
+                                formControlName="paramDataType">
+                                <option selected="" disabled="" value="">Choose...</option>
+                                <option *ngFor="let responseType of enums.paramDataType" [value]="responseType">
+                                    {{responseType}}
+                                </option>
+                            </select>
+                            <div class="invalid-feedback">Please select a valid Parameter Type.</div>
+                            <div class="valid-feedback">
+                                Looks's Good! </div>
+                        </div>
+                        <div class="col-12">&nbsp;</div>
+                        <div class="col-12">
+                            <label class="form-label" for="validationRequestSchema">Schema</label>
+                            <textarea class="form-control" id="validationRequestSchema"
+                                placeholder="Enter your Request Schema" style="height: 100px;" required=""
+                                formControlName="jsonFormat"></textarea>
+                            <div class="invalid-feedback">Please enter a valid Schema.</div>
+                        </div>
+                        <div class="col-12">&nbsp;</div>
+
+                        <div class="col-12">
+                            <label class="form-label" for="validationQuestion">Question</label>
+                            <textarea class="form-control" id="validationQuestion" placeholder="Enter your questions"
+                                required="" formControlName="questionToGetInput"></textarea>
+                            <div class="invalid-feedback">Please enter a valid questions.</div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary me-2" type="submit" [disabled]="buttonDissable"
+                        name="Add">{{submitButton1}}</button>
+                    <button class="btn btn-secondary me-2" type="button" (click)="close()">Close</button>
+                </div>
+            </div>
+        </form>

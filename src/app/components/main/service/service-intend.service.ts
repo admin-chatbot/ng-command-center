@@ -33,11 +33,19 @@ export class ServiceIntendService {
     );
   }
 
-  addIntend(intend:ServiceIntend) : Observable<string | any> {
+  addIntend(intend:ServiceIntend) : Observable<ApiResponce | any> {
     const url = this.url.serviceIntend();  
     return this.http.post<any>(url,intend,this.httpOptions)
     .pipe(
       catchError(this.handleError('OnBoard Service'))
+    )
+  }
+
+  editIntent(intend:ServiceIntend) : Observable<ApiResponce | any> {
+    const url = this.url.serviceIntend();      
+    return this.http.put<any>(url,intend,this.httpOptions)
+    .pipe(
+      catchError(this.handleError('Edit Service Intent'))
     )
   }
 

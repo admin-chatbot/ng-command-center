@@ -1,0 +1,44 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h1 class="modal-title fs-5" id="smModalLabel">Edit Intent</h1>
+        <button class="btn-close py-0" type="button" (click)="close()"></button>
+    </div>
+
+    <form class="row g-3 needs-validation custom-input" [formGroup]="myForm" novalidate
+        [ngClass]="{'was-validated': validate}" (ngSubmit)="submit(myForm,$event)">
+        <div class="modal-body dark-modal">
+            <div class="large-modal-header">
+            </div>
+            <div class="modal-details">
+                <div class="web-content">
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3 row">
+                                <label class="col-sm-3">Summary</label>
+                                <div class="col-sm-9">
+                                    <input class="form-control" [value]="intent.intend" type="text"
+                                        formControlName="intend" placeholder="Type your title in Placeholder"
+                                        required="" />
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label class="col-sm-3">Response Type</label>
+                                <div class="col-sm-9">
+                                    <textarea class="form-control" id="floatingTextarea2" formControlName="question"
+                                        placeholder="Leave a comment here" style="text-align: left;"
+                                        required="">{{intent.questions }}</textarea>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary me-2" type="submit" [disabled]="buttonDissable"
+                    name="Add">{{submitButton1}}</button>
+                <button class="btn btn-secondary me-2" type="button" (click)="close()">Close</button>
+            </div>
+        </div>
+    </form>
+</div>
