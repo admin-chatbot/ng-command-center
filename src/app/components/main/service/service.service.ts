@@ -33,6 +33,14 @@ export class ServiceService {
     );
   }
 
+  fetchServiceById(id:number) : Observable<ApiResponce[] | any>{ 
+    const url = this.url.service()+"byId/"+id;       
+    return this.http.get<ApiResponce[]>(url, this.httpOptions)
+    .pipe(
+      catchError(this.handleError('serviceList'))
+    );
+  }
+
   fetchApplication() : Observable<ApiResponce | any>{
     const url = this.url.application();   
    return this.http.get<ApiResponce>(url, this.httpOptions)
@@ -46,6 +54,14 @@ export class ServiceService {
     return this.http.post<any>(url,service,this.httpOptions)
     .pipe(
       catchError(this.handleError('OnBoard Service'))
+    )
+  }
+
+  editService(service:Service) : Observable<string | any> {
+    const url = this.url.service();         
+    return this.http.put<any>(url,service,this.httpOptions)
+    .pipe(
+      catchError(this.handleError('Edit Service'))
     )
   }
 
