@@ -49,7 +49,9 @@ export class SearchComponent {
     this.search();
   }
 
-
+  centeredModal(arg0: string) {
+    throw new Error('Method not implemented.');
+    }
   search() {
     //this.searchRequest= this.clientId;
     console.log(JSON.stringify(this.searchRequest));
@@ -64,6 +66,16 @@ export class SearchComponent {
           });
   }
 
+  edit(id: number) { 
+    alert(id) ;
+    const user = this.userFilterData.find((data: User) => data.id === id);
+   
+    alert(JSON.stringify(user))
+    if (user) {
+      this.router.navigate(['main/user/edit'],{ state: { data: user } }); 
+
+        }
+  }
 
   tabbed(arg0: string) {
     //throw new Error('Method not implemented.');

@@ -1,8 +1,6 @@
 <!-- Add this link in the head of your HTML file -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-XzrceXDxK7GR8LcRA6QQV3drjb92S+Tbc55sYd6PRlM2iK1qPT17tXj8sFTGJJtu" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    integrity="sha384-XzrceXDxK7GR8LcRA6QQV3drjb92S+Tbc55sYd6PRlM2iK1qPT17tXj8sFTGJJtu"
-    crossorigin="anonymous">
+
+   
 <div class="container-fluid">
     <div class="row project-cards">
         <div class="col-md-12 project-list">
@@ -61,12 +59,14 @@
                         </div>
                         
                         <div class="social-details">
-                            <h4 class="mb-1"><a [routerLink]="['/social-app']">{{item.name}}</a></h4>
+                            <h5 class="mb-1"><a [routerLink]="['/social-app']">{{item.name}}</a></h5>
                             <div class="contact-info text-center">
                                 <i class="fas fa-envelope fa"></i><h4 class="mb-1"><a [routerLink]="['/social-app']">{{item.email}}</a></h4>
                             </div>
                             <div class="contact-info text-center">
                                 <app-feather-icons [icons]="'phone'"></app-feather-icons>
+                                <!-- Add a space character after the phone icon -->
+                                &nbsp;
                                 <h4 class="mb-1"><a [routerLink]="['/social-app']">{{item.mobileNumber}}</a></h4>
                             </div>
                             <div class="contact-info text-center">

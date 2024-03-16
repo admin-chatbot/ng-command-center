@@ -54,8 +54,13 @@
                   <div class="col">
                     <div class="mb-3">
                       <label for="method">Application Name</label>
-                      <select class="form-control" id="applicationName" formControlName="applicationName">
-                        <option *ngFor="let application of applications" [ngValue]="application.id">{{ application.name }}</option>
+                      <select class="form-control" id="applicationName" formControlName="applicationName" multiple>
+                        <option selected="" disabled="" value="">Choose...</option>
+                        <option *ngFor="let application of applicationMap | keyvalue" 
+                        [value]="application.key"
+                      
+                        >{{application.value}} </option>                        
+                  
                       </select>
                     </div>
                   </div>

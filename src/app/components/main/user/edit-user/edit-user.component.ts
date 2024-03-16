@@ -7,10 +7,11 @@ import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { Application } from 'src/app/entity/application';
+import { ServiceService } from '../../service/service.service';
 
 @Component({
   selector: 'app-edit-user',
-  templateUrl: './edit-user.component.html',
+  templateUrl: './edit-user.component.html',  
   styleUrls: ['./edit-user.component.scss']
 })
 export class EditUserComponent implements OnInit,AfterViewInit {
@@ -19,7 +20,8 @@ export class EditUserComponent implements OnInit,AfterViewInit {
   public submitted = false;
   user: User | any;
   public enums = new Enums;
-  
+  public applicationMap = new Map<number,string>;
+  public apps:number[];
   clientId:any;
   newStatus: any;
 
@@ -39,13 +41,16 @@ export class EditUserComponent implements OnInit,AfterViewInit {
   constructor(private formBuilder: FormBuilder,
     private toast:ToastrService,
     private userService:UserService,   
-    private router: Router ){  
+    private router: Router ,private serviceService:ServiceService){  
       //this.clientId=localStorage.getItem('id');
+      this.fetchApplicationList();
       const navigation = this.router.getCurrentNavigation(); 
       if(navigation!=null) {   
         const state = navigation.extras.state ;
         const user =  navigation?.extras.state?.['data']         
            
+        this.apps = user.applications;
+        alert(this.apps)
         this.form.patchValue({
           id: user.id,
           name: user.name,
@@ -63,7 +68,20 @@ export class EditUserComponent implements OnInit,AfterViewInit {
     }
  
 
- 
+    public fetchApplicationList() {
+      this.serviceService.fetchApplication()
+        .subscribe((response)=>{
+          if (response.errorCode != undefined && response.errorCode != 200) { 
+            this.toast.error('Not able to onboard. please try again in sometime','ERROR!') ;         
+          } else {
+             response.data.forEach((element:Application) => {
+              if(element.status == 'ACTIVE') {
+                this.applicationMap.set(element.id,element.name);
+              }
+             });
+          } 
+        })
+    }
 
 
     public edit(user:User) {

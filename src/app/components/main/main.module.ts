@@ -26,6 +26,7 @@ import { UserCardsComponent } from './user/user-cards/user-cards.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FeatherIconsComponent } from 'src/app/shared/components/feather-icons/feather-icons.component';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 
 
@@ -58,7 +59,8 @@ import { FeatherIconsComponent } from 'src/app/shared/components/feather-icons/f
     ProjectModule,
     ChatModule,
     FaqModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxDropzoneModule
    
   ]
 })

@@ -25,46 +25,73 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-12">
-            <div class="card">
-                <div class="card-body">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-XzrceXDxK7GR8LcRA6QQV3drjb92S+Tbc55sYd6PRlM2iK1qPT17tXj8sFTGJJtu" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha384-XzrceXDxK7GR8LcRA6QQV3drjb92S+Tbc55sYd6PRlM2iK1qPT17tXj8sFTGJJtu"
+    crossorigin="anonymous">
 
-                    <div class="tab-content" id="top-tabContent">
-                        <div class="tab-pane fade show active" id="top-home" role="tabpanel"
-                            aria-labelledby="top-home-tab">
-                            <div class="row">
-                                @for (item of userFilterData; track item) {
-                                <div class="col-xxl-4 col-lg-4 col-md-6">
-                                    <div class="project-box"
-                                        [ngClass]="item.status === 'NEW' ? ' b-light1-primary' : 'b-light1-success'">
-                                        <span class="badge"
-                                            [ngClass]="item.status === 'ACTIVE' ? ' badge-primary' : 'badge-success'">{{item.status}}</span>
-                                        <h5 class="f-w-500">{{item.name}}</h5>
-                                        <div class="d-flex">
-                                            <div class="flex-grow-1">
-                                                <p> </p>
-                                            </div>
-                                        </div>
-                                        <p>{{item.name}}</p>
-                                        <div class="row details">
-                                            <div class="col-4"><span>Email </span></div>
-                                            <div class="col-8"> {{item.email}} </div>
-
-                                            <div class="col-4"><span>mobile Number</span></div>
-                                            <div class="col-8"> {{item.mobileNumber}} </div>
-
-                                            <div class="col-4"><span>access Type</span></div>
-                                            <div class="col-8"> {{item.accessType}} </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                }
+    <div class="row">
+        @for (item of userFilterData; track item) {
+            
+            <div class="col-xl-4 col-sm-6 col-xxl-3 col-ed-4 box-col-4">
+                <div class="card social-profile">
+                    <div class="project-box"
+                    [ngClass]="item.status === 'NEW' ? ' b-light1-primary' : 'b-light1-success'">
+                    <span class="badge"
+                        [ngClass]="item.status === 'ACTIVE' ? ' badge-primary' : 'badge-success'">{{item.status}}</span>
+                        <div class="social-img-wrap">
+                            <div class="social-img">
+                                <img src="https://picsum.photos/200/200" alt="Human Face Avatar" /> <!-- Placeholder human face avatar -->
                             </div>
+                         
+                        </div>
+                        
+                        <div class="social-details">
+                            <h4 class="mb-1"><a [routerLink]="['/social-app']">{{item.name}}</a></h4>
+                            <div class="contact-info text-center">
+                                <i class="fas fa-envelope fa"></i><h4 class="mb-1"><a [routerLink]="['/social-app']">{{item.email}}</a></h4>
+                            </div>
+                            <div class="contact-info text-center">
+                                <app-feather-icons [icons]="'phone'"></app-feather-icons>
+                                <h4 class="mb-1"><a [routerLink]="['/social-app']">{{item.mobileNumber}}</a></h4>
+                            </div>
+                            <div class="contact-info text-center">
+                                <!-- Use an ngIf to conditionally display the appropriate icon based on the access type -->
+                                <ng-container *ngIf="item.accessType === 'ADMIN'">
+                                    <i class="fas fa-crown"></i>
+                                </ng-container>
+                                <ng-container *ngIf="item.accessType === 'USER'">
+                                    <i class="fas fa-user"></i>
+                                </ng-container>
+                                <!-- Add more ngIf conditions for other access types as needed -->
+                            
+                                <h4 class="mb-1"><a [routerLink]="['/social-app']">{{item.accessType}}</a></h4>
+                            </div>
+                          
+                            <div class="users">
+                                <ul>
+
+                                </ul>
+                            </div>
+                            <div class="project-status mt-4 text-end">
+                                <div class="mb-0 text-end" style="align-items: left;">
+                                    <a href="javascript:void(0)" (click)="edit(item.id)">
+                                        <app-feather-icons [icons]="'edit'"></app-feather-icons>
+                                    </a>
+                                    &nbsp;
+                                    <a href="javascript:void(0)"
+                                        (click)="centeredModal(item.name)">
+                                        <app-feather-icons [customStyle]="'color:red'"
+                                            [icons]="'trash'"></app-feather-icons>
+                                    </a>
+                                </div>
+
+                            </div>
+                          
+                            
                         </div>
                     </div>
                 </div>
-
             </div>
-        </div>
-    </div>
-</div>
+        }
+  

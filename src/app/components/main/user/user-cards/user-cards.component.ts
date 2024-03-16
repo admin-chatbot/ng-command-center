@@ -1,4 +1,4 @@
-import { AfterViewInit,  OnInit } from '@angular/core';
+import { AfterViewInit,  OnInit, TrackByFunction } from '@angular/core';
 import { Component } from '@angular/core';
 import * as data from '../../../../shared/data/data/user/user'
 import { User } from 'src/app/entity/user';
@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 })
 
 export class UserCardsComponent implements OnInit ,AfterViewInit {
+track: TrackByFunction<User>;
 centeredModal(arg0: string) {
 throw new Error('Method not implemented.');
 }
@@ -53,6 +54,7 @@ throw new Error('Method not implemented.');
     alert(id) ;
     const user = this.users.find((data: User) => data.id === id);
    
+    alert(JSON.stringify(user))
     if (user) {
       this.router.navigate(['main/user/edit'],{ state: { data: user } }); 
 
