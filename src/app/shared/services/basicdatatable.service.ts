@@ -1,9 +1,18 @@
-import { Injectable, PipeTransform } from '@angular/core';
-import { Table, basicDataTable } from '../data/data/table/data-table';
+import { Injectable, PipeTransform } from '@angular/core'; 
 import { BehaviorSubject, Observable, Subject, debounceTime, delay, of, switchMap, tap } from 'rxjs';
 import { DecimalPipe } from '@angular/common';
 import { SortColumn, SortDirection } from '../directives/basic-data-table.directive';
  
+
+export interface Table {
+    id: number;
+    name: string;
+    position: string;
+    office: string;
+    startDate: string;
+    salary: string;
+    age: string;
+}
 
 interface SearchResult {
 	products: Table[];
@@ -123,8 +132,9 @@ export class BasicdatatableService {
 	private _search(): Observable<SearchResult> {
 		const { sortColumn, sortDirection, pageSize, page, searchTerm } = this._product;
 
+		const tables : Table[] = [];
 		// 1. sort
-		let products = sort(basicDataTable, sortColumn, sortDirection);
+		let products = sort(tables, sortColumn, sortDirection);
 
 		// 2. filter
 		products = products.filter((list) => matches(list, searchTerm, this.pipe));

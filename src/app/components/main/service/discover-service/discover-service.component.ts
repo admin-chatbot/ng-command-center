@@ -1,9 +1,8 @@
 import { DecimalPipe } from "@angular/common";
 import { Component, QueryList, ViewChildren } from "@angular/core";
-import { Observable } from "rxjs";
-import { Table } from "../../../../shared/data/data/table/data-table";
+import { Observable } from "rxjs"; 
 import { BasicDataTableDirective, SortEvent } from "src/app/shared/directives/basic-data-table.directive";
-import { BasicdatatableService } from "src/app/shared/services/basicdatatable.service";
+import { BasicdatatableService, Table } from "src/app/shared/services/basicdatatable.service";
 import { Service } from "src/app/entity/service";
 import { AutoDiscoverService } from "./auto-discover.service";
 import { AutoDiscoverServiceEntity } from "src/app/entity/autoDiscoverList";
@@ -18,28 +17,23 @@ import { Router } from "@angular/router";
   styleUrl: './discover-service.component.scss'
 })
 export class DiscoverServiceComponent {
-  public isShow: boolean = false;
-  public basicDataTable$: Observable<Table[]>;
-  public total$: Observable<number>;
-  public basicData : Table[];
+ public isShow: boolean = false; 
   public services:Service[] = [];
   public applicationId:number;
   public checkBoxList:AutoDiscoverServiceEntity[]= [];
+  public selectAll:boolean = false;
  
   @ViewChildren(BasicDataTableDirective)
   public headers: QueryList<BasicDataTableDirective>;
 
   constructor(public service: BasicdatatableService,private autoDiscover:AutoDiscoverService,private router: Router) {
-    this.basicDataTable$ = service.basicDataTable$;
-    this.total$ = service.total$;
+     
 
     const navigation = this.router.getCurrentNavigation(); 
     if(navigation!=null) {   
       const state = navigation.extras.state ;
      
-      this.applicationId = navigation?.extras.state?.['id']; 
-
-      alert(JSON.stringify(state))
+      this.applicationId = navigation?.extras.state?.['id'];        
 
       if(this.applicationId==undefined || this.applicationId ==null) {
         this.router.navigate(['main/project/list']);
@@ -52,22 +46,10 @@ export class DiscoverServiceComponent {
   }
 
   ngOnInit() {
-    this.service.basicDataTable$.subscribe((data) => {
-      if (data) {
-         this.basicData = data;
-      }
-    });
+    
   }
 
-  onSort({ column, direction }: SortEvent) {
-    this.headers.forEach((header) => {
-      if (header.sortable !== column) {
-        header.direction = "";
-      }
-    });
-    this.service.sortColumn = column;
-    this.service.sortDirection = direction;
-  }
+   
 
   discover() {
     this.autoDiscover.discoverService(this.applicationId)
@@ -82,5 +64,24 @@ export class DiscoverServiceComponent {
         }
       });
   }
+
+  onChange(service: Service) {  
+    var index = this.services.findIndex((obj)=>{
+      return (obj.endpoint === service.endpoint 
+        && obj.name === service.name
+        && obj.method === service.method)
+    })  
+    this.checkBoxList[index].checked = !this.checkBoxList[index].checked;     
+  } 
+
+  toggle() {
+    this.checkBoxList.forEach((e)=>e.checked=!this.selectAll);
+    this.selectAll = !this.selectAll;
+  }
+
+  show(arg0: Service) {
+    alert(JSON.stringify(arg0))
+  }
+     
 
 }

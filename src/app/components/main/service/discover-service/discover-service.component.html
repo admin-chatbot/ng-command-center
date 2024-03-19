@@ -3,64 +3,65 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Discover Service</h4> 
+                    <h4>Discover Service</h4>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive theme-scrollbar"><!--TODO theme-scrollbar-->
                         <div class="dataTables_wrapper no-footer">
-                            <div id="basic-1_filter" class="dataTables_filter">
-                                <label>Search:<input type="search" [(ngModel)]="service.searchTerm"></label>
-                                @if (service.loading$ | async) {
-                                <span class="col col-form-label">Loading...</span>
-                                }
-                            </div>
+
                             <table class="display dataTable no-footer" id="basic-1">
                                 <thead>
                                     <tr>
-                                        <th sortable="name" (sort)="onSort($event)">Name</th>
-                                        <th sortable="position" (sort)="onSort($event)">position</th>
-                                        <th sortable="office" (sort)="onSort($event)">Office</th>
-                                        <th sortable="age" (sort)="onSort($event)">Age</th>
-                                        <th sortable="startDate" (sort)="onSort($event)">Start Date</th>
-                                        <th sortable="salary" (sort)="onSort($event)">Salary</th>
-                                        <th>Action</th>
+                                        <th> 
+                                            <div class="form-check-size">
+                                                <div class="form-check form-switch form-check-inline" style="padding-left: 30px;">
+                                                    <input class="form-check-input check-size"
+                                                     id="flexSwitchCheckDefault2" type="checkbox"
+                                                      role="switch"  (change)="toggle()"  value="Select All" >
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th style="width: 10%">Name</th>
+                                        <th style="width: 30%">Endpoint</th>
+                                        <th style="width: 5%">Method</th>
+                                        <th style="width: 10%">Request </th>
+                                        <th style="width: 25%">Summery</th>
+                                        <th style="width: 10%">Response</th>
+                                        <th style="width: 10%">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @for (item of basicDataTable$ | async; track item) {
+                                    @for (item of checkBoxList ; track item) {
                                     <tr>
-                                        <td>{{item.name}}</td>
-                                        <td>{{item.position}}</td>
-                                        <td>{{item.office}}</td>
-                                        <td>{{item.age}}</td>
-                                        <td>{{item.startDate}}</td>
-                                        <td>{{item.salary}}</td>
+                                        <td> 
+
+                                            <div class="form-check-size">
+                                                <div class="form-check form-switch form-check-inline" style="padding-left: 30px;">
+                                                    <input class="form-check-input check-size"
+                                                     id="flexSwitchCheckDefault2" type="checkbox"
+                                                      role="switch" (change)="onChange(item.service)" [checked]="item.checked" value="{{item.id}}" >
+                                                </div>
+                                            </div>
+
+                                        </td>
+                                        <td>{{item.service.name | trim : '20'}}</td>
+                                        <td>{{item.service.endpoint}}</td>
+                                        <td>{{item.service.method}}</td>
+                                        <td>{{item.service.requestType}}</td>
+                                        <td>{{item.service.summary}}</td>
+                                        <td>{{item.service.responseType}}</td>
                                         <td>
                                             <ul class="action">
-                                                <li class="edit"><a href="javascript:void(0)"><i class="icon-pencil-alt"></i></a></li>
-                                                <li class="delete"><a href="javascript:void(0)"><i class="icon-trash"></i></a></li>
+                                                <li class="edit"><a href="javascript:void(0)"><i
+                                                            class="icon-new-window" (click)="show(item.service)"></i></a></li>
                                             </ul>
                                         </td>
                                     </tr>
                                     }
-                                    @if (basicData.length === 0) {
-                                    <tr>
-                                        <td>No matching records found</td>
-                                    </tr>
-                                    }
+
                                 </tbody>
                             </table>
-                            <div class="d-flex justify-content-between p-2">
-                                <select class="form-select" style="width: auto" name="pageSize"
-                                    [(ngModel)]="service.pageSize">
-                                    <option [ngValue]="10">10 items per page</option>
-                                    <option [ngValue]="25">25 items per page</option>
-                                    <option [ngValue]="50">50 items per page</option>
-                                    <option [ngValue]="100">100 items per page</option>
-                                </select>
-                                <ngb-pagination [collectionSize]="(total$ | async)!" [(page)]="service.page"
-                                    [pageSize]="service.pageSize"> </ngb-pagination>
-                            </div>
+
                         </div>
                     </div>
                 </div>

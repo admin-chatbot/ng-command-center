@@ -1,5 +1,5 @@
-import { Directive, EventEmitter, Input, Output } from '@angular/core';
-import { Table } from '../data/data/table/data-table';
+import { Directive, EventEmitter, Input, Output } from '@angular/core'; 
+import { Table } from '../services/basicdatatable.service';
 
 export type SortColumn = keyof Table | '';
 export type SortDirection = 'asc' | 'desc' | '';
