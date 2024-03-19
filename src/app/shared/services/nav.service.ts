@@ -112,7 +112,7 @@ export class NavService {
       level: 1, title: "Database",icon: "ecommerce", path: "main/db" ,type: "link"  ,active:false      
     },
     {
-      level: 1, title: "Document",icon: "file", path: "main/document" ,type: "link"  ,active:false      
+      level: 1, title: "Document",icon: "file", path: "main/document-upload" ,type: "link"  ,active:false      
     }, 
     {
       level: 1,

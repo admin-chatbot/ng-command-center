@@ -104,5 +104,9 @@ export class ProjectListComponent implements OnInit ,AfterViewInit{
     });
   }  
     
+  discover(arg0: number) {
+    this.router.navigate(['main/service/discover'],{ state: { id: arg0 } });   
+  }
+    
 
 }

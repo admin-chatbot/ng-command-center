@@ -1,6 +1,6 @@
 import { Service } from "./service";
 
-export class AutoDiscoverService {
+export class AutoDiscoverServiceEntity {
     id!:number;
     service!:Service;
     checked!:boolean;

@@ -7,7 +7,7 @@ import { CreateNewComponent } from './create-new/create-new.component';
 import { FileUploadComponent } from './create-new/file-upload/file-upload.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
-import {  NgbDropdownModule, NgbModalModule, NgbPopoverModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import {  NgbDropdownModule, NgbModalModule,  NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProjectSearchComponent } from './project-list/project-search/project-search.component';
 import { EditComponent } from './edit/edit.component';
 import { TrimPipe } from 'src/app/pipe/trim.pipe'; 

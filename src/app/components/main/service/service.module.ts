@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ServiceRoutingModule } from './service-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
-import { NgbModalModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalModule, NgbPaginationModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { TrimPipe } from 'src/app/pipe/trim.pipe';
 import { ViewComponent } from './view/view.component';
 import { DetailModelComponent } from './view/detail-model/detail-model.component';
@@ -23,6 +23,8 @@ import { EditIntentModelComponent } from './detail/edit-intent-model/edit-intent
 import { ParameterIntentModelComponent } from './detail/parameter-intent-model/parameter-intent-model.component';
 import { AddNewParameterComponent } from './add/add-new-parameter/add-new-parameter.component';
 import { AddNewIntentComponent } from './add/add-new-intent/add-new-intent.component';
+import { DiscoverServiceComponent } from './discover-service/discover-service.component';
+import { BasicDataTableDirective } from 'src/app/shared/directives/basic-data-table.directive';
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import { AddNewIntentComponent } from './add/add-new-intent/add-new-intent.compo
     EditIntentModelComponent,
     ParameterIntentModelComponent,
     AddNewParameterComponent,
-    AddNewIntentComponent
+    AddNewIntentComponent,
+    DiscoverServiceComponent,
+    
   ],
   providers : [
     PrettyJsonPipe
@@ -56,7 +60,9 @@ import { AddNewIntentComponent } from './add/add-new-intent/add-new-intent.compo
     TrimPipe, 
     NgbModalModule,
     PrettyJsonPipe,
-    NgSelectModule
+    NgSelectModule,
+    NgbPaginationModule,
+    BasicDataTableDirective
      
   ]
 })

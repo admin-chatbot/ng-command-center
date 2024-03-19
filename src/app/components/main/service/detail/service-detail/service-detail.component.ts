@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ServiceDetailComponent implements OnInit {
 
+
   @Input() service:Service;
   public applicationIdNameMap = []; 
 
@@ -42,6 +43,22 @@ export class ServiceDetailComponent implements OnInit {
           this.applicationIdNameMap = response.data;               
         }
       });
+  }
+
+
+  fetchServiceById() {
+    this.serviceService.fetchServiceById(this.service.id)
+      .subscribe((response)=>{
+        if (response.errorCode != undefined && response.errorCode != 200) {
+          this.toast.error('Not able to fetch. please try again in sometime','ERROR');
+       }else {    
+                   
+       }
+      });
+  }
+
+  refresh() {
+    throw new Error('Method not implemented.');
   }
   
 

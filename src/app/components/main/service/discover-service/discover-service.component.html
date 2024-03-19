@@ -1,0 +1,71 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Discover Service</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive theme-scrollbar"><!--TODO theme-scrollbar-->
+                        <div class="dataTables_wrapper no-footer">
+
+                            <table class="display dataTable no-footer" id="basic-1">
+                                <thead>
+                                    <tr>
+                                        <th> 
+                                            <div class="form-check-size">
+                                                <div class="form-check form-switch form-check-inline" style="padding-left: 30px;">
+                                                    <input class="form-check-input check-size"
+                                                     id="flexSwitchCheckDefault2" type="checkbox"
+                                                      role="switch"  (change)="toggle()"  value="Select All" >
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th style="width: 10%">Name</th>
+                                        <th style="width: 30%">Endpoint</th>
+                                        <th style="width: 5%">Method</th>
+                                        <th style="width: 10%">Request </th>
+                                        <th style="width: 25%">Summery</th>
+                                        <th style="width: 10%">Response</th>
+                                        <th style="width: 10%">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (item of checkBoxList ; track item) {
+                                    <tr>
+                                        <td> 
+
+                                            <div class="form-check-size">
+                                                <div class="form-check form-switch form-check-inline" style="padding-left: 30px;">
+                                                    <input class="form-check-input check-size"
+                                                     id="flexSwitchCheckDefault2" type="checkbox"
+                                                      role="switch" (change)="onChange(item.service)" [checked]="item.checked" value="{{item.id}}" >
+                                                </div>
+                                            </div>
+
+                                        </td>
+                                        <td>{{item.service.name | trim : '20'}}</td>
+                                        <td>{{item.service.endpoint}}</td>
+                                        <td>{{item.service.method}}</td>
+                                        <td>{{item.service.requestType}}</td>
+                                        <td>{{item.service.summary}}</td>
+                                        <td>{{item.service.responseType}}</td>
+                                        <td>
+                                            <ul class="action">
+                                                <li class="edit"><a href="javascript:void(0)"><i
+                                                            class="icon-new-window" (click)="show(item.service)"></i></a></li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

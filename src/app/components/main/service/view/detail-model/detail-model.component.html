@@ -1,94 +1,129 @@
-<div class="modal-content">
-    <div class="modal-header">
-        <h1 class="modal-title fs-5" id="smModalLabel">Service : {{title}}</h1>
-        <button class="btn-close py-0" type="button" (click)="close()"></button>
+<div class="card height-equal">
+    <div class="card-header">
+        <h4>Edit Service</h4>
     </div>
-    <div class="modal-body dark-modal">
-        <div class="large-modal-header">
+    <div class="card-body">
+        <form class="row g-2 needs-validation custom-input" [formGroup]="myForm" novalidate
+            [ngClass]="{'was-validated': validate}" (ngSubmit)="edit(myForm,$event)">
 
-        </div>
-        <div class="modal-details">
-            <div class="web-content">
-                <div class="row">
-                    <div class="col">
+            <div class="col-12">
+                <label class="form-label" for="validationCustomApplication">Application</label>
+                <select class="form-select" id="validationCustomApplication" formControlName="applicationId"
+                    required="">
+                    <option *ngFor="let app of applicationMap | keyvalue" [selected]="app.key==service.applicationId"
+                        [value]="app.key">
+                        {{app.value}} </option>
+                </select>
+                <div class="invalid-feedback">Please select a valid application.</div>
+                <div class="valid-feedback">
+                    Looks's Good! </div>
+            </div>
 
-                        <div class="mb-3 row">
-                            <label class="col-sm-3">Application</label>
-                            <div class="col-sm-9">
-                                <ng-select [items]="select2Input" bindLabel="name" placeholder="Select Application"
-                                    [(ngModel)]="applicationName"></ng-select>
+            <div class="col-12">
+                <label class="form-label" for="validationCustomName">Service Name</label>
+                <input class="form-control" id="validationCustomName" type="text" placeholder="Please enter your name."
+                    required="" formControlName="name" />
+                <div class="invalid-feedback">Please enter valid Name</div>
+                <div class="valid-feedback">
+                    Looks's Good!</div>
+            </div>
 
-                            </div>
+            <div class="col-12">
+                <label class="form-label" for="validationCustomSummery">Service Summery</label>
+                <input class="form-control" id="validationCustomSummery" type="text"
+                    placeholder="Please enter your summery." required="" formControlName="summary" />
+                <div class="invalid-feedback">Please enter valid summery</div>
+                <div class="valid-feedback">
+                    Looks's Good!</div>
+            </div>
+
+            <div class="col-12">
+                <label class="form-label" for="validationCustomEndpoint">Service Endpoint</label>
+                <input class="form-control" id="validationCustomEndpoint" type="text"
+                    placeholder="Please enter endpoint" required="" formControlName="endpoint" />
+                <div class="invalid-feedback">Please enter valid Endpoint</div>
+                <div class="valid-feedback">
+                    Looks's Good!</div>
+            </div>
+
+            <div class="col-12">
+                <label class="form-label" for="validationCustomMethod">Method</label>
+                <select class="form-select" id="validationCustomMethod" required="" formControlName="method">
+                    <option selected="" disabled="" value="">Choose...</option>
+                    <option *ngFor="let method of enums.method" [value]="method">{{method}} </option>
+                </select>
+                <div class="invalid-feedback">Please select a valid method.</div>
+                <div class="valid-feedback">
+                    Looks's Good! </div>
+            </div>
+
+            <div class="col-6">
+                <label class="form-label" for="validationCustomMethod">Request Type</label>
+                <select class="form-select" id="validationCustomMethod" required="" multiple
+                    formControlName="requestTypes">
+                    <option *ngFor="let requestType of enums.requestType" [value]="requestType">{{requestType}}
+                    </option>
+                </select>
+                <div class="invalid-feedback">Please select a valid method.</div>
+                <div class="valid-feedback">
+                    Looks's Good! </div>
+            </div>
+
+            <div class="col-6">
+                <label class="form-label" for="validationCustomMethod">Response Type</label>
+                <select class="form-select" id="validationCustomMethod" required="" multiple
+                    formControlName="responseTypes">
+                    <option *ngFor="let responseType of enums.responseType" [value]="responseType"
+                        [selected]="service.responseType.indexOf(responseType) > -1">{{responseType}}
+                    </option>
+                </select>
+                <div class="invalid-feedback">Please select a valid method.</div>
+                <div class="valid-feedback">
+                    Looks's Good! </div>
+            </div>
+
+            <div class="col-12">
+                <label class="form-label" for="validationbRT">Bot Response Template </label>
+                <input class="form-control" id="validationbRT" type="text" placeholder="Enter Bot Response Template"
+                    required="" formControlName="botResponseTemplate" />
+                <div class="invalid-feedback">Please enter valid Response Template</div>
+                <div class="valid-feedback">
+                    Looks's Good!</div>
+            </div>
+
+            <div class="col-12">
+                <label class="form-label" for="validationRequestSchema">Request Schema</label>
+                <textarea class="form-control" id="validationRequestSchema" placeholder="Enter Request Schema"
+                    formControlName="requestSchema"></textarea>
+                <div class="invalid-feedback">Please enter a valid Request Schema.</div>
+            </div>
+
+            <div class="col-12">
+                <label class="form-label" for="validationResponseSchema">Response Schema</label>
+                <textarea class="form-control" id="validationResponseSchema" required=""
+                    placeholder="Enter Response Schema" formControlName="responseSchema"></textarea>
+                <div class="invalid-feedback">Please enter a valid Response Schema.</div>
+            </div>
+
+            <div class="col-12">
+                &nbsp;
+            </div>
+            <div class="col-12">
+                &nbsp;
+            </div>
+            <div class="col-12">
+                <div class="product-buttons">
+
+                    <button class="btn btn-secondary me-2" type="submit" name="Finish" [disabled]="buttonDissable">
+                        <div class="d-flex align-items-center gap-sm-2 gap-1">
+                            {{submitButton1}}
                         </div>
+                    </button>
+                    <button class="btn btn-secondary me-2" type="button" (click)="close()">Close</button>
 
-                        <div class="mb-3 row">
-                            <label class="col-sm-3">Summary</label>
-                            <div class="col-sm-9">
-                                <input class="form-control" [value]="service.summary" type="text"
-                                    placeholder="Type your title in Placeholder" />
-                            </div>
-                        </div>
-
-                        <div class="mb-3 row">
-                            <label class="col-sm-3">Endpoint</label>
-                            <div class="col-sm-9">
-                                <input class="form-control" [value]="service.endpoint" type="text"
-                                    placeholder="Type your title in Placeholder" />
-                            </div>
-                        </div>
-
-                        <div class="mb-3 row">
-                            <label class="col-sm-3">Method</label>
-                            <div class="col-sm-9">
-                                <input class="form-control" [value]="service.method" type="text"
-                                    placeholder="Type your title in Placeholder" />
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label class="col-sm-3">Request Type</label>
-                            <div class="col-sm-9">
-                                <textarea class="form-control" id="floatingTextarea1" placeholder="Leave a comment here"
-                                    style="text-align: left;">{{service.requestType }}</textarea>
-                            </div>
-                        </div>
-
-                        <div class="mb-3 row">
-                            <label class="col-sm-3">Response Type</label>
-                            <div class="col-sm-9">
-                                <textarea class="form-control" id="floatingTextarea2" placeholder="Leave a comment here"
-                                    style="text-align: left;">{{service.responseType }}</textarea>
-                            </div>
-                        </div>
-
-                        <div class="mb-3 row">
-                            <label class="col-sm-3">Bot Response</label>
-                            <div class="col-sm-9">
-                                <textarea class="form-control" id="floatingTextarea2" placeholder="Leave a comment here"
-                                    style="text-align: left;">{{service.botResponseTemplate}}</textarea>
-                            </div>
-                        </div>
-
-                        <div class="mb-3 row">
-                            <label class="col-sm-3">Request Schema</label>
-                            <div class="col-sm-9">
-                                <textarea class="form-control" id="floatingTextarea4" placeholder="Leave a comment here"
-                                    style="height: 100px;text-align: left;">{{service.requestSchema | prettyJson}}</textarea>
-                            </div>
-                        </div>
-
-                        <div class="mb-3 row">
-                            <label class="col-sm-3">Response Schema</label>
-                            <div class="col-sm-9">
-                                <textarea class="form-control" id="floatingTextarea5" placeholder="Leave a comment here"
-                                    style="height: 100px;">{{service.responseSchema | prettyJson  }}</textarea>
-                            </div>
-                        </div>
-
-                    </div>
                 </div>
             </div>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-secondary me-2" type="button" (click)="close()">Close</button>
-        </div>
+
+        </form>
     </div>
+</div>
