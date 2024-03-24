@@ -71,17 +71,25 @@ export class CreateNewComponent implements OnInit {
     
 
     this.userService.onBoard(user)
-        .subscribe(r=>{  
-          if (r.errorCode != undefined && r.errorCode != 200) { 
-            this.toast.error(r.errorMessage, 'Alert!')           
-          } else {                 
-              this.toast.success('success',r.message);   
-              this.form.reset();
-          }  
-          this.submitted = false;        
-        });
-    
-  }
+    .subscribe(r=>{  
+      if (r.errorCode != undefined && r.errorCode != 200) { 
+        this.toast.error(r.errorMessage, 'Alert!')           
+      } else {                 
+          this.toast.success('success',r.message);   
+          this.form.reset(); // Reset form
+
+          // Manually remove validation classes
+          this.validate = false;
+          const formControls = this.form.controls;
+          Object.keys(formControls).forEach(key => {
+            const control = formControls[key];
+            control.setErrors(null); // Clear validation errors
+          });
+      }  
+      this.submitted = false;        
+    });
+
+}
 
 
   fetchApplicationNames() {

@@ -26,72 +26,75 @@
             </div>
         </div>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-XzrceXDxK7GR8LcRA6QQV3drjb92S+Tbc55sYd6PRlM2iK1qPT17tXj8sFTGJJtu" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    integrity="sha384-XzrceXDxK7GR8LcRA6QQV3drjb92S+Tbc55sYd6PRlM2iK1qPT17tXj8sFTGJJtu"
-    crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            integrity="sha384-XzrceXDxK7GR8LcRA6QQV3drjb92S+Tbc55sYd6PRlM2iK1qPT17tXj8sFTGJJtu"
+            crossorigin="anonymous">
 
-    <div class="row">
-        @for (item of userFilterData; track item) {
-            
-            <div class="col-xl-4 col-sm-6 col-xxl-3 col-ed-4 box-col-4">
-                <div class="card social-profile">
-                    <div class="project-box"
-                    [ngClass]="item.status === 'NEW' ? ' b-light1-primary' : 'b-light1-success'">
-                    <span class="badge"
-                        [ngClass]="item.status === 'ACTIVE' ? ' badge-primary' : 'badge-success'">{{item.status}}</span>
-                        <div class="social-img-wrap">
-                            <div class="social-img">
-                                <img src="https://picsum.photos/200/200" alt="Human Face Avatar" /> <!-- Placeholder human face avatar -->
+        <div class="row">
+            @for (item of userFilterData; track item) {
+                
+                <div class="col-xl-4 col-sm-6 col-xxl-3 col-ed-4 box-col-4">
+                    <div class="card social-profile">
+                        <div class="project-box"
+                        [ngClass]="item.status === 'NEW' ? ' b-light1-primary' : 'b-light1-success'">
+                        <span class="badge"
+                            [ngClass]="item.status === 'ACTIVE' ? ' badge-primary' : 'badge-success'">{{item.status}}</span>
+                            <div class="social-img-wrap">
+                                <div class="social-img">
+                                    <img src="https://picsum.photos/200/200" alt="Human Face Avatar" /> <!-- Placeholder human face avatar -->
+                                </div>
+                            
                             </div>
-                         
-                        </div>
-                        
-                        <div class="social-details">
-                            <h4 class="mb-1"><a [routerLink]="['/social-app']">{{item.name}}</a></h4>
+                            
+                            
                             <div class="contact-info text-center">
-                                <i class="fas fa-envelope fa"></i><h4 class="mb-1"><a [routerLink]="['/social-app']">{{item.email}}</a></h4>
+                                <h5 class="mb-1"><a [routerLink]="['/social-app']">{{item.name}}</a></h5>
+                                <i class="fas fa-envelope fa"></i>
+                                <h4 class="mb-1 contact-text"><a [routerLink]="['/social-app']">{{item.email}}</a></h4>
                             </div>
                             <div class="contact-info text-center">
                                 <app-feather-icons [icons]="'phone'"></app-feather-icons>
-                                <h4 class="mb-1"><a [routerLink]="['/social-app']">{{item.mobileNumber}}</a></h4>
+                                <h4 class="mb-1 contact-text"><a [routerLink]="['/social-app']">{{item.mobileNumber}}</a></h4>
                             </div>
-                            <div class="contact-info text-center">
-                                <!-- Use an ngIf to conditionally display the appropriate icon based on the access type -->
-                                <ng-container *ngIf="item.accessType === 'ADMIN'">
-                                    <i class="fas fa-crown"></i>
-                                </ng-container>
-                                <ng-container *ngIf="item.accessType === 'USER'">
-                                    <i class="fas fa-user"></i>
-                                </ng-container>
-                                <!-- Add more ngIf conditions for other access types as needed -->
-                            
-                                <h4 class="mb-1"><a [routerLink]="['/social-app']">{{item.accessType}}</a></h4>
-                            </div>
-                          
-                            <div class="users">
-                                <ul>
-
-                                </ul>
-                            </div>
-                            <div class="project-status mt-4 text-end">
-                                <div class="mb-0 text-end" style="align-items: left;">
-                                    <a href="javascript:void(0)" (click)="edit(item.id)">
-                                        <app-feather-icons [icons]="'edit'"></app-feather-icons>
-                                    </a>
-                                    &nbsp;
-                                    <a href="javascript:void(0)"
-                                        (click)="centeredModal(item.name)">
-                                        <app-feather-icons [customStyle]="'color:red'"
-                                            [icons]="'trash'"></app-feather-icons>
-                                    </a>
+                            <div class="mb-1 contact-text">
+                                    <!-- Use an ngIf to conditionally display the appropriate icon based on the access type -->
+                                    <ng-container *ngIf="item.accessType === 'ADMIN'">
+                                        <i class="fas fa-crown"></i>
+                                    </ng-container>
+                                    <ng-container *ngIf="item.accessType === 'USER'">
+                                        <i class="fas fa-user"></i>
+                                    </ng-container>
+                                    <!-- Add more ngIf conditions for other access types as needed -->
+                                
+                                    <a [routerLink]="['/social-app']">{{ item.accessType }}</a>
                                 </div>
-
-                            </div>
-                          
                             
+                                <div class="users">
+                                    <ul>
+
+                                    </ul>
+                                </div>
+                                <div class="project-status mt-4 text-end">
+                                    <div class="mb-0 text-end" style="align-items: left;">
+                                        <a href="javascript:void(0)" (click)="edit(item.id)">
+                                            <app-feather-icons [icons]="'edit'"></app-feather-icons>
+                                        </a>
+                                        &nbsp;
+                                        <a href="javascript:void(0)"
+                                            (click)="centeredModal(item.name)">
+                                            <app-feather-icons [customStyle]="'color:red'"
+                                                [icons]="'trash'"></app-feather-icons>
+                                        </a>
+                                    </div>
+
+                                </div>
+                            
+                                
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        }
-  
+                
+            }
+        </div>
+    </div>
+</div>

@@ -18,12 +18,13 @@ export class EditUserComponent implements OnInit,AfterViewInit {
   applications: Application[] = [];
   public validate = false;
   public submitted = false;
-  user: User | any;
+  user: User | any = {}; 
   public enums = new Enums;
   public applicationMap = new Map<number,string>;
   public apps:number[];
   clientId:any;
   newStatus: any;
+  
 
   public form = this.formBuilder.group({
     id: ['0', [Validators.required]],
@@ -50,6 +51,7 @@ export class EditUserComponent implements OnInit,AfterViewInit {
         const user =  navigation?.extras.state?.['data']         
            
         this.apps = user.applications;
+        this.user=user;
         alert(this.apps)
         this.form.patchValue({
           id: user.id,
@@ -125,19 +127,23 @@ export class EditUserComponent implements OnInit,AfterViewInit {
       this.submitted = true;
       const updatedUser: User = {} as User; 
       
+      updatedUser.id = this.user.id;
+      //updatedUser.id= this.f['id'].value;
+      updatedUser.name = this.f['name'].value!=null?this.f['name'].value:"";
+      updatedUser.mobileNumber = this.f['mobileNumber'].value!=null?this.f['mobileNumber'].value:"";      
+      updatedUser.accessType = this.f['accessType'].value!=null?this.f['accessType'].value:"";
+      updatedUser.status = this.f['status'].value!=null?this.f['status'].value:"";
       
-      updatedUser.id= this.notNullCheck(this.f['id']);
-      updatedUser.name= this.notNullCheck(this.f['name']);
-      updatedUser.mobileNumber= this.notNullCheck(this.f['mobileNumber']);
-      updatedUser.accessType= this.notNullCheck(this.f['accessType']);
-      updatedUser.status= this.notNullCheck(this.f['status']);
       
+      alert("application name" + this.f['applicationName'].value);
+  
+      const applicationString: string = this.f['applicationName'].value != null ? this.f['applicationName'].value : "";
+      updatedUser.applications = applicationString.split(',').map(Number);
+      updatedUser.empId = this.f['empId'].value!=null?this.f['empId'].value:"";
+   
      
-      updatedUser.applications= this.notNullCheck(this.f['applicationName'])
-      updatedUser.empId= this.notNullCheck(this.f['empId']);
-      updatedUser.id= this.notNullCheck(this.f['id']);
-           
-      this.edit(this.user);
+       alert(JSON.stringify(updatedUser)) ;   
+      this.edit(updatedUser);
 
     }
 
